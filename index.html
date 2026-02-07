@@ -3,487 +3,594 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leon Röttger - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Leon Röttger - Kommunikation & Medien</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* CSS Variables for Colors */
         :root {
-            --bg-dark: #121212;
-            --text-light: #f8f8f8;
-            --accent-blue: #3498db; /* A serious, modern blue */
-            --light-gray: #ccc;
-            --dark-gray: #333;
+            --bg-color: #1a1a1a; /* Dark Anthracite */
+            --text-color: #f0f0f0; /* White-Grey */
+            --primary-color: #00cec9; /* Friendly Turquoise/Teal */
+            --secondary-color: #ff7675; /* Soft Coral */
+            --light-grey: #b0b0b0; /* For subtle borders/lines */
+        }
+
+        /* Basic Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
-            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            margin-bottom: 0.5em;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.8rem; }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
         }
 
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
+            display: flex;
+            flex-direction: column; /* Mobile first: column layout */
+            min-height: 100vh;
         }
 
-        section {
-            padding: 80px 20px;
+        /* Sidebar Styling (Mobile - Hamburger Menu) */
+        .sidebar {
+            width: 100%;
+            background-color: var(--bg-color);
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-grey);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color); /* Placeholder color */
+            overflow: hidden;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            color: var(--text-color);
+        }
+
+        .hamburger-menu {
+            display: block; /* Show on mobile */
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: none; /* Hidden by default on mobile */
+            flex-direction: column;
+            width: 100%;
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--light-grey);
+            padding: 1rem 0;
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+
+        .nav-links.active {
+            display: flex; /* Show when active */
+        }
+
+        .nav-links ul {
+            list-style: none;
+        }
+
+        .nav-links ul li {
+            padding: 0.5rem 1rem;
             text-align: center;
         }
 
-        h1, h2, h3 {
-            color: var(--text-light);
-            margin-bottom: 20px;
+        .nav-links ul li a {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem;
         }
 
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
+        .nav-links ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
-        h2 {
-            font-size: 2.5em;
-            border-bottom: 3px solid var(--accent-blue);
-            display: inline-block;
-            padding-bottom: 10px;
-            margin-bottom: 40px;
+        .social-links {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            border-top: 1px solid var(--light-grey);
+            margin-top: 1rem;
         }
 
-        p {
-            margin-bottom: 20px;
-            font-size: 1.1em;
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            color: var(--text-color);
         }
 
-        .button {
-            display: inline-block;
-            background-color: var(--accent-blue);
-            color: var(--text-light);
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            font-weight: bold;
-            letter-spacing: 0.5px;
+        .social-links a:hover {
+            color: var(--primary-color);
         }
 
-        .button:hover {
-            background-color: #2980b9; /* Slightly darker blue on hover */
+        /* Main Content Styling */
+        .main-content {
+            flex-grow: 1;
+            padding: 2rem 1rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-grey);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
         }
 
         /* Hero Section */
         #hero {
-            background-color: var(--bg-dark);
-            padding: 150px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Full viewport height */
+            text-align: center;
+            padding: 4rem 1rem;
+            background-color: rgba(0, 206, 201, 0.1); /* Light tint of primary color */
+            border-radius: 8px;
+            margin-bottom: 3rem;
         }
 
         #hero h1 {
-            font-size: 4.5em;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-size: 3.5rem;
+            margin-bottom: 0.2em;
+            color: var(--text-color); /* Name should stand out */
         }
 
         #hero p {
-            font-size: 1.8em;
-            color: var(--light-gray);
-            margin-bottom: 40px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
             font-weight: 300;
         }
 
-        /* About Section */
-        #about {
-            background-color: #1a1a1a; /* Slightly lighter dark for contrast */
-            text-align: left;
+        .button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        #about .container {
-            max-width: 800px;
+        .button:hover {
+            background-color: #ff5f5e; /* Slightly darker coral */
+            transform: translateY(-2px);
+        }
+
+        /* About Me Section */
+        #about ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        #about ul li {
+            background-color: rgba(0, 206, 201, 0.1);
+            border-left: 3px solid var(--primary-color);
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
         }
 
         /* Skills Section */
-        #skills {
-            background-color: var(--bg-dark);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .skill-item {
-            background-color: var(--dark-gray);
-            padding: 30px;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .skill-tags {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 120px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
         }
 
-        .skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        .skill-tag {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
 
-        .skill-item h3 {
-            margin: 0;
-            color: var(--accent-blue);
-            font-size: 1.4em;
-        }
-
-        /* Career Timeline Section */
-        #career {
-            background-color: #1a1a1a;
-        }
-
+        /* Werdegang (Timeline) Section */
         .timeline {
             position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px 0;
-            text-align: left;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--accent-blue);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            z-index: 1;
+            margin-top: 2rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--light-grey);
         }
 
         .timeline-item {
-            padding: 10px 40px;
+            margin-bottom: 2rem;
             position: relative;
-            background-color: inherit;
-            width: 50%;
         }
 
-        .timeline-item::after {
+        .timeline-item::before {
             content: '';
             position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -17px;
-            background-color: var(--bg-dark);
-            border: 4px solid var(--accent-blue);
-            top: 15px;
+            left: -2.3rem; /* Adjust to align with border */
+            top: 0.3rem;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
-            z-index: 2;
+            background-color: var(--primary-color);
+            border: 2px solid var(--bg-color);
         }
 
-        .timeline-left {
-            left: 0;
+        .timeline-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.2em;
+            color: var(--text-color);
         }
 
-        .timeline-right {
-            left: 50%;
+        .timeline-item p {
+            color: var(--light-grey);
+            font-size: 0.9rem;
         }
 
-        .timeline-right::after {
-            left: -16px;
-        }
-
-        .timeline-item .content {
-            padding: 20px 30px;
-            background-color: var(--dark-gray);
-            position: relative;
-            border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .timeline-item .content h3 {
-            color: var(--accent-blue);
-            margin-top: 0;
-        }
-        .timeline-item .content p {
-            font-size: 1em;
-            margin-bottom: 0;
-            color: var(--light-gray);
-        }
-
-        /* Portfolio Section */
-        #portfolio {
-            background-color: var(--bg-dark);
-        }
-
+        /* Portfolio Section (Grid) */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: 1fr; /* Single column on mobile */
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
 
         .portfolio-item {
-            background-color: var(--dark-gray);
+            background-color: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: left;
+            transition: transform 0.3s ease;
         }
 
         .portfolio-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
         }
 
         .portfolio-item img {
             width: 100%;
-            height: 200px;
+            height: 200px; /* Placeholder height */
             object-fit: cover;
-            display: block;
+            background-color: var(--light-grey); /* Visual placeholder */
         }
 
-        .portfolio-item .content {
-            padding: 25px;
+        .portfolio-item-content {
+            padding: 1rem;
         }
 
         .portfolio-item h3 {
-            color: var(--accent-blue);
-            margin-top: 0;
-            font-size: 1.5em;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
         }
 
         .portfolio-item p {
-            font-size: 1em;
-            color: var(--light-gray);
+            font-size: 0.9rem;
+            color: var(--light-grey);
         }
 
         /* Footer */
-        footer {
-            background-color: var(--dark-gray);
-            color: var(--light-gray);
+        .footer {
             text-align: center;
-            padding: 40px 20px;
-            font-size: 0.9em;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--light-grey);
+            color: var(--light-grey);
+            font-size: 0.9rem;
+            margin-top: auto; /* Pushes footer to the bottom */
         }
 
-        footer a {
-            color: var(--accent-blue);
-            text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.3s ease;
+        .footer-links a {
+            color: var(--light-grey);
+            margin: 0 0.5rem;
         }
 
-        footer a:hover {
-            color: var(--text-light);
+        .footer-links a:hover {
+            color: var(--primary-color);
         }
 
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
-            h1 {
-                font-size: 3em;
+        /* Desktop Layout (Media Query) */
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row; /* Desktop: row layout */
             }
-            #hero h1 {
-                font-size: 3.5em;
+
+            .sidebar {
+                width: 280px; /* Fixed width sidebar */
+                min-height: 100vh;
+                position: sticky;
+                top: 0;
+                padding: 2rem;
+                flex-direction: column; /* Content stacked */
+                align-items: flex-start; /* Align left */
+                border-right: 1px solid var(--light-grey);
+                border-bottom: none;
             }
-            #hero p {
-                font-size: 1.4em;
-            }
-            h2 {
-                font-size: 2em;
-            }
-            .timeline::before {
-                left: 20px;
-            }
-            .timeline-item {
+
+            .sidebar-header {
+                flex-direction: column;
+                text-align: center;
                 width: 100%;
-                padding-left: 60px;
-                padding-right: 20px;
+                margin-bottom: 2rem;
             }
-            .timeline-item::after {
-                left: 13px;
-            }
-            .timeline-right {
-                left: 0;
-            }
-            .timeline-right::after {
-                left: 13px;
-            }
-        }
 
-        @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 2.5em;
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+                margin: 0 auto 1rem auto;
             }
+
+            .sidebar h2 {
+                font-size: 1.8rem;
+            }
+
+            .hamburger-menu {
+                display: none; /* Hide hamburger on desktop */
+            }
+
+            .nav-links {
+                display: flex; /* Always show nav links on desktop */
+                position: static; /* Remove absolute positioning */
+                flex-direction: column;
+                width: 100%;
+                border-top: none;
+                padding: 0;
+                margin-top: 0;
+            }
+
+            .nav-links ul {
+                width: 100%;
+            }
+
+            .nav-links ul li {
+                padding: 0;
+                text-align: left;
+            }
+            .nav-links ul li a {
+                padding: 0.8rem 0;
+                font-size: 1.2rem;
+            }
+
+            .social-links {
+                border-top: none;
+                margin-top: 2rem;
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .social-links a {
+                margin: 0 1rem 0 0;
+            }
+
+            .main-content {
+                padding: 3rem;
+            }
+
+            #hero {
+                text-align: left;
+                padding: 5rem 3rem;
+            }
+
             #hero h1 {
-                font-size: 2.8em;
+                font-size: 4.5rem;
             }
+
             #hero p {
-                font-size: 1.2em;
+                font-size: 1.8rem;
             }
-            h2 {
-                font-size: 1.8em;
-            }
-            .button {
-                padding: 12px 25px;
-                font-size: 0.9em;
-            }
-            .skills-grid, .portfolio-grid {
-                grid-template-columns: 1fr;
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2-3 columns on desktop */
             }
         }
-
     </style>
 </head>
 <body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="profile-pic">
+                    <img src="https://via.placeholder.com/120/00cec9/1a1a1a?text=LR" alt="Leon Röttger">
+                </div>
+                <h2>Leon Röttger</h2>
+            </div>
 
-    <header>
-        <!-- Simple navigation could go here, but not explicitly requested. -->
-    </header>
+            <div class="hamburger-menu" onclick="document.querySelector('.nav-links').classList.toggle('active');">
+                <i class="fas fa-bars"></i>
+            </div>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero">
-            <div class="container">
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="#hero">Start</a></li>
+                    <li><a href="#about">Über mich</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#career">Werdegang</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank" aria-label="Xing"><i class="fab fa-xing"></i></a>
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="hero">
                 <h1>Leon Röttger</h1>
-                <p>Kommunikation | Marketing | Content Creation</p>
-                <a href="lebenslauf.pdf" class="button">Zum Lebenslauf</a>
-            </div>
-        </section>
+                <p>Kommunikation trifft Kreativität.</p>
+                <a href="lebenslauf.pdf" class="button" download>Zum Lebenslauf</a>
+            </section>
 
-        <!-- About Me Section -->
-        <section id="about">
-            <div class="container">
+            <section id="about">
                 <h2>Über mich</h2>
-                <p>Als Kommunikations- & Medienmanager mit einem B.A. in Medienwissenschaften bringe ich fundiertes Wissen und praktische Erfahrung in der Gestaltung effektiver Kommunikationsstrategien mit. Meine Expertise erstreckt sich über PR, Marketing und die Entwicklung ansprechender Inhalte, um Marken und Botschaften zielgerichtet zu platzieren.</p>
-                <p>Ich bin stets auf der Suche nach innovativen Wegen, um Geschichten zu erzählen und durch kreative Ansätze eine nachhaltige Wirkung zu erzielen.</p>
-            </div>
-        </section>
+                <p>
+                    Ich bin Leon Röttger, ein leidenschaftlicher Kommunikationsexperte mit einem starken Gespür für kreative Lösungen. Meine Erfahrung erstreckt sich über verschiedene Medienbereiche, in denen ich stets danach strebe, Brücken zwischen Botschaften und Zielgruppen zu bauen. Ich glaube fest daran, dass gute Kommunikation nicht nur informiert, sondern auch inspiriert und bewegt.
+                </p>
+                <ul>
+                    <li>Teamplayer</li>
+                    <li>Lösungsorientiert</li>
+                    <li>Kreativ</li>
+                </ul>
+            </section>
 
-        <!-- Skills Section -->
-        <section id="skills">
-            <div class="container">
-                <h2>Meine Fähigkeiten</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <h3>Adobe CC</h3>
-                        <!-- Placeholder for icon/bar -->
-                    </div>
-                    <div class="skill-item">
-                        <h3>DaVinci Resolve</h3>
-                        <!-- Placeholder for icon/bar -->
-                    </div>
-                    <div class="skill-item">
-                        <h3>MS Office</h3>
-                        <!-- Placeholder for icon/bar -->
-                    </div>
-                    <div class="skill-item">
-                        <h3>Meta Business Suite</h3>
-                        <!-- Placeholder for icon/bar -->
-                    </div>
-                    <div class="skill-item">
-                        <h3>WordPress</h3>
-                        <!-- Placeholder for icon/bar -->
-                    </div>
-                    <div class="skill-item">
-                        <h3>Englisch (Fluent)</h3>
-                        <!-- Placeholder for icon/bar -->
-                    </div>
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="skill-tags">
+                    <span class="skill-tag">Adobe Creative Cloud</span>
+                    <span class="skill-tag">Public Relations</span>
+                    <span class="skill-tag">Social Media Marketing</span>
+                    <span class="skill-tag">Content Creation</span>
+                    <span class="skill-tag">Projektmanagement</span>
+                    <span class="skill-tag">UX/UI-Grundlagen</span>
+                    <span class="skill-tag">Video Editing</span>
+                    <span class="skill-tag">Graphic Design</span>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Career Timeline Section -->
-        <section id="career">
-            <div class="container">
-                <h2>Beruflicher Werdegang</h2>
+            <section id="career">
+                <h2>Werdegang</h2>
                 <div class="timeline">
-                    <div class="timeline-item timeline-left">
-                        <div class="content">
-                            <h3>Werkstudent Kommunikation</h3>
-                            <p>@ Westnetz</p>
-                        </div>
+                    <div class="timeline-item">
+                        <h3>Westnetz GmbH</h3>
+                        <p>2022 - Heute | Kommunikation & Marketing</p>
                     </div>
-                    <div class="timeline-item timeline-right">
-                        <div class="content">
-                            <h3>Marketing & Sales</h3>
-                            <p>@ Busch Media Group</p>
-                        </div>
+                    <div class="timeline-item">
+                        <h3>Busch Media Group</h3>
+                        <p>2020 - 2022 | Content Manager</p>
                     </div>
-                    <div class="timeline-item timeline-left">
-                        <div class="content">
-                            <h3>PR</h3>
-                            <p>@ Westnetz</p>
-                        </div>
+                    <div class="timeline-item">
+                        <h3>Internationale Filmfestspiele Berlin (Berlinale)</h3>
+                        <p>2019 | PR-Praktikant</p>
                     </div>
-                    <div class="timeline-item timeline-right">
-                        <div class="content">
-                            <h3>Berlinale & Filmpresse Meuser</h3>
-                            <p></p>
-                        </div>
+                    <div class="timeline-item">
+                        <h3>Universität Musterstadt</h3>
+                        <p>2016 - 2020 | B.A. Medienwissenschaften</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio">
-            <div class="container">
-                <h2>Mein Portfolio</h2>
+            <section id="portfolio">
+                <h2>Portfolio</h2>
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200?text=Kurzfilm+1" alt="Kurzfilm 1 Placeholder">
-                        <div class="content">
-                            <h3>Content Creation: Kurzfilm 1</h3>
-                            <p>Eine visuelle Erzählung, die komplexe Themen zugänglich macht.</p>
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Projekt+1" alt="Projekt 1 Placeholder">
+                        <div class="portfolio-item-content">
+                            <h3>Videoproduktion XYZ</h3>
+                            <p>Konzeption und Schnitt für ein Unternehmensvideo. Fokus auf Storytelling und Markenbotschaft.</p>
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200?text=Kurzfilm+2" alt="Kurzfilm 2 Placeholder">
-                        <div class="content">
-                            <h3>Content Creation: Kurzfilm 2</h3>
-                            <p>Kreative Umsetzung einer Markenbotschaft durch bewegte Bilder.</p>
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Projekt+2" alt="Projekt 2 Placeholder">
+                        <div class="portfolio-item-content">
+                            <h3>Social Media Kampagne ABC</h3>
+                            <p>Entwicklung und Durchführung einer Instagram-Kampagne zur Steigerung der Markenbekanntheit.</p>
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200?text=Projekt+Placeholder+1" alt="Projekt Placeholder 1">
-                        <div class="content">
-                            <h3>Projekt: Konzeptentwicklung</h3>
-                            <p>Strategische Planung und Ausarbeitung eines Kommunikationskonzepts.</p>
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Projekt+3" alt="Projekt 3 Placeholder">
+                        <div class="portfolio-item-content">
+                            <h3>Pressearbeit Relaunch</h3>
+                            <p>Erstellung von Pressemitteilungen und Medienkontakten für einen großen Produktrelaunch.</p>
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200?text=Projekt+Placeholder+2" alt="Projekt Placeholder 2">
-                        <div class="content">
-                            <h3>Projekt: Text & Redaktion</h3>
-                            <p>Erstellung überzeugender Texte für diverse Medienkanäle.</p>
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Projekt+4" alt="Projekt 4 Placeholder">
+                        <div class="portfolio-item-content">
+                            <h3>Webseite Redesign (UX)</h3>
+                            <p>Mitarbeit am Redesign einer Unternehmenswebseite mit Fokus auf Nutzerfreundlichkeit.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>Münster, Deutschland</p>
-            <p>
-                <a href="https://www.linkedin.com/in/leon-r%C3%B6ttger-23680220b/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
-                <a href="mailto:leon.roettger@gmx.net">E-Mail</a>
-            </p>
-            <p>&copy; 2026 Leon Röttger. Alle Rechte vorbehalten.</p>
+            <section id="contact">
+                <h2>Kontakt</h2>
+                <p>Sie möchten mehr erfahren oder haben eine spannende Gelegenheit? Kontaktieren Sie mich gerne!</p>
+                <p>E-Mail: <a href="mailto:leon.roettger@example.com">leon.roettger@example.com</a></p>
+                <!-- Optional: Add a simple contact form here later if needed -->
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
         </div>
+        <p>&copy; 2026 Leon Röttger. Alle Rechte vorbehalten.</p>
     </footer>
 
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu after clicking a link
+                if (window.innerWidth < 768) {
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
