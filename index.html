@@ -9,11 +9,11 @@
     <style>
         /* CSS Variables for Colors */
         :root {
-            --bg-color: #1a1a1a; /* Dark Anthracite */
-            --text-color: #f0f0f0; /* White-Grey */
-            --primary-color: #00cec9; /* Friendly Turquoise/Teal */
+            --bg-color: #f4f4f4; /* Light grey background */
+            --text-color: #000000; /* Black text */
+            --primary-color: #A0522D; /* Brown tone */
             --secondary-color: #ff7675; /* Soft Coral */
-            --light-grey: #b0b0b0; /* For subtle borders/lines */
+            --light-grey: #cccccc; /* Adjusted for new background, slightly darker for subtle borders */
         }
 
         /* Basic Reset & Typography */
@@ -325,6 +325,25 @@
             color: var(--light-grey);
         }
 
+        /* Responsive video container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -488,6 +507,9 @@
                     <li>Lösungsorientiert</li>
                     <li>Kreativ</li>
                 </ul>
+                <p style="margin-top: 1rem;">
+                    <a href="Referenzen & Zeugnisse.pdf" class="button" download>Referenzen & Zeugnisse</a>
+                </p>
             </section>
 
             <section id="skills">
@@ -508,20 +530,32 @@
                 <h2>Werdegang</h2>
                 <div class="timeline">
                     <div class="timeline-item">
+                        <h3>Busch Media Group GmbH & Co.KG</h3>
+                        <p>Mai 2024 - Juli 2024 | Werkstudent Marketing & Theatrical Sales Manager</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Filmpresse Meuser</h3>
+                        <p>Februar 2024 - April 2024 | Achtwöchiges Praktikum</p>
+                    </div>
+                    <div class="timeline-item">
                         <h3>Westnetz GmbH</h3>
-                        <p>2022 - Heute | Kommunikation & Marketing</p>
+                        <p>April 2023 - März 2024 | Werkstudent Öffentlichkeitsarbeit</p>
                     </div>
                     <div class="timeline-item">
-                        <h3>Busch Media Group</h3>
-                        <p>2020 - 2022 | Content Manager</p>
+                        <h3>WHAT THE HERO WANTS (WTHW)</h3>
+                        <p>Juli 2023 - Oktober 2023 | Personal Assistant</p>
                     </div>
                     <div class="timeline-item">
-                        <h3>Internationale Filmfestspiele Berlin (Berlinale)</h3>
-                        <p>2019 | PR-Praktikant</p>
+                        <h3>Internationale Filmfestspiele Berlin</h3>
+                        <p>Februar 2023 | Zweiwöchiges Praktikum</p>
                     </div>
                     <div class="timeline-item">
-                        <h3>Universität Musterstadt</h3>
-                        <p>2016 - 2020 | B.A. Medienwissenschaften</p>
+                        <h3>Universität Siegen</h3>
+                        <p>Oktober 2021 - Januar 2025 | Studium der Medienwissenschaften und Literatur, Kultur und Medien (B.A) (Note 1,8)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Polizei NRW</h3>
+                        <p>September 2020 - April 2021 | Duales Studium</p>
                     </div>
                 </div>
             </section>
@@ -530,31 +564,100 @@
                 <h2>Portfolio</h2>
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Projekt+1" alt="Projekt 1 Placeholder">
+                        <div class="video-container">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/5rFYhMA1tV8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                         <div class="portfolio-item-content">
-                            <h3>Videoproduktion XYZ</h3>
-                            <p>Konzeption und Schnitt für ein Unternehmensvideo. Fokus auf Storytelling und Markenbotschaft.</p>
+                            <h3>Organisation und Aufbau von Oscar Nominierten Film SINNERS</h3>
+                            <p>Organisation und Aufbau von Oscar Nominierten Film SINNERS mit Regisseur Ryan Coogler und anderen Gästen</p>
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Projekt+2" alt="Projekt 2 Placeholder">
+                        <div class="video-container">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/IVu9Nz6fG8Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                         <div class="portfolio-item-content">
-                            <h3>Social Media Kampagne ABC</h3>
-                            <p>Entwicklung und Durchführung einer Instagram-Kampagne zur Steigerung der Markenbekanntheit.</p>
+                            <h3>Screening der deutschen Filmakademie mit Denis Villeneuve zu Oscar nominierten Film Dune Part TWO</h3>
+                            <p>Organisation und Durchführung von Screening der deutschen Filmakademie mit Denis Villeneuve zu Oscar nominierten Film Dune Part TWO</p>
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Projekt+3" alt="Projekt 3 Placeholder">
+                        <div class="video-container">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/3qIVPFQiXoA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                         <div class="portfolio-item-content">
-                            <h3>Pressearbeit Relaunch</h3>
-                            <p>Erstellung von Pressemitteilungen und Medienkontakten für einen großen Produktrelaunch.</p>
+                            <h3>Kurzfilm "In der Stille liegt die Kraft"</h3>
+                            <p>Diesen Kurzfilm habe ich in einer Projektarbeit während meines Studiums an der Universität Siegen gedreht. Wir sollten eine Person und ihre Geschichte verfilmen und sie dabei in dem Umfeld zeigen, das ihre Person am besten widerspiegelt.</p>
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Projekt+4" alt="Projekt 4 Placeholder">
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Westenergie+Projekt" alt="Westenergie Projekt">
                         <div class="portfolio-item-content">
-                            <h3>Webseite Redesign (UX)</h3>
-                            <p>Mitarbeit am Redesign einer Unternehmenswebseite mit Fokus auf Nutzerfreundlichkeit.</p>
+                            <h3><a href="https://www.lokalplus.nrw/kirchhundem/waschbetonstation-in-buntes-gemaelde-in-kirchhundem-verwandelt-80305" target="_blank">Waschbetonstation in buntes Gemälde verwandelt</a></h3>
+                            <p>Ein Projekt im Rahmen meiner Tätigkeit bei der Westnetz GmbH. Eine zuvor triste Waschbetonstation wurde in ein farbenfrohes Kunstwerk verwandelt, das lokale Sehenswürdigkeiten und Aktivitäten darstellt.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Westenergie+Projekt" alt="Westenergie Projekt">
+                        <div class="portfolio-item-content">
+                            <h3><a href="https://www.siegener-zeitung.de/lokales/siegerland/mausbach-hat-dank-westenergie-eine-waldschaukel-JU4XYGD4BZCFRPLQDNFOZARQ2M.html" target="_blank">Mausbacher Waldsofa</a></h3>
+                            <p>Dank der Initiative „Westenergie aktiv vor Ort“ konnte in Mausbach eine Waldsofaschaukel errichtet werden. Ein tolles Projekt für die Gemeinschaft, das Wanderer und Biker anzieht.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
+                        <div class="portfolio-item-content">
+                            <h3><a href="https://www.instagram.com/p/C7jwUakIW1x/" target="_blank">Instagram Post (Verfasst)</a></h3>
+                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
+                        <div class="portfolio-item-content">
+                            <h3><a href="https://www.instagram.com/p/C74B9NyolwZ/?img_index=1" target="_blank">Instagram Post (Verfasst)</a></h3>
+                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
+                        <div class="portfolio-item-content">
+                            <h3><a href="https://www.instagram.com/p/C76Hy-Qon_6/?img_index=1" target="_blank">Instagram Post (Verfasst)</a></h3>
+                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
+                        <div class="portfolio-item-content">
+                            <h3><a href="https://www.instagram.com/p/C760DWoIxSC/?img_index=1" target="_blank">Instagram Post (Verfasst)</a></h3>
+                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
+                        <div class="portfolio-item-content">
+                            <h3><a href="https://www.instagram.com/p/C8KP6hfISEW/" target="_blank">Instagram Post (Verfasst)</a></h3>
+                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
+                        <div class="portfolio-item-content">
+                            <h3><a href="https://www.instagram.com/p/C8PDqLkoTqU/?img_index=1" target="_blank">Instagram Post (Verfasst)</a></h3>
+                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
+                        <div class="portfolio-item-content">
+                            <h3><a href="https://www.instagram.com/p/C8cYWfGOe5k/" target="_blank">Instagram Post (Verfasst)</a></h3>
+                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
+                        <div class="portfolio-item-content">
+                            <h3><a href="https://www.instagram.com/p/C8mrlE6hAPk/" target="_blank">Instagram Post (Verfasst)</a></h3>
+                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
                         </div>
                     </div>
                 </div>
@@ -563,7 +666,7 @@
             <section id="contact">
                 <h2>Kontakt</h2>
                 <p>Sie möchten mehr erfahren oder haben eine spannende Gelegenheit? Kontaktieren Sie mich gerne!</p>
-                <p>E-Mail: <a href="mailto:leon.roettger@example.com">leon.roettger@example.com</a></p>
+                <p>E-Mail: <a href="mailto:leon.roettger@gmx.net">leon.roettger@gmx.net</a></p>
                 <!-- Optional: Add a simple contact form here later if needed -->
             </section>
         </main>
