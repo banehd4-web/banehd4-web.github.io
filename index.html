@@ -3,390 +3,488 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leon Röttger</title>
+    <title>Leon Röttger | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root {
-            --accent-color: #005f73;
-            --dark-grey: #333;
-            --light-grey: #f4f4f4;
-            --white: #fff;
-            --shadow: rgba(0,0,0,0.1);
+            --bg-color: #f4f7f5;
+            --sidebar-bg: #ffffff;
+            --text-color: #555;
+            --heading-color: #1a1a1a;
+            --accent-color: #2a9d8f;
+            --accent-color-light: #e9f5f4;
+            --border-color: #e8e8e8;
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            background-color: var(--light-grey);
-            color: var(--dark-grey);
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-        }
-        .container {
-            max-width: 960px;
-            margin: 20px auto;
             padding: 0;
-            background-color: var(--white);
-            box-shadow: 0 0 15px var(--shadow);
-            border-radius: 8px;
-            overflow: hidden;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-weight: 300;
         }
-        .header {
+
+        .wrapper {
             display: flex;
-            align-items: center;
-            padding: 30px;
-            background-color: var(--dark-grey);
-            color: var(--white);
         }
-        .header img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-right: 30px;
-            border: 4px solid var(--accent-color);
+
+        /* --- Linke Sidebar --- */
+        .left-sidebar {
+            width: 30%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--sidebar-bg);
+            padding: 50px 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
         }
-        .header-text h1 {
-            margin: 0;
-            font-size: 2.8em;
+
+        .sidebar-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8em; /* Kleiner */
+            font-weight: 700; /* Weniger fett */
+            color: var(--heading-color);
+            margin: 0 0 5px;
         }
-        .header-text p {
-            margin: 10px 0 0;
-            font-size: 1.2em;
-            color: #ccc;
-        }
-        .section {
-            margin: 0;
-            padding: 30px;
-            border-bottom: 1px solid #eee;
-        }
-        .section:nth-child(even) {
-             background-color: #fafafa;
-        }
-        .section h2 {
-            margin-top: 0;
+
+        .sidebar-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em; /* Kleiner */
+            font-weight: 400; /* Nicht so fett */
             color: var(--accent-color);
-            font-size: 1.8em;
+            margin: 0 0 30px;
         }
-        .section h2 i {
-            margin-right: 15px;
-        }
-        .career-grid, .project-grid, .download-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .career-item {
-            background-color: var(--white);
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            padding: 20px;
-        }
-        .project-item {
-            padding: 20px;
-            background-color: var(--white);
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .career-item:hover, .project-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-        }
-        .career-item h3 {
-            margin: 0 0 5px 0;
-            font-size: 1.2em;
-            color: var(--dark-grey);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .career-item .icon-toggle {
-            transition: transform 0.4s ease;
-        }
-        .career-item.active .icon-toggle {
-            transform: rotate(180deg);
-        }
-        .career-description {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, margin-top 0.4s ease-out;
-            margin-top: 0;
-        }
-        .career-item.active .career-description {
-            max-height: 500px; /* Adjust as needed */
-            margin-top: 15px;
-        }
-        .career-item p {
-            margin: 0;
-            color: #555;
-        }
-        .skills-list {
+
+        .sidebar-nav {
             list-style: none;
             padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            margin: 20px 0;
         }
-        .skill-item {
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: bold;
+        .sidebar-nav li {
+            margin: 15px 0;
         }
-        .project-item h4 {
-            margin: 0 0 10px 0;
-            font-size: 1.2em;
-        }
-        .project-item a {
+        .sidebar-nav a {
             text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        /* Entfernen der Spiegelstriche */
+        .sidebar-nav a::before {
+            content: none; 
+        }
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
             color: var(--accent-color);
+        }
+        .sidebar-nav a.active {
+            position: relative;
+        }
+        .sidebar-nav a.active::before {
+            content: '';
+            position: absolute;
+            left: -20px; /* Position des Streifens */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px; /* Breite des Streifens */
+            height: 100%; /* Höhe des Streifens */
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .sidebar-section {
+            margin-top: auto;
+        }
+        .sidebar-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-downloads a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 15px;
+            background-color: var(--accent-color-light);
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .sidebar-downloads a:hover {
+            background-color: var(--accent-color);
+            color: var(--sidebar-bg);
+        }
+        
+        .social-links {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .social-links li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        .social-links a {
+            font-size: 1.4em;
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+
+        /* --- Rechter Hauptinhalt --- */
+        .main-content {
+            width: 70%;
+            margin-left: 30%;
+            padding: 80px;
+            box-sizing: border-box;
+        }
+
+        .main-content section {
+            margin-bottom: 80px;
+        }
+        
+        #about p {
+            max-width: 700px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5em;
+            color: var(--heading-color);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        /* --- Timeline --- */
+        .timeline {
+            list-style: none;
+            padding: 0;
+        }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .timeline-date {
+            min-width: 150px;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        .timeline-content h3 {
+            font-size: 1.1em;
+            margin: 0;
+            font-weight: 600;
+        }
+        .timeline-content p {
+            margin: 0;
+            font-size: 0.95em;
+        }
+
+        /* --- Projekte Grid --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
         .project-item iframe {
             width: 100%;
             aspect-ratio: 16/9;
-            border: none;
-            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
             margin-bottom: 10px;
+        }
+        .project-item h4 {
+            font-size: 1em;
+            margin: 0 0 5px;
+        }
+        .project-item p {
+            font-size: 0.9em;
         }
         .preview-card {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #f9f9f9;
-            border: 1px solid #eee;
+            background-color: #fff;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
             text-decoration: none;
-            color: var(--dark-grey);
+            color: var(--text-color); /* Corrected from --dark-grey */
             height: 100%;
             box-sizing: border-box;
             text-align: center;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
         }
         .preview-card:hover {
-            background-color: #f1f1f1;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
         .preview-card h5 {
             margin: 10px 0 5px 0;
-            font-size: 1.1em;
+            font-size: 1em;
             color: var(--accent-color);
         }
         .preview-card p {
             margin: 0;
-            font-size: 0.9em;
+            font-size: 0.8em;
             color: #777;
         }
         .preview-card i {
-            font-size: 2.5em;
+            font-size: 2.2em;
             color: var(--accent-color);
         }
-        footer {
-            text-align: center;
-            padding: 40px;
-            background-color: var(--dark-grey);
-            color: #f1f1f1;
+        
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
-        footer h3 {
-            color: var(--white);
-        }
-        footer p {
-            margin: 8px 0;
-        }
-        footer a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        footer a:hover {
+        .skill-item {
+            background-color: var(--accent-color-light);
             color: var(--accent-color);
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
         }
-        footer .footer-contact-item {
-            display: inline-block;
-            margin: 0 15px;
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .left-sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 20px;
+            }
+            .main-content {
+                width: 100%;
+                margin-left: 0;
+                padding: 40px;
+            }
+            .sidebar-nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            .sidebar-nav li {
+                margin: 0;
+            }
+            .sidebar-nav a {
+                padding: 5px 10px;
+                border: 1px solid var(--border-color);
+                border-radius: 5px;
+            }
+            .sidebar-nav a::before {
+                content: none;
+            }
+            .sidebar-nav a.active {
+                background-color: var(--accent-color);
+                color: white;
+            }
+            .sidebar-nav a.active::before {
+                content: none;
+            }
+            .sidebar-header {
+                text-align: center;
+            }
+            .sidebar-section {
+                margin-top: 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .sidebar-downloads {
+                width: 80%;
+                max-width: 300px;
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 30px;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <header class="header">
-            <a href="Leon Röttger.jpg" target="_blank">
-                <img src="Leon Röttger.jpg" alt="Profilbild von Leon Röttger">
-            </a>
-            <div class="header-text">
-                <h1>Leon Röttger</h1>
-                <p>Strategische Kommunikation trifft auf kreative Umsetzung.</p>
+    <div class="wrapper">
+        <aside class="left-sidebar">
+            <div>
+                <div class="sidebar-header">
+                    <h1>Leon Röttger</h1>
+                    <h2>Strategische Kommunikation & kreative Umsetzung</h2>
+                </div>
+                <ul class="sidebar-nav">
+                    <li><a href="#about">Über mich</a></li>
+                    <li><a href="#experience">Werdegang</a></li>
+                    <li><a href="#youtube-videos">YouTube Videos</a></li>
+                    <li><a href="#instagram-posts">Instagram Posts</a></li>
+                    <li><a href="#press-articles">Presseartikel</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                </ul>
             </div>
-        </header>
 
-        <main>
-            <section class="section">
-                <h2><i class="fa-solid fa-user"></i>Über mich</h2>
+            <div class="sidebar-section">
+                <h3>Herunterladen</h3>
+                <div class="sidebar-downloads">
+                    <a href="lebenslauf.pdf" target="_blank">Lebenslauf</a>
+                    <a href="Referenzen & Zeugnisse.pdf" target="_blank">Referenzen & Zeugnisse</a>
+                </div>
+                <ul class="social-links">
+                    <li><a href="tel:+4917690778876" aria-label="Anrufen"><i class="fa-solid fa-phone"></i></a></li>
+                    <li><a href="mailto:leon.roettger@gmx.net" aria-label="E-Mail schreiben"><i class="fa-solid fa-envelope"></i></a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section id="about">
+                <h2 class="section-title">Über mich</h2>
                 <p>Wissenschaft und Daten leben nicht nur von Fakten, sondern davon, wie sie wahrgenommen werden. Genau hier liegt meine Leidenschaft: An der Schnittstelle zwischen strategischer Kommunikation und kreativer Produktion.</p>
                 <p>Im Januar 2025 habe ich mein Bachelor-Studium der Medienwissenschaften an der Universität Siegen erfolgreich abgeschlossen (Note 1,86). Doch graue Theorie reicht mir nicht. Bereits während des Studiums habe ich Kommunikation praktisch gestaltet – vom Roten Teppich der Berlinale über die Filmvermarktung bei der Busch Media Group bis hin zur Unternehmenskommunikation bei Westnetz.</p>
                 <p>Was mich antreibt? Authentische Formate zu entwickeln, die die Zielgruppe wirklich erreichen. Ob ich dabei Interviews für einen Podcast führe, komplexe Datenthemen für das Intranet aufbereite oder Kampagnen in der Meta Business Suite steuere – ich arbeite stets lösungsorientiert und kreativ.</p>
             </section>
 
-            <section class="section">
-                <h2><i class="fa-solid fa-graduation-cap"></i>Studium</h2>
-                <div class="career-grid">
-                    <div class="career-item">
-                        <div>
-                            <h3><span>Oktober 2021 - Januar 2025</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
-                            <p>Studium Medienwissenschaften (B.A), Universität Siegen</p>
-                        </div>
-                        <div class="career-description"><p>Test</p></div>
-                    </div>
-                </div>
+            <section id="experience">
+                <h2 class="section-title">Beruflicher Werdegang</h2>
+                <ul class="timeline">
+                    <!-- Original order was wrong, re-ordering oldest to newest for a correct timeline -->
+                    <li class="timeline-item">
+                        <div class="timeline-date">Sep 2020 - Apr 2021</div>
+                        <div class="timeline-content"><h3>Duales Studium</h3><p>Polizei NRW</p></div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">Okt 2021 - Jan 2025</div>
+                        <div class="timeline-content"><h3>Studium Medienwissenschaften (B.A)</h3><p>Universität Siegen</p></div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">Feb 2023</div>
+                        <div class="timeline-content"><h3>Praktikum</h3><p>Internationale Filmfestspiele Berlin</p></div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">Jul 2023 - Okt 2023</div>
+                        <div class="timeline-content"><h3>Personal Assistant</h3><p>WHAT THE HERO WANTS (WTHW)</p></div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">Apr 2023 - Mär 2024</div>
+                        <div class="timeline-content"><h3>Werkstudent Öffentlichkeitsarbeit</h3><p>Westnetz GmbH</p></div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">Feb 2024 - Apr 2024</div>
+                        <div class="timeline-content"><h3>Praktikum Filmpresse</h3><p>Filmpresse Meuser</p></div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">Mai 2024 - Jul 2024</div>
+                        <div class="timeline-content"><h3>Werkstudent Marketing & Theatrical Sales</h3><p>Busch Media Group GmbH & Co.KG</p></div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">Aug 2024 - heute</div>
+                        <div class="timeline-content"><h3>Werkstudent Kommunikation</h3><p>Westnetz GmbH</p></div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">Jan 2025 - Mai 2025</div>
+                        <div class="timeline-content"><h3>PR-Assistenz</h3><p>Filmpresse Meuser</p></div>
+                    </li>
+                </ul>
             </section>
 
-            <section class="section">
-                <h2><i class="fa-solid fa-briefcase"></i>Beruflicher Werdegang</h2>
-                <div class="career-grid">
-                    <div class="career-item">
-                        <div>
-                            <h3><span>Januar 2025 - Mai 2025</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
-                            <p>PR-Assistenz, Filmpresse Meuser</p>
-                        </div>
-                        <div class="career-description"><p>Test</p></div>
+            <section id="youtube-videos">
+                <h2 class="section-title">YouTube Videos</h2>
+                <div class="project-grid">
+                    <div class="project-item">
+                        <h4>Screening: "SINNERS" mit Ryan Coogler</h4>
+                        <iframe src="https://www.youtube.com/embed/5rFYhMA1tV8" title="YouTube video player" allowfullscreen></iframe>
                     </div>
-                    <div class="career-item">
-                        <div>
-                            <h3><span>August 2024 - heute</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
-                            <p>Werkstudent Kommunikation, Westnetz GmbH</p>
-                        </div>
-                        <div class="career-description"><p>Test</p></div>
+                    <div class="project-item">
+                        <h4>Screening: "DUNE: PART TWO" mit Denis Villeneuve</h4>
+                        <iframe src="https://www.youtube.com/embed/IVu9Nz6fG8Q" title="YouTube video player" allowfullscreen></iframe>
                     </div>
-                    <div class="career-item">
-                        <div>
-                            <h3><span>Mai 2024 - Juli 2024</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
-                            <p>Werkstudent Marketing & Theatrical Sales Manager, Busch Media Group GmbH & Co.KG</p>
-                        </div>
-                        <div class="career-description"><p>Test</p></div>
-                    </div>
-                    <div class="career-item">
-                        <div>
-                            <h3><span>Juli 2023 - Oktober 2023</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
-                            <p>Personal Assistant, WHAT THE HERO WANTS (WTHW)</p>
-                        </div>
-                        <div class="career-description"><p>Test</p></div>
-                    </div>
-                    <div class="career-item">
-                        <div>
-                            <h3><span>April 2023 - März 2024</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
-                            <p>Werkstudent Öffentlichkeitsarbeit, Westnetz GmbH</p>
-                        </div>
-                        <div class="career-description"><p>Test</p></div>
-                    </div>
-                    <div class="career-item">
-                        <div>
-                            <h3><span>September 2020 - April 2021</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
-                            <p>Duales Studium, Polizei NRW</p>
-                        </div>
-                        <div class="career-description"><p>Test</p></div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2><i class="fa-solid fa-building"></i>Praktika</h2>
-                <div class="career-grid">
-                     <div class="career-item">
-                        <div>
-                            <h3><span>Februar 2024 - April 2024</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
-                            <p>Praktikum Filmpresse Meuser</p>
-                        </div>
-                        <div class="career-description"><p>Test</p></div>
-                    </div>
-                    <div class="career-item">
-                        <div>
-                            <h3><span>Februar 2023</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
-                            <p>Praktikum, Internationale Filmfestspiele Berlin</p>
-                        </div>
-                        <div class="career-description"><p>Test</p></div>
+                    <div class="project-item">
+                        <h4>Maurice Morgenstern - Kein Stern strahlt ohne Dunkelheit</h4>
+                        <iframe src="https://www.youtube.com/embed/3qIVPFQiXoA" title="YouTube video player" allowfullscreen></iframe>
                     </div>
                 </div>
             </section>
             
-            <section class="section" id="projekte">
-                <h2><i class="fa-solid fa-lightbulb"></i>Projekte</h2>
-                <h3>YouTube Videos</h3>
+            <section id="instagram-posts">
+                <h2 class="section-title">Instagram Posts</h2>
                 <div class="project-grid">
-                    <div class="project-item">
-                        <h4>Screening: "SINNERS" mit Ryan Coogler</h4>
-                        <iframe src="https://www.youtube.com/embed/5rFYhMA1tV8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        <p>Organisation und Aufbau von einem Screening und anschließendem Werkstattgespräch zum oscarnominierten Film SINNERS mit Regisseur Ryan Coogler.</p>
-                    </div>
-                    <div class="project-item">
-                        <h4>Screening: "DUNE: PART TWO" mit Denis Villeneuve</h4>
-                        <iframe src="https://www.youtube.com/embed/IVu9Nz6fG8Q" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        <p>Organisation und Aufbau von einem Screening und anschließendem Werkstattgespräch zum oscarnominierten Film DUNE: PART TWO mit Regisseur Denis Villeneuve.</p>
-                    </div>
-                    <div class="project-item">
-                        <h4>Maurice Morgenstern - Kein Stern strahlt ohne Dunkelheit</h4>
-                        <iframe src="https://www.youtube.com/embed/3qIVPFQiXoA" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        <p>Maurice Morgenstern - Kein Stern strahlt ohne Dunkelheit</p>
-                    </div>
-                </div>
-                <h3 style="margin-top: 30px;">Social Media Posts</h3>
-                <div class="project-grid">
-                    <div class="project-item">
-                        <a href="https://www.instagram.com/p/C7jwUakIW1x/" target="_blank" class="preview-card">
-                            <i class="fa-brands fa-instagram"></i>
-                            <h5>Instagram Post</h5>
-                            <p>instagram.com</p>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                         <a href="https://www.instagram.com/p/C74B9NyolwZ/?img_index=1" target="_blank" class="preview-card">
-                            <i class="fa-brands fa-instagram"></i>
-                            <h5>Instagram Post</h5>
-                            <p>instagram.com</p>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="https://www.instagram.com/p/C76Hy-Qon_6/?img_index=1" target="_blank" class="preview-card">
-                            <i class="fa-brands fa-instagram"></i>
-                            <h5>Instagram Post</h5>
-                            <p>instagram.com</p>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="https://www.instagram.com/p/C760DWoIxSC/?img_index=1" target="_blank" class="preview-card">
-                            <i class="fa-brands fa-instagram"></i>
-                            <h5>Instagram Post</h5>
-                            <p>instagram.com</p>
-                        </a>
-                    </div>
-                </div>
-                <h3 style="margin-top: 30px;">Pressetexte</h3>
-                <div class="project-grid">
-                     <div class="project-item">
-                        <a href="https://www.lokalplus.nrw/kirchhundem/waschbetonstation-in-buntes-gemaelde-in-kirchhundem-verwandelt-80305" target="_blank" class="preview-card">
-                            <i class="fa-solid fa-newspaper"></i>
-                            <h5>Waschbetonstation in buntes Gemälde verwandelt</h5>
-                            <p>lokalplus.nrw</p>
-                        </a>
-                     </div>
-                    <div class="project-item">
-                        <a href="https://www.siegener-zeitung.de/lokales/siegerland/mausbach-hat-dank-westenergie-eine-waldschaukel-JU4XYGD4BZCFRPLQDNFOZARQ2M.html" target="_blank" class="preview-card">
-                            <i class="fa-solid fa-newspaper"></i>
-                            <h5>Mausbach hat dank Westenergie eine Waldschaukel</h5>
-                            <p>siegener-zeitung.de</p>
-                        </a>
-                    </div>
+                    <a href="https://www.instagram.com/p/C7jwUakIW1x/" target="_blank" class="preview-card">
+                        <i class="fa-brands fa-instagram"></i><h5>Instagram Post</h5>
+                        <p>instagram.com</p>
+                    </a>
+                    <a href="https://www.instagram.com/p/C74B9NyolwZ/?img_index=1" target="_blank" class="preview-card">
+                        <i class="fa-brands fa-instagram"></i><h5>Instagram Post</h5>
+                        <p>instagram.com</p>
+                    </a>
+                    <a href="https://www.instagram.com/p/C76Hy-Qon_6/?img_index=1" target="_blank" class="preview-card">
+                        <i class="fa-brands fa-instagram"></i><h5>Instagram Post</h5>
+                        <p>instagram.com</p>
+                    </a>
                 </div>
             </section>
 
-            <section class="section">
-                <h2><i class="fa-solid fa-star"></i>Skills</h2>
+            <section id="press-articles">
+                <h2 class="section-title">Presseartikel</h2>
+                <div class="project-grid">
+                     <a href="https://www.lokalplus.nrw/kirchhundem/waschbetonstation-in-buntes-gemaelde-in-kirchhundem-verwandelt-80305" target="_blank" class="preview-card">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <h5>Waschbetonstation in buntes Gemälde verwandelt</h5>
+                        <p>lokalplus.nrw</p>
+                    </a>
+                    <a href="https://www.siegener-zeitung.de/lokales/siegerland/mausbach-hat-dank-westenergie-eine-waldschaukel-JU4XYGD4BZCFRPLQDNFOZARQ2M.html" target="_blank" class="preview-card">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <h5>Mausbach hat dank Westenergie eine Waldschaukel</h5>
+                        <p>siegener-zeitung.de</p>
+                    </a>
+                </div>
+            </section>
+            
+            <section id="skills">
+                <h2 class="section-title">Skills</h2>
                 <ul class="skills-list">
                     <li class="skill-item">Adobe Creative-Cloud</li>
                     <li class="skill-item">Avid Media Composer</li>
@@ -397,59 +495,35 @@
                     <li class="skill-item">Videografie</li>
                 </ul>
             </section>
-            
-            <section class="section">
-                <h2><i class="fa-solid fa-download"></i>Downloads</h2>
-                <div class="download-grid">
-                    <div class="project-item">
-                        <a href="lebenslauf.pdf" target="_blank" class="preview-card">
-                            <i class="fa-solid fa-file-pdf"></i>
-                            <h5>Lebenslauf</h5>
-                            <p>PDF-Dokument</p>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="Referenzen & Zeugnisse.pdf" target="_blank" class="preview-card">
-                            <i class="fa-solid fa-file-pdf"></i>
-                            <h5>Referenzen & Zeugnisse</h5>
-                            <p>PDF-Dokument</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
         </main>
     </div>
-    
-    <footer>
-        <h3>Kontakt</h3>
-        <div>
-            <span class="footer-contact-item"><i class="fa-solid fa-location-dot"></i> Cheruskerring 33, 48147 Münster</span>
-            <span class="footer-contact-item"><i class="fa-solid fa-phone"></i> <a href="tel:+4917690778876">0176 90778876</a></span>
-            <span class="footer-contact-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:leon.roettger@gmx.net">leon.roettger@gmx.net</a></span>
-        </div>
-    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const accordionItems = document.querySelectorAll('.career-item');
+            const sections = document.querySelectorAll('.main-content section');
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
 
-            accordionItems.forEach(item => {
-                const trigger = item.querySelector('div:first-child');
-                if (trigger) {
-                    trigger.style.cursor = 'pointer';
-                    trigger.addEventListener('click', () => {
-                        const currentlyActive = document.querySelector('.career-item.active');
-                        
-                        if (currentlyActive && currentlyActive !== item) {
-                            currentlyActive.classList.remove('active');
-                        }
-                        
-                        item.classList.toggle('active');
-                    });
+            function changeLinkState() {
+                let index = sections.length;
+
+                // Loop backward to find the last section fully or partially in view
+                while(--index > 0 && window.scrollY + 150 < sections[index].offsetTop) {} 
+                // Changed condition to > 0 so that index 0 (Über mich) can be active
+
+                navLinks.forEach((link) => link.classList.remove('active'));
+                
+                // Ensure index is valid before trying to access navLinks[index]
+                if(index >= 0 && navLinks[index]) {
+                    navLinks[index].classList.add('active');
                 }
-            });
+            }
+
+            // Initial check and immediate highlight
+            changeLinkState();
+            
+            // Add event listener
+            window.addEventListener('scroll', changeLinkState);
         });
     </script>
-
 </body>
 </html>
