@@ -3,697 +3,453 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leon Röttger - Kommunikation & Medien</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Leon Röttger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* CSS Variables for Colors */
         :root {
-            --bg-color: #f4f4f4; /* Light grey background */
-            --text-color: #000000; /* Black text */
-            --primary-color: #A0522D; /* Brown tone */
-            --secondary-color: #ff7675; /* Soft Coral */
-            --light-grey: #cccccc; /* Adjusted for new background, slightly darker for subtle borders */
+            --accent-color: #005f73;
+            --dark-grey: #333;
+            --light-grey: #f4f4f4;
+            --white: #fff;
+            --shadow: rgba(0,0,0,0.1);
         }
-
-        /* Basic Reset & Typography */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            background-color: var(--light-grey);
+            color: var(--dark-grey);
         }
-
         h1, h2, h3, h4, h5, h6 {
-            color: var(--primary-color);
-            margin-bottom: 0.5em;
-            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
         }
-
-        h1 { font-size: 2.8rem; }
-        h2 { font-size: 2.2rem; }
-        h3 { font-size: 1.8rem; }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--secondary-color);
-        }
-
         .container {
-            display: flex;
-            flex-direction: column; /* Mobile first: column layout */
-            min-height: 100vh;
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0;
+            background-color: var(--white);
+            box-shadow: 0 0 15px var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
         }
-
-        /* Sidebar Styling (Mobile - Hamburger Menu) */
-        .sidebar {
-            width: 100%;
-            background-color: var(--bg-color);
-            padding: 1rem;
-            border-bottom: 1px solid var(--light-grey);
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            background-color: var(--dark-grey);
+            color: var(--white);
+        }
+        .header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 30px;
+            border: 4px solid var(--accent-color);
+        }
+        .header-text h1 {
+            margin: 0;
+            font-size: 2.8em;
+        }
+        .header-text p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+            color: #ccc;
+        }
+        .section {
+            margin: 0;
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .section:nth-child(even) {
+             background-color: #fafafa;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.8em;
+        }
+        .section h2 i {
+            margin-right: 15px;
+        }
+        .career-grid, .project-grid, .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .career-item {
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            padding: 20px;
+        }
+        .project-item {
+            padding: 20px;
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .career-item:hover, .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+        .career-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.2em;
+            color: var(--dark-grey);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
-
-        .sidebar-header {
-            display: flex;
-            align-items: center;
+        .career-item .icon-toggle {
+            transition: transform 0.4s ease;
         }
-
-        .profile-pic {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: var(--primary-color); /* Placeholder color */
+        .career-item.active .icon-toggle {
+            transform: rotate(180deg);
+        }
+        .career-description {
+            max-height: 0;
             overflow: hidden;
-            margin-right: 1rem;
-            flex-shrink: 0;
+            transition: max-height 0.4s ease-out, margin-top 0.4s ease-out;
+            margin-top: 0;
         }
-
-        .profile-pic img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .career-item.active .career-description {
+            max-height: 500px; /* Adjust as needed */
+            margin-top: 15px;
         }
-
-        .sidebar h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0;
-            color: var(--text-color);
+        .career-item p {
+            margin: 0;
+            color: #555;
         }
-
-        .hamburger-menu {
-            display: block; /* Show on mobile */
-            cursor: pointer;
-            font-size: 1.8rem;
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            display: none; /* Hidden by default on mobile */
-            flex-direction: column;
-            width: 100%;
-            background-color: var(--bg-color);
-            border-top: 1px solid var(--light-grey);
-            padding: 1rem 0;
-            position: absolute;
-            top: 100%;
-            left: 0;
-        }
-
-        .nav-links.active {
-            display: flex; /* Show when active */
-        }
-
-        .nav-links ul {
+        .skills-list {
             list-style: none;
-        }
-
-        .nav-links ul li {
-            padding: 0.5rem 1rem;
-            text-align: center;
-        }
-
-        .nav-links ul li a {
-            color: var(--text-color);
-            font-size: 1.1rem;
-            display: block;
-            padding: 0.5rem;
-        }
-
-        .nav-links ul li a:hover {
-            color: var(--primary-color);
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            padding: 1rem 0;
-            border-top: 1px solid var(--light-grey);
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            font-size: 1.5rem;
-            margin: 0 0.8rem;
-            color: var(--text-color);
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Main Content Styling */
-        .main-content {
-            flex-grow: 1;
-            padding: 2rem 1rem;
-        }
-
-        section {
-            margin-bottom: 3rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--light-grey);
-        }
-
-        section:last-of-type {
-            border-bottom: none;
-        }
-
-        /* Hero Section */
-        #hero {
-            text-align: center;
-            padding: 4rem 1rem;
-            background-color: rgba(0, 206, 201, 0.1); /* Light tint of primary color */
-            border-radius: 8px;
-            margin-bottom: 3rem;
-        }
-
-        #hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.2em;
-            color: var(--text-color); /* Name should stand out */
-        }
-
-        #hero p {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .button {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            padding: 0.8rem 1.8rem;
-            border-radius: 5px;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .button:hover {
-            background-color: #ff5f5e; /* Slightly darker coral */
-            transform: translateY(-2px);
-        }
-
-        /* About Me Section */
-        #about ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        #about ul li {
-            background-color: rgba(0, 206, 201, 0.1);
-            border-left: 3px solid var(--primary-color);
-            padding: 0.8rem 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
-        }
-
-        /* Skills Section */
-        .skill-tags {
+            padding: 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
+            gap: 10px;
         }
-
-        .skill-tag {
-            background-color: var(--primary-color);
-            color: var(--bg-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
+        .skill-item {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
         }
-
-        /* Werdegang (Timeline) Section */
-        .timeline {
-            position: relative;
-            margin-top: 2rem;
-            padding-left: 1.5rem;
-            border-left: 2px solid var(--light-grey);
+        .project-item h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
         }
-
-        .timeline-item {
-            margin-bottom: 2rem;
-            position: relative;
+        .project-item a {
+            text-decoration: none;
+            color: var(--accent-color);
         }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.3rem; /* Adjust to align with border */
-            top: 0.3rem;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            border: 2px solid var(--bg-color);
+        .project-item iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
         }
-
-        .timeline-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.2em;
-            color: var(--text-color);
-        }
-
-        .timeline-item p {
-            color: var(--light-grey);
-            font-size: 0.9rem;
-        }
-
-        /* Portfolio Section (Grid) */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Single column on mobile */
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .portfolio-item {
-            background-color: rgba(255, 255, 255, 0.05);
+        .preview-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 200px; /* Placeholder height */
-            object-fit: cover;
-            background-color: var(--light-grey); /* Visual placeholder */
-        }
-
-        .portfolio-item-content {
-            padding: 1rem;
-        }
-
-        .portfolio-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
-        }
-
-        .portfolio-item p {
-            font-size: 0.9rem;
-            color: var(--light-grey);
-        }
-
-        /* Responsive video container */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background: #000;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--dark-grey);
             height: 100%;
-            border: 0;
-        }
-
-        /* Footer */
-        .footer {
+            box-sizing: border-box;
             text-align: center;
-            padding: 2rem 1rem;
-            border-top: 1px solid var(--light-grey);
-            color: var(--light-grey);
-            font-size: 0.9rem;
-            margin-top: auto; /* Pushes footer to the bottom */
+            transition: background-color 0.3s;
         }
-
-        .footer-links a {
-            color: var(--light-grey);
-            margin: 0 0.5rem;
+        .preview-card:hover {
+            background-color: #f1f1f1;
         }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
+        .preview-card h5 {
+            margin: 10px 0 5px 0;
+            font-size: 1.1em;
+            color: var(--accent-color);
         }
-
-        /* Desktop Layout (Media Query) */
-        @media (min-width: 768px) {
-            .container {
-                flex-direction: row; /* Desktop: row layout */
-            }
-
-            .sidebar {
-                width: 280px; /* Fixed width sidebar */
-                min-height: 100vh;
-                position: sticky;
-                top: 0;
-                padding: 2rem;
-                flex-direction: column; /* Content stacked */
-                align-items: flex-start; /* Align left */
-                border-right: 1px solid var(--light-grey);
-                border-bottom: none;
-            }
-
-            .sidebar-header {
-                flex-direction: column;
-                text-align: center;
-                width: 100%;
-                margin-bottom: 2rem;
-            }
-
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-                margin: 0 auto 1rem auto;
-            }
-
-            .sidebar h2 {
-                font-size: 1.8rem;
-            }
-
-            .hamburger-menu {
-                display: none; /* Hide hamburger on desktop */
-            }
-
-            .nav-links {
-                display: flex; /* Always show nav links on desktop */
-                position: static; /* Remove absolute positioning */
-                flex-direction: column;
-                width: 100%;
-                border-top: none;
-                padding: 0;
-                margin-top: 0;
-            }
-
-            .nav-links ul {
-                width: 100%;
-            }
-
-            .nav-links ul li {
-                padding: 0;
-                text-align: left;
-            }
-            .nav-links ul li a {
-                padding: 0.8rem 0;
-                font-size: 1.2rem;
-            }
-
-            .social-links {
-                border-top: none;
-                margin-top: 2rem;
-                width: 100%;
-                justify-content: flex-start;
-            }
-
-            .social-links a {
-                margin: 0 1rem 0 0;
-            }
-
-            .main-content {
-                padding: 3rem;
-            }
-
-            #hero {
-                text-align: left;
-                padding: 5rem 3rem;
-            }
-
-            #hero h1 {
-                font-size: 4.5rem;
-            }
-
-            #hero p {
-                font-size: 1.8rem;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2-3 columns on desktop */
-            }
+        .preview-card p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .preview-card i {
+            font-size: 2.5em;
+            color: var(--accent-color);
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            background-color: var(--dark-grey);
+            color: #f1f1f1;
+        }
+        footer h3 {
+            color: var(--white);
+        }
+        footer p {
+            margin: 8px 0;
+        }
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: var(--accent-color);
+        }
+        footer .footer-contact-item {
+            display: inline-block;
+            margin: 0 15px;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <div class="profile-pic">
-                    <img src="https://via.placeholder.com/120/00cec9/1a1a1a?text=LR" alt="Leon Röttger">
-                </div>
-                <h2>Leon Röttger</h2>
-            </div>
-
-            <div class="hamburger-menu" onclick="document.querySelector('.nav-links').classList.toggle('active');">
-                <i class="fas fa-bars"></i>
-            </div>
-
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="#hero">Start</a></li>
-                    <li><a href="#about">Über mich</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#career">Werdegang</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
-                </ul>
-                <div class="social-links">
-                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" target="_blank" aria-label="Xing"><i class="fab fa-xing"></i></a>
-                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-            </nav>
-        </aside>
-
-        <main class="main-content">
-            <section id="hero">
+        <header class="header">
+            <a href="Leon Röttger.jpg" target="_blank">
+                <img src="Leon Röttger.jpg" alt="Profilbild von Leon Röttger">
+            </a>
+            <div class="header-text">
                 <h1>Leon Röttger</h1>
-                <p>Kommunikation trifft Kreativität.</p>
-                <a href="lebenslauf.pdf" class="button" download>Zum Lebenslauf</a>
+                <p>Strategische Kommunikation trifft auf kreative Umsetzung.</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="section">
+                <h2><i class="fa-solid fa-user"></i>Über mich</h2>
+                <p>Wissenschaft und Daten leben nicht nur von Fakten, sondern davon, wie sie wahrgenommen werden. Genau hier liegt meine Leidenschaft: An der Schnittstelle zwischen strategischer Kommunikation und kreativer Produktion.</p>
+                <p>Im Januar 2025 habe ich mein Bachelor-Studium der Medienwissenschaften an der Universität Siegen erfolgreich abgeschlossen (Note 1,86). Doch graue Theorie reicht mir nicht. Bereits während des Studiums habe ich Kommunikation praktisch gestaltet – vom Roten Teppich der Berlinale über die Filmvermarktung bei der Busch Media Group bis hin zur Unternehmenskommunikation bei Westnetz.</p>
+                <p>Was mich antreibt? Authentische Formate zu entwickeln, die die Zielgruppe wirklich erreichen. Ob ich dabei Interviews für einen Podcast führe, komplexe Datenthemen für das Intranet aufbereite oder Kampagnen in der Meta Business Suite steuere – ich arbeite stets lösungsorientiert und kreativ.</p>
             </section>
 
-            <section id="about">
-                <h2>Über mich</h2>
-                <p>
-                    Ich bin Leon Röttger, ein leidenschaftlicher Kommunikationsexperte mit einem starken Gespür für kreative Lösungen. Meine Erfahrung erstreckt sich über verschiedene Medienbereiche, in denen ich stets danach strebe, Brücken zwischen Botschaften und Zielgruppen zu bauen. Ich glaube fest daran, dass gute Kommunikation nicht nur informiert, sondern auch inspiriert und bewegt.
-                </p>
-                <ul>
-                    <li>Teamplayer</li>
-                    <li>Lösungsorientiert</li>
-                    <li>Kreativ</li>
+            <section class="section">
+                <h2><i class="fa-solid fa-graduation-cap"></i>Studium</h2>
+                <div class="career-grid">
+                    <div class="career-item">
+                        <div>
+                            <h3><span>Oktober 2021 - Januar 2025</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
+                            <p>Studium Medienwissenschaften (B.A), Universität Siegen</p>
+                        </div>
+                        <div class="career-description"><p>Test</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fa-solid fa-briefcase"></i>Beruflicher Werdegang</h2>
+                <div class="career-grid">
+                    <div class="career-item">
+                        <div>
+                            <h3><span>Januar 2025 - Mai 2025</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
+                            <p>PR-Assistenz, Filmpresse Meuser</p>
+                        </div>
+                        <div class="career-description"><p>Test</p></div>
+                    </div>
+                    <div class="career-item">
+                        <div>
+                            <h3><span>August 2024 - heute</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
+                            <p>Werkstudent Kommunikation, Westnetz GmbH</p>
+                        </div>
+                        <div class="career-description"><p>Test</p></div>
+                    </div>
+                    <div class="career-item">
+                        <div>
+                            <h3><span>Mai 2024 - Juli 2024</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
+                            <p>Werkstudent Marketing & Theatrical Sales Manager, Busch Media Group GmbH & Co.KG</p>
+                        </div>
+                        <div class="career-description"><p>Test</p></div>
+                    </div>
+                    <div class="career-item">
+                        <div>
+                            <h3><span>Juli 2023 - Oktober 2023</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
+                            <p>Personal Assistant, WHAT THE HERO WANTS (WTHW)</p>
+                        </div>
+                        <div class="career-description"><p>Test</p></div>
+                    </div>
+                    <div class="career-item">
+                        <div>
+                            <h3><span>April 2023 - März 2024</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
+                            <p>Werkstudent Öffentlichkeitsarbeit, Westnetz GmbH</p>
+                        </div>
+                        <div class="career-description"><p>Test</p></div>
+                    </div>
+                    <div class="career-item">
+                        <div>
+                            <h3><span>September 2020 - April 2021</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
+                            <p>Duales Studium, Polizei NRW</p>
+                        </div>
+                        <div class="career-description"><p>Test</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fa-solid fa-building"></i>Praktika</h2>
+                <div class="career-grid">
+                     <div class="career-item">
+                        <div>
+                            <h3><span>Februar 2024 - April 2024</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
+                            <p>Praktikum Filmpresse Meuser</p>
+                        </div>
+                        <div class="career-description"><p>Test</p></div>
+                    </div>
+                    <div class="career-item">
+                        <div>
+                            <h3><span>Februar 2023</span><span class="icon-toggle"><i class="fa-solid fa-chevron-down"></i></span></h3>
+                            <p>Praktikum, Internationale Filmfestspiele Berlin</p>
+                        </div>
+                        <div class="career-description"><p>Test</p></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section" id="projekte">
+                <h2><i class="fa-solid fa-lightbulb"></i>Projekte</h2>
+                <h3>YouTube Videos</h3>
+                <div class="project-grid">
+                    <div class="project-item">
+                        <h4>Screening: "SINNERS" mit Ryan Coogler</h4>
+                        <iframe src="https://www.youtube.com/embed/5rFYhMA1tV8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <p>Organisation und Aufbau von einem Screening und anschließendem Werkstattgespräch zum oscarnominierten Film SINNERS mit Regisseur Ryan Coogler.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Screening: "DUNE: PART TWO" mit Denis Villeneuve</h4>
+                        <iframe src="https://www.youtube.com/embed/IVu9Nz6fG8Q" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <p>Organisation und Aufbau von einem Screening und anschließendem Werkstattgespräch zum oscarnominierten Film DUNE: PART TWO mit Regisseur Denis Villeneuve.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Maurice Morgenstern - Kein Stern strahlt ohne Dunkelheit</h4>
+                        <iframe src="https://www.youtube.com/embed/3qIVPFQiXoA" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <p>Maurice Morgenstern - Kein Stern strahlt ohne Dunkelheit</p>
+                    </div>
+                </div>
+                <h3 style="margin-top: 30px;">Social Media Posts</h3>
+                <div class="project-grid">
+                    <div class="project-item">
+                        <a href="https://www.instagram.com/p/C7jwUakIW1x/" target="_blank" class="preview-card">
+                            <i class="fa-brands fa-instagram"></i>
+                            <h5>Instagram Post</h5>
+                            <p>instagram.com</p>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                         <a href="https://www.instagram.com/p/C74B9NyolwZ/?img_index=1" target="_blank" class="preview-card">
+                            <i class="fa-brands fa-instagram"></i>
+                            <h5>Instagram Post</h5>
+                            <p>instagram.com</p>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="https://www.instagram.com/p/C76Hy-Qon_6/?img_index=1" target="_blank" class="preview-card">
+                            <i class="fa-brands fa-instagram"></i>
+                            <h5>Instagram Post</h5>
+                            <p>instagram.com</p>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="https://www.instagram.com/p/C760DWoIxSC/?img_index=1" target="_blank" class="preview-card">
+                            <i class="fa-brands fa-instagram"></i>
+                            <h5>Instagram Post</h5>
+                            <p>instagram.com</p>
+                        </a>
+                    </div>
+                </div>
+                <h3 style="margin-top: 30px;">Pressetexte</h3>
+                <div class="project-grid">
+                     <div class="project-item">
+                        <a href="https://www.lokalplus.nrw/kirchhundem/waschbetonstation-in-buntes-gemaelde-in-kirchhundem-verwandelt-80305" target="_blank" class="preview-card">
+                            <i class="fa-solid fa-newspaper"></i>
+                            <h5>Waschbetonstation in buntes Gemälde verwandelt</h5>
+                            <p>lokalplus.nrw</p>
+                        </a>
+                     </div>
+                    <div class="project-item">
+                        <a href="https://www.siegener-zeitung.de/lokales/siegerland/mausbach-hat-dank-westenergie-eine-waldschaukel-JU4XYGD4BZCFRPLQDNFOZARQ2M.html" target="_blank" class="preview-card">
+                            <i class="fa-solid fa-newspaper"></i>
+                            <h5>Mausbach hat dank Westenergie eine Waldschaukel</h5>
+                            <p>siegener-zeitung.de</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fa-solid fa-star"></i>Skills</h2>
+                <ul class="skills-list">
+                    <li class="skill-item">Adobe Creative-Cloud</li>
+                    <li class="skill-item">Avid Media Composer</li>
+                    <li class="skill-item">Da Vinci Resolve</li>
+                    <li class="skill-item">Meta Business Suite</li>
+                    <li class="skill-item">Wordpress</li>
+                    <li class="skill-item">Fotografie</li>
+                    <li class="skill-item">Videografie</li>
                 </ul>
-                <p style="margin-top: 1rem;">
-                    <a href="Referenzen & Zeugnisse.pdf" class="button" download>Referenzen & Zeugnisse</a>
-                </p>
             </section>
-
-            <section id="skills">
-                <h2>Skills</h2>
-                <div class="skill-tags">
-                    <span class="skill-tag">Adobe Creative Cloud</span>
-                    <span class="skill-tag">Public Relations</span>
-                    <span class="skill-tag">Social Media Marketing</span>
-                    <span class="skill-tag">Content Creation</span>
-                    <span class="skill-tag">Projektmanagement</span>
-                    <span class="skill-tag">UX/UI-Grundlagen</span>
-                    <span class="skill-tag">Video Editing</span>
-                    <span class="skill-tag">Graphic Design</span>
-                </div>
-            </section>
-
-            <section id="career">
-                <h2>Werdegang</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <h3>Busch Media Group GmbH & Co.KG</h3>
-                        <p>Mai 2024 - Juli 2024 | Werkstudent Marketing & Theatrical Sales Manager</p>
+            
+            <section class="section">
+                <h2><i class="fa-solid fa-download"></i>Downloads</h2>
+                <div class="download-grid">
+                    <div class="project-item">
+                        <a href="lebenslauf.pdf" target="_blank" class="preview-card">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <h5>Lebenslauf</h5>
+                            <p>PDF-Dokument</p>
+                        </a>
                     </div>
-                    <div class="timeline-item">
-                        <h3>Filmpresse Meuser</h3>
-                        <p>Februar 2024 - April 2024 | Achtwöchiges Praktikum</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>Westnetz GmbH</h3>
-                        <p>April 2023 - März 2024 | Werkstudent Öffentlichkeitsarbeit</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>WHAT THE HERO WANTS (WTHW)</h3>
-                        <p>Juli 2023 - Oktober 2023 | Personal Assistant</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>Internationale Filmfestspiele Berlin</h3>
-                        <p>Februar 2023 | Zweiwöchiges Praktikum</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>Universität Siegen</h3>
-                        <p>Oktober 2021 - Januar 2025 | Studium der Medienwissenschaften und Literatur, Kultur und Medien (B.A) (Note 1,8)</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>Polizei NRW</h3>
-                        <p>September 2020 - April 2021 | Duales Studium</p>
+                    <div class="project-item">
+                        <a href="Referenzen & Zeugnisse.pdf" target="_blank" class="preview-card">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <h5>Referenzen & Zeugnisse</h5>
+                            <p>PDF-Dokument</p>
+                        </a>
                     </div>
                 </div>
-            </section>
-
-            <section id="portfolio">
-                <h2>Portfolio</h2>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <div class="video-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/5rFYhMA1tV8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <div class="portfolio-item-content">
-                            <h3>Organisation und Aufbau von Oscar Nominierten Film SINNERS</h3>
-                            <p>Organisation und Aufbau von Oscar Nominierten Film SINNERS mit Regisseur Ryan Coogler und anderen Gästen</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="video-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/IVu9Nz6fG8Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <div class="portfolio-item-content">
-                            <h3>Screening der deutschen Filmakademie mit Denis Villeneuve zu Oscar nominierten Film Dune Part TWO</h3>
-                            <p>Organisation und Durchführung von Screening der deutschen Filmakademie mit Denis Villeneuve zu Oscar nominierten Film Dune Part TWO</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="video-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/3qIVPFQiXoA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <div class="portfolio-item-content">
-                            <h3>Kurzfilm "In der Stille liegt die Kraft"</h3>
-                            <p>Diesen Kurzfilm habe ich in einer Projektarbeit während meines Studiums an der Universität Siegen gedreht. Wir sollten eine Person und ihre Geschichte verfilmen und sie dabei in dem Umfeld zeigen, das ihre Person am besten widerspiegelt.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Westenergie+Projekt" alt="Westenergie Projekt">
-                        <div class="portfolio-item-content">
-                            <h3><a href="https://www.lokalplus.nrw/kirchhundem/waschbetonstation-in-buntes-gemaelde-in-kirchhundem-verwandelt-80305" target="_blank">Waschbetonstation in buntes Gemälde verwandelt</a></h3>
-                            <p>Ein Projekt im Rahmen meiner Tätigkeit bei der Westnetz GmbH. Eine zuvor triste Waschbetonstation wurde in ein farbenfrohes Kunstwerk verwandelt, das lokale Sehenswürdigkeiten und Aktivitäten darstellt.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Westenergie+Projekt" alt="Westenergie Projekt">
-                        <div class="portfolio-item-content">
-                            <h3><a href="https://www.siegener-zeitung.de/lokales/siegerland/mausbach-hat-dank-westenergie-eine-waldschaukel-JU4XYGD4BZCFRPLQDNFOZARQ2M.html" target="_blank">Mausbacher Waldsofa</a></h3>
-                            <p>Dank der Initiative „Westenergie aktiv vor Ort“ konnte in Mausbach eine Waldsofaschaukel errichtet werden. Ein tolles Projekt für die Gemeinschaft, das Wanderer und Biker anzieht.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
-                        <div class="portfolio-item-content">
-                            <h3><a href="https://www.instagram.com/p/C7jwUakIW1x/" target="_blank">Instagram Post (Verfasst)</a></h3>
-                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
-                        <div class="portfolio-item-content">
-                            <h3><a href="https://www.instagram.com/p/C74B9NyolwZ/?img_index=1" target="_blank">Instagram Post (Verfasst)</a></h3>
-                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
-                        <div class="portfolio-item-content">
-                            <h3><a href="https://www.instagram.com/p/C76Hy-Qon_6/?img_index=1" target="_blank">Instagram Post (Verfasst)</a></h3>
-                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
-                        <div class="portfolio-item-content">
-                            <h3><a href="https://www.instagram.com/p/C760DWoIxSC/?img_index=1" target="_blank">Instagram Post (Verfasst)</a></h3>
-                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
-                        <div class="portfolio-item-content">
-                            <h3><a href="https://www.instagram.com/p/C8KP6hfISEW/" target="_blank">Instagram Post (Verfasst)</a></h3>
-                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
-                        <div class="portfolio-item-content">
-                            <h3><a href="https://www.instagram.com/p/C8PDqLkoTqU/?img_index=1" target="_blank">Instagram Post (Verfasst)</a></h3>
-                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
-                        <div class="portfolio-item-content">
-                            <h3><a href="https://www.instagram.com/p/C8cYWfGOe5k/" target="_blank">Instagram Post (Verfasst)</a></h3>
-                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://via.placeholder.com/400x200/b0b0b0/1a1a1a?text=Instagram+Post" alt="Instagram Post">
-                        <div class="portfolio-item-content">
-                            <h3><a href="https://www.instagram.com/p/C8mrlE6hAPk/" target="_blank">Instagram Post (Verfasst)</a></h3>
-                            <p>Verfasster Instagram Beitrag im Rahmen meiner Tätigkeit bei der Busch Media Group GmbH & Co.KG. Einblick in meine Social Media Arbeit.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact">
-                <h2>Kontakt</h2>
-                <p>Sie möchten mehr erfahren oder haben eine spannende Gelegenheit? Kontaktieren Sie mich gerne!</p>
-                <p>E-Mail: <a href="mailto:leon.roettger@gmx.net">leon.roettger@gmx.net</a></p>
-                <!-- Optional: Add a simple contact form here later if needed -->
             </section>
         </main>
     </div>
-
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="#">Impressum</a>
-            <a href="#">Datenschutz</a>
+    
+    <footer>
+        <h3>Kontakt</h3>
+        <div>
+            <span class="footer-contact-item"><i class="fa-solid fa-location-dot"></i> Cheruskerring 33, 48147 Münster</span>
+            <span class="footer-contact-item"><i class="fa-solid fa-phone"></i> <a href="tel:+4917690778876">0176 90778876</a></span>
+            <span class="footer-contact-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:leon.roettger@gmx.net">leon.roettger@gmx.net</a></span>
         </div>
-        <p>&copy; 2026 Leon Röttger. Alle Rechte vorbehalten.</p>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('.nav-links a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                // Close mobile menu after clicking a link
-                if (window.innerWidth < 768) {
-                    document.querySelector('.nav-links').classList.remove('active');
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionItems = document.querySelectorAll('.career-item');
+
+            accordionItems.forEach(item => {
+                const trigger = item.querySelector('div:first-child');
+                if (trigger) {
+                    trigger.style.cursor = 'pointer';
+                    trigger.addEventListener('click', () => {
+                        const currentlyActive = document.querySelector('.career-item.active');
+                        
+                        if (currentlyActive && currentlyActive !== item) {
+                            currentlyActive.classList.remove('active');
+                        }
+                        
+                        item.classList.toggle('active');
+                    });
                 }
             });
         });
     </script>
+
 </body>
 </html>
