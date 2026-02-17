@@ -38,6 +38,34 @@
             display: flex;
         }
 
+        /* --- Language Switcher & Multilingual Content --- */
+        .lang-switcher {
+            margin-bottom: 20px;
+        }
+        .lang-switcher button {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .lang-switcher button.active-lang-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        [data-lang] {
+            display: none;
+        }
+        .lang-active {
+            display: initial;
+        }
+        .lang-active-block {
+            display: block;
+        }
+
         /* --- Linke Sidebar --- */
         .left-sidebar {
             width: 30%;
@@ -53,21 +81,46 @@
             border-right: 1px solid var(--border-color);
         }
 
+        .sidebar-header {
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 30px; 
+        }
+        .sidebar-header img {
+            width: 60px; 
+            height: 60px;
+            border-radius: 50%; 
+            margin-right: 15px; 
+            border: 2px solid var(--accent-color); 
+            object-fit: cover; 
+            transition: transform 0.3s ease;
+        }
+        .sidebar-header a:hover img {
+            transform: scale(1.1);
+        }
+
         .sidebar-header h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8em; /* Kleiner */
-            font-weight: 700; /* Weniger fett */
+            font-size: 1.8em; 
+            font-weight: 700; 
             color: var(--heading-color);
-            margin: 0 0 5px;
+            margin: 0; 
+            line-height: 1.2;
         }
 
         .sidebar-header h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1em; /* Kleiner */
-            font-weight: 400; /* Nicht so fett */
+            font-size: 1em; 
+            font-weight: 400; 
             color: var(--accent-color);
-            margin: 0 0 30px;
+            margin: 0; 
+            line-height: 1.2;
         }
+        .sidebar-header-text { 
+            display: flex;
+            flex-direction: column;
+        }
+
 
         .sidebar-nav {
             list-style: none;
@@ -86,7 +139,6 @@
             display: flex;
             align-items: center;
         }
-        /* Entfernen der Spiegelstriche */
         .sidebar-nav a::before {
             content: none; 
         }
@@ -100,11 +152,11 @@
         .sidebar-nav a.active::before {
             content: '';
             position: absolute;
-            left: -20px; /* Position des Streifens */
+            left: -20px; 
             top: 50%;
             transform: translateY(-50%);
-            width: 5px; /* Breite des Streifens */
-            height: 100%; /* Höhe des Streifens */
+            width: 5px; 
+            height: 100%; 
             background: var(--accent-color);
             border-radius: 2px;
         }
@@ -170,11 +222,15 @@
             margin-bottom: 80px;
         }
         
-        #about p {
+        /* Adjusted for new intro text */
+        #about .about-intro-text {
             max-width: 700px;
-            font-size: 1.1em;
-            line-height: 1.8;
+            font-size: 1.1em; /* Smaller */
+            font-weight: 300; /* Not bold */
+            line-height: 1.7;
+            color: var(--text-color); /* General text color */
         }
+
 
         .section-title {
             font-family: 'Poppins', sans-serif;
@@ -182,6 +238,14 @@
             color: var(--heading-color);
             margin-bottom: 30px;
             font-weight: 700;
+        }
+
+        .subsection-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
         }
         
         /* --- Timeline --- */
@@ -191,7 +255,7 @@
         }
         .timeline-item {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .timeline-date {
             min-width: 150px;
@@ -201,7 +265,7 @@
         }
         .timeline-content h3 {
             font-size: 1.1em;
-            margin: 0;
+            margin: 0 0 2px;
             font-weight: 600;
         }
         .timeline-content p {
@@ -214,6 +278,16 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
+            align-items: start; /* Align videos at the top */
+        }
+        .project-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .project-item h4 {
+            min-height: 3em; /* Ensure enough space for 2 lines of text */
+            margin-bottom: 10px;
+            flex-shrink: 0; /* Prevent title from shrinking */
         }
         .project-item iframe {
             width: 100%;
@@ -221,15 +295,16 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             box-shadow: var(--shadow);
-            margin-bottom: 10px;
-        }
-        .project-item h4 {
-            font-size: 1em;
-            margin: 0 0 5px;
+            margin-top: 0; /* Ensure videos align at the top */
+            margin-bottom: 10px; 
+            flex-shrink: 0; /* Prevent iframe from shrinking */
         }
         .project-item p {
             font-size: 0.9em;
+            margin-bottom: 0; 
+            flex-grow: 1; /* Allow description to grow and fill space */
         }
+
         .preview-card {
             display: flex;
             flex-direction: column;
@@ -240,7 +315,7 @@
             border-radius: 8px;
             padding: 20px;
             text-decoration: none;
-            color: var(--text-color); /* Corrected from --dark-grey */
+            color: var(--text-color); 
             height: 100%;
             box-sizing: border-box;
             text-align: center;
@@ -281,6 +356,94 @@
             font-weight: 600;
             font-size: 0.9em;
         }
+
+        /* --- Chatbot Styles --- */
+        #chat-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        #chat-widget {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            max-width: 90%;
+            height: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        #chat-widget.open {
+            display: flex;
+        }
+        #chat-header {
+            background: var(--accent-color);
+            color: white;
+            padding: 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-weight: 600;
+        }
+        #chat-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 15px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+        .user-message {
+            background-color: var(--accent-color-light);
+            color: #333;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+        }
+        #chat-input-container {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+        #chat-input {
+            flex-grow: 1;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        #chat-send {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--accent-color);
+            cursor: pointer;
+            padding: 0 10px;
+        }
+
 
         /* Responsive Design */
         @media (max-width: 1024px) {
@@ -347,6 +510,31 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        @media (max-width: 480px) {
+            .left-sidebar {
+                padding: 30px 20px;
+            }
+            .main-content {
+                padding: 30px 20px;
+            }
+            .sidebar-header h1 {
+                font-size: 1.5em;
+            }
+            .sidebar-header h2 {
+                font-size: 0.9em;
+            }
+            #about .about-intro-text {
+                font-size: 1em; /* Adjusted for new intro */
+            }
+            .section-title {
+                font-size: 1.3em;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -354,24 +542,63 @@
         <aside class="left-sidebar">
             <div>
                 <div class="sidebar-header">
-                    <h1>Leon Röttger</h1>
-                    <h2>Strategische Kommunikation & kreative Umsetzung</h2>
+                    <a href="Leon Röttger.jpg" target="_blank">
+                        <img src="Leon Röttger.jpg" alt="Profilbild von Leon Röttger">
+                    </a>
+                    <div class="sidebar-header-text">
+                        <h1 data-lang="de">Leon Röttger</h1>
+                        <h1 data-lang="en">Leon Röttger</h1>
+                        <h2 data-lang="de">Strategische Kommunikation & kreative Umsetzung</h2>
+                        <h2 data-lang="en">Strategic Communication & Creative Implementation</h2>
+                    </div>
                 </div>
+
+                <div class="lang-switcher">
+                    <button id="lang-de-btn" class="active-lang-btn">DE</button>
+                    <button id="lang-en-btn">EN</button>
+                </div>
+
                 <ul class="sidebar-nav">
-                    <li><a href="#about">Über mich</a></li>
-                    <li><a href="#experience">Werdegang</a></li>
-                    <li><a href="#youtube-videos">YouTube Videos</a></li>
-                    <li><a href="#instagram-posts">Instagram Posts</a></li>
-                    <li><a href="#press-articles">Presseartikel</a></li>
-                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#about">
+                        <span data-lang="de">Über mich</span>
+                        <span data-lang="en">About Me</span>
+                    </a></li>
+                    <li><a href="#education">
+                        <span data-lang="de">Akademischer Werdegang</span>
+                        <span data-lang="en">Education</span>
+                    </a></li>
+                    <li><a href="#experience">
+                        <span data-lang="de">Beruflicher Werdegang</span>
+                        <span data-lang="en">Professional Experience</span>
+                    </a></li>
+                    <li><a href="#projects">
+                        <span data-lang="de">Projekte</span>
+                        <span data-lang="en">Projects</span>
+                    </a></li>
+                    <li><a href="#skills">
+                        <span>Skills</span>
+                    </a></li>
+                    <li><a href="#languages">
+                        <span data-lang="de">Sprachkenntnisse</span>
+                        <span data-lang="en">Languages</span>
+                    </a></li>
                 </ul>
             </div>
 
             <div class="sidebar-section">
-                <h3>Herunterladen</h3>
+                <h3>
+                    <span data-lang="de">Herunterladen</span>
+                    <span data-lang="en">Downloads</span>
+                </h3>
                 <div class="sidebar-downloads">
-                    <a href="lebenslauf.pdf" target="_blank">Lebenslauf</a>
-                    <a href="Referenzen & Zeugnisse.pdf" target="_blank">Referenzen & Zeugnisse</a>
+                    <a href="lebenslauf.pdf" target="_blank">
+                        <span data-lang="de">Lebenslauf</span>
+                        <span data-lang="en">Resume</span>
+                    </a>
+                    <a href="Referenzen & Zeugnisse.pdf" target="_blank">
+                        <span data-lang="de">Referenzen & Zeugnisse</span>
+                        <span data-lang="en">References & Certificates</span>
+                    </a>
                 </div>
                 <ul class="social-links">
                     <li><a href="tel:+4917690778876" aria-label="Anrufen"><i class="fa-solid fa-phone"></i></a></li>
@@ -382,86 +609,241 @@
 
         <main class="main-content">
             <section id="about">
-                <h2 class="section-title">Über mich</h2>
-                <p>Wissenschaft und Daten leben nicht nur von Fakten, sondern davon, wie sie wahrgenommen werden. Genau hier liegt meine Leidenschaft: An der Schnittstelle zwischen strategischer Kommunikation und kreativer Produktion.</p>
-                <p>Im Januar 2025 habe ich mein Bachelor-Studium der Medienwissenschaften an der Universität Siegen erfolgreich abgeschlossen (Note 1,86). Doch graue Theorie reicht mir nicht. Bereits während des Studiums habe ich Kommunikation praktisch gestaltet – vom Roten Teppich der Berlinale über die Filmvermarktung bei der Busch Media Group bis hin zur Unternehmenskommunikation bei Westnetz.</p>
-                <p>Was mich antreibt? Authentische Formate zu entwickeln, die die Zielgruppe wirklich erreichen. Ob ich dabei Interviews für einen Podcast führe, komplexe Datenthemen für das Intranet aufbereite oder Kampagnen in der Meta Business Suite steuere – ich arbeite stets lösungsorientiert und kreativ.</p>
+                <h2 class="section-title">
+                    <span data-lang="de">Über mich</span>
+                    <span data-lang="en">About Me</span>
+                </h2>
+                <p class="about-intro-text">
+                    <span data-lang="de">Im Zeitalter von KI und Social Media wird Kommunikation schneller, aber auch komplexer. Mein Ziel ist es, Ihre Botschaften in diesem Umfeld sichtbar zu machen. Ich verbinde strategische Planung (Redaktion, Budget, Events) direkt mit der kreativen Umsetzung. Ob geschriebenes Wort, visuelles Design oder audiovisuelle Formate wie Podcasts und Filme: Meine Leidenschaft liegt genau an dieser Schnittstelle zwischen Strategie und Produktion.</span>
+                    <span data-lang="en">In the age of AI and social media, communication is becoming faster yet more complex. My goal is to make your messages visible in this environment. I directly combine strategic planning (editorial, budget, events) with creative execution. Whether written word, visual design, or audiovisual formats like podcasts and films: my passion lies precisely at this interface between strategy and production.</span>
+                </p>
             </section>
 
-            <section id="experience">
-                <h2 class="section-title">Beruflicher Werdegang</h2>
+            <section id="education">
+                <h2 class="section-title">
+                    <span data-lang="de">Akademischer Werdegang</span>
+                    <span data-lang="en">Education</span>
+                </h2>
                 <ul class="timeline">
                     <li class="timeline-item">
-                        <div class="timeline-date">Aug 2024 - heute</div>
+                        <div class="timeline-date">
+                            <span data-lang="de">Okt 2021 - Jan 2025</span>
+                            <span data-lang="en">Oct 2021 - Jan 2025</span>
+                        </div>
                         <div class="timeline-content">
-                            <h3>Working Student Communication Datamanagement</h3>
-                            <p><strong>Westnetz GmbH, Dortmund</strong></p>
-                            <p style="font-size: 0.9em; color: #777;">Analyse der Content-Performance, Management digitaler Plattformen (Blog, Newsletter), Podcast-Produktion, Moderation der internen Data-Community und Projektmanagement.</p>
+                            <h3>
+                                <span data-lang="de">Studium Medienwissenschaften und Literatur, Kultur & Medien (B.A)</span>
+                                <span data-lang="en">Media Studies and Literature, Culture & Media (B.A)</span>
+                            </h3>
+                            <p>
+                                <span data-lang="de">Universität Siegen</span>
+                                <span data-lang="en">University of Siegen</span>
+                            </p>
+                            <p style="font-size: 0.9em; color: #777;">
+                                <span data-lang="de">Note: 1,86</span>
+                                <span data-lang="en">Grade: 1.86 (German system)</span>
+                            </p>
                         </div>
                     </li>
                     <li class="timeline-item">
-                        <div class="timeline-date">Mai 2024 - Jul 2024</div>
-                        <div class="timeline-content">
-                            <h3>Working Student Marketing & Theatrical Sales Management</h3>
-                            <p><strong>Busch Media Group GmbH & Co. KG, Hagen</strong></p>
-                            <p style="font-size: 0.9em; color: #777;">Management von Kinovertriebsprozessen, Koordination der Distribution von Filmmaterial und Erstellung von gezielten Pressemitteilungen und Social-Media-Assets.</p>
+                        <div class="timeline-date">
+                            <span data-lang="de">Sep 2020 - Apr 2021</span>
+                            <span data-lang="en">Sep 2020 - Apr 2021</span>
                         </div>
-                    </li>
-                    <li class="timeline-item">
-                        <div class="timeline-date">Feb 2024 - Apr 2024</div>
                         <div class="timeline-content">
-                            <h3>Internship and PR-Assistance</h3>
-                            <p><strong>Filmpresse Meuser – Schaffrath Schütz GbR, Frankfurt</strong></p>
-                            <p style="font-size: 0.9em; color: #777;">Verfassen von Pressemitteilungen, Organisation von Pressevorführungen, Unterstützung bei Promotion-Kampagnen und Mitarbeit bei der Planung von Oscar-Screenings.</p>
-                        </div>
-                    </li>
-                    <li class="timeline-item">
-                        <div class="timeline-date">Apr 2023 - Mär 2024</div>
-                        <div class="timeline-content">
-                            <h3>Working Student Public Relations</h3>
-                            <p><strong>Westnetz GmbH, Siegen</strong></p>
-                            <p style="font-size: 0.9em; color: #777;">Budgetverwaltung für Sponsoring-Projekte, Entwicklung von Kommunikationsstrategien, Verfassen von Pressemitteilungen und Koordination von Werbekampagnen.</p>
-                        </div>
-                    </li>
-                    <li class="timeline-item">
-                        <div class="timeline-date">Jul 2023 - Okt 2023</div>
-                        <div class="timeline-content">
-                            <h3>Personal Assistant</h3>
-                            <p><strong>WHAT THE HERO WANTS, Remote</strong></p>
-                            <p style="font-size: 0.9em; color: #777;">Bearbeitung von Social-Media-Clips und Filmpostern, Prüfung von Drehbüchern und Unterstützung bei Presse- und Promotion-Aufgaben.</p>
-                        </div>
-                    </li>
-                     <li class="timeline-item">
-                        <div class="timeline-date">Feb 2023</div>
-                        <div class="timeline-content">
-                            <h3>Intern</h3>
-                            <p><strong>Internationale Filmfestspiele Berlin, Berlin</strong></p>
-                             <p style="font-size: 0.9em; color: #777;">Unterstützung in der Programmkoordination, Organisation von Filmvorführungen und Events sowie Gästemanagement und VIP-Betreuung.</p>
+                            <h3>
+                                <span data-lang="de">Duales Studium</span>
+                                <span data-lang="en">Cooperative Study Program</span>
+                            </h3>
+                            <p>
+                                <span data-lang="de">Polizei NRW</span>
+                                <span data-lang="en">Police Force NRW</span>
+                            </p>
                         </div>
                     </li>
                 </ul>
             </section>
 
-            <section id="youtube-videos">
-                <h2 class="section-title">YouTube Videos</h2>
+            <section id="experience">
+                <h2 class="section-title">
+                    <span data-lang="de">Beruflicher Werdegang</span>
+                    <span data-lang="en">Professional Experience</span>
+                </h2>
+                <ul class="timeline">
+                    <li class="timeline-item">
+                        <div class="timeline-date">
+                            <span data-lang="de">Aug 2025 - heute</span>
+                            <span data-lang="en">Aug 2025 - Present</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Freelancer</h3>
+                            <p><strong>
+                                <span data-lang="de">Marketing & Kommunikation</span>
+                                <span data-lang="en">Marketing & Communication</span>
+                            </strong></p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">
+                            <span data-lang="de">Aug 2024 - heute</span>
+                            <span data-lang="en">Aug 2024 - Present</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>
+                                <span data-lang="de">Werkstudent Kommunikation im Datenmanagement</span>
+                                <span data-lang="en">Working Student Communication in Data Management</span>
+                            </h3>
+                            <p><strong>Westnetz GmbH, Dortmund</strong></p>
+                            <p style="font-size: 0.9em; color: #777;">
+                                <span data-lang="de">Analyse der Content-Performance, Management digitaler Plattformen, Podcast-Produktion und Projektmanagement.</span>
+                                <span data-lang="en">Analysis of content performance, management of digital platforms, podcast production, and project management.</span>
+                            </p>
+                            <p style="font-size: 0.9em; color: #777; font-style: italic;">
+                                <span data-lang="de">Beurteilung: "stets sehr zufrieden", Arbeitsstil "zügig, umsichtig, sorgfältig und genau".</span>
+                                <span data-lang="en">Evaluation: "always very satisfied", working style "swift, prudent, careful, and precise".</span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">
+                            <span data-lang="de">Mai 2024 - Jul 2024</span>
+                            <span data-lang="en">May 2024 - Jul 2024</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>
+                                <span data-lang="de">Werkstudent Redakteur & Theatrical Sales Manager</span>
+                                <span data-lang="en">Working Student Editor & Theatrical Sales Manager</span>
+                            </h3>
+                            <p><strong>Busch Media Group GmbH & Co. KG, Hagen</strong></p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">
+                            <span data-lang="de">Feb 2024 - Apr 2025</span>
+                            <span data-lang="en">Feb 2024 - Apr 2025</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>
+                                <span data-lang="de">Praktikant</span>
+                                <span data-lang="en">Intern</span>
+                            </h3>
+                            <p><strong>Filmpresse Meuser Schaffrath Schütz GbR, Frankfurt am Main</strong></p>
+                            <p style="font-size: 0.9em; color: #777;">
+                                <span data-lang="de">Verfassen von Pressemitteilungen, eigenständige Betreuung von Pressevorführungen, Pflege der Kontaktdatenbank und Akquise von Verlosungsaktionen.</span>
+                                <span data-lang="en">Writing press releases, independently managing press screenings, maintaining the contact database, and acquiring raffles.</span>
+                            </p>
+                            <p style="font-size: 0.9em; color: #777; font-style: italic;">
+                                <span data-lang="de">Beurteilung: "stets zur vollsten Zufriedenheit erledigt".</span>
+                                <span data-lang="en">Evaluation: "always completed to our fullest satisfaction".</span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">
+                            <span data-lang="de">Apr 2023 - Mär 2024</span>
+                            <span data-lang="en">Apr 2023 - Mar 2024</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>
+                                <span data-lang="de">Werkstudent Öffentlichkeitsarbeit</span>
+                                <span data-lang="en">Working Student Public Relations</span>
+                            </h3>
+                            <p><strong>Westnetz GmbH, Siegen</strong></p>
+                            <p style="font-size: 0.9em; color: #777;">
+                                <span data-lang="de">Koordination von Inhalten für interne Medien, Budgetverwaltung für Sponsoring-Projekte, Erstellung von Kommunikationsplänen und Pressemitteilungen.</span>
+                                <span data-lang="en">Coordination of content for internal media, budget management for sponsorship projects, creation of communication plans and press releases.</span>
+                            </p>
+                            <p style="font-size: 0.9em; color: #777; font-style: italic;">
+                                <span data-lang="de">Beurteilung: "stets sehr zufrieden", Arbeitsstil "zügig, umsichtig, sorgfältig und genau".</span>
+                                <span data-lang="en">Evaluation: "always very satisfied", working style "swift, prudent, careful, and precise".</span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">
+                            <span data-lang="de">Jul 2023 - Okt 2023</span>
+                            <span data-lang="en">Jul 2023 - Oct 2023</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Personal Assistant</h3>
+                            <p><strong>WHAT THE HERO WANTS, Remote</strong></p>
+                            <p style="font-size: 0.9em; color: #777;">
+                                <span data-lang="de">Unterstützung bei der Pressearbeit, Bearbeitung von Social-Media-Clips, Lektorat von Drehbüchern und Erstellung von Filmplakaten.</span>
+                                <span data-lang="en">Support for press work, editing social media clips, proofreading scripts, and creating film posters.</span>
+                            </p>
+                            <p style="font-size: 0.9em; color: #777; font-style: italic;">
+                                <span data-lang="de">Beurteilung: "großartige Bereicherung für das Team", "hohes Maß an Initiative, Einsatz und Eifer".</span>
+                                <span data-lang="en">Evaluation: "great asset to the team", "high level of initiative, commitment, and zeal".</span>
+                            </p>
+                        </div>
+                    </li>
+                     <li class="timeline-item">
+                        <div class="timeline-date">
+                            <span data-lang="de">Feb 2023</span>
+                            <span data-lang="en">Feb 2023</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>
+                                <span data-lang="de">Praktikant in der deutschen Kinemathek</span>
+                                <span data-lang="en">Intern at the German Cinematheque</span>
+                            </h3>
+                            <p><strong>Internationale Filmfestspiele Berlin, Berlin</strong></p>
+                             <p style="font-size: 0.9em; color: #777;">
+                                <span data-lang="de">Unterstützung in der Programmkoordination der Retrospektive, Mitorganisation von Veranstaltungen und Gästemanagement.</span>
+                                <span data-lang="en">Support for program coordination of the retrospective, co-organization of events, and guest management.</span>
+                            </p>
+                             <p style="font-size: 0.9em; color: #777; font-style: italic;">
+                                <span data-lang="de">Beurteilung: "stets zuverlässig und mit großem Engagement", "sehr gute Auffassungsgabe".</span>
+                                <span data-lang="en">Evaluation: "always reliable and with great commitment", "very good comprehension".</span>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            
+            <section id="projects">
+                <h2 class="section-title">
+                    <span data-lang="de">Projekte</span>
+                    <span data-lang="en">Projects</span>
+                </h2>
+                
+                <h3 class="subsection-title">YouTube Videos</h3>
                 <div class="project-grid">
                     <div class="project-item">
                         <h4>Screening: "SINNERS" mit Ryan Coogler</h4>
                         <iframe src="https://www.youtube.com/embed/5rFYhMA1tV8" title="YouTube video player" allowfullscreen></iframe>
+                        <p style="font-size: 0.9em; color: #777;">
+                            <span data-lang="de">Event-Support: Werkstattgespräch "SINNERS"</span>
+                            <span data-lang="en">Event Support: Workshop "SINNERS"</span><br>
+                            <span data-lang="de">Aufgabe: Sicherstellung eines reibungslosen Ablaufs für die Deutsche Filmakademie</span>
+                            <span data-lang="en">Task: Ensuring smooth operations for the German Film Academy</span><br>
+                            <span data-lang="de">Tätigkeit: Akkreditierung der geladenen Gäste, Saal-Vorbereitung und Betreuung des abschließenden Get-Togethers.</span>
+                            <span data-lang="en">Activities: Accreditation of invited guests, hall preparation, and supervision of the concluding get-together.</span>
+                        </p>
                     </div>
                     <div class="project-item">
                         <h4>Screening: "DUNE: PART TWO" mit Denis Villeneuve</h4>
                         <iframe src="https://www.youtube.com/embed/IVu9Nz6fG8Q" title="YouTube video player" allowfullscreen></iframe>
+                        <p style="font-size: 0.9em; color: #777;">
+                            <span data-lang="de">Event-Support: Werkstattgespräch zu "DUNE: PART TWO"</span>
+                            <span data-lang="en">Event Support: Workshop on "DUNE: PART TWO"</span><br>
+                            <span data-lang="de">Aufgabe: Sicherstellung eines reibungslosen Ablaufs für die Deutsche Filmakademie.</span>
+                            <span data-lang="en">Task: Ensuring smooth operations for the German Film Academy.</span><br>
+                            <span data-lang="de">Tätigkeit: Gästemanagement (Einlass) sowie technischer Support und Floormanagement des Q&A-Panels.</span>
+                            <span data-lang="en">Activities: Guest management (admission) as well as technical support and floor management of the Q&A panel.</span>
+                        </p>
                     </div>
                     <div class="project-item">
                         <h4>Maurice Morgenstern - Kein Stern strahlt ohne Dunkelheit</h4>
                         <iframe src="https://www.youtube.com/embed/3qIVPFQiXoA" title="YouTube video player" allowfullscreen></iframe>
+                        <p style="font-size: 0.9em; color: #777;">
+                            <span data-lang="de">Diesen Kurzfilm habe ich in einer Projektarbeit während meines Studiums an der Universität Siegen gedreht. Wir sollten eine Person und ihre Geschichte verfilmen und sie dabei in dem Umfeld zeigen, das ihre Person am besten widerspiegelt. Der Film wurde mit dem Avid Media Composer geschnitten.</span>
+                            <span data-lang="en">I directed this short film as part of a project during my studies at the University of Siegen. We were tasked with filming a person and their story, portraying them in an environment that best reflects their personality. The film was edited using Avid Media Composer.</span>
+                        </p>
                     </div>
                 </div>
-            </section>
-            
-            <section id="instagram-posts">
-                <h2 class="section-title">Instagram Posts</h2>
+
+                <h3 class="subsection-title">Instagram Posts</h3>
                 <div class="project-grid">
                     <a href="https://www.instagram.com/p/C7jwUakIW1x/" target="_blank" class="preview-card">
                         <i class="fa-brands fa-instagram"></i><h5>Instagram Post</h5>
@@ -476,10 +858,11 @@
                         <p>instagram.com</p>
                     </a>
                 </div>
-            </section>
 
-            <section id="press-articles">
-                <h2 class="section-title">Presseartikel</h2>
+                <h3 class="subsection-title">
+                    <span data-lang="de">Presseartikel</span>
+                    <span data-lang="en">Press Articles</span>
+                </h3>
                 <div class="project-grid">
                      <a href="https://www.lokalplus.nrw/kirchhundem/waschbetonstation-in-buntes-gemaelde-in-kirchhundem-verwandelt-80305" target="_blank" class="preview-card">
                         <i class="fa-solid fa-newspaper"></i>
@@ -506,35 +889,219 @@
                     <li class="skill-item">Videografie</li>
                 </ul>
             </section>
+
+            <section id="languages">
+                <h2 class="section-title">
+                    <span data-lang="de">Sprachkenntnisse</span>
+                    <span data-lang="en">Languages</span>
+                </h2>
+                <ul class="skills-list">
+                    <li class="skill-item">
+                        <span data-lang="de">Deutsch (Muttersprache)</span>
+                        <span data-lang="en">German (Native)</span>
+                    </li>
+                    <li class="skill-item">
+                        <span data-lang="de">Englisch (Fließend)</span>
+                        <span data-lang="en">English (Fluent)</span>
+                    </li>
+                    <li class="skill-item">
+                        <span data-lang="de">Russisch (Grundkenntnisse)</span>
+                        <span data-lang="en">Russian (Basic)</span>
+                    </li>
+                    <li class="skill-item">
+                        <span data-lang="de">Wirtschaftsenglisch (Zusatzqualifikation IHK)</span>
+                        <span data-lang="en">Business English (IHK Certificate)</span>
+                    </li>
+                    <li class="skill-item">Latinum</li>
+                </ul>
+            </section>
         </main>
     </div>
+    
+    <!-- Chatbot UI -->
+    <button id="chat-button"><i class="fa-solid fa-comment-dots"></i></button>
+    <div id="chat-widget">
+        <div id="chat-header">Chat mit Leon-Bot</div>
+        <div id="chat-messages"></div>
+        <div id="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Stelle eine Frage...">
+            <button id="chat-send"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
 
     <script>
+        // Scroll-Spy
         document.addEventListener('DOMContentLoaded', function () {
             const sections = document.querySelectorAll('.main-content section');
             const navLinks = document.querySelectorAll('.sidebar-nav a');
 
             function changeLinkState() {
                 let index = sections.length;
-
-                // Loop backward to find the last section fully or partially in view
-                while(--index > 0 && window.scrollY + 150 < sections[index].offsetTop) {} 
-                // Changed condition to > 0 so that index 0 (Über mich) can be active
-
+                while(--index >= 0 && window.scrollY + 150 < sections[index].offsetTop) {} 
                 navLinks.forEach((link) => link.classList.remove('active'));
-                
-                // Ensure index is valid before trying to access navLinks[index]
                 if(index >= 0 && navLinks[index]) {
                     navLinks[index].classList.add('active');
                 }
             }
-
-            // Initial check and immediate highlight
             changeLinkState();
-            
-            // Add event listener
             window.addEventListener('scroll', changeLinkState);
         });
+
+        // Language Switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            const langDeBtn = document.getElementById('lang-de-btn');
+            const langEnBtn = document.getElementById('lang-en-btn');
+            const defaultLang = localStorage.getItem('preferredLanguage') || 'de';
+
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang]').forEach(el => {
+                    if (el.dataset.lang === lang) {
+                        // Apply specific display styles based on the element's original display
+                        if (['P', 'H1', 'H2', 'H3', 'DIV', 'LI', 'UL', 'SECTION', 'ARTICLE', 'ASIDE', 'HEADER', 'FOOTER', 'MAIN', 'NAV', 'STRONG'].includes(el.tagName)) { // Added STRONG for bold text
+                             el.style.display = 'block'; 
+                        } else {
+                            el.style.display = 'inline'; 
+                        }
+                        el.classList.add('lang-active');
+                    } else {
+                        el.style.display = 'none';
+                        el.classList.remove('lang-active');
+                    }
+                });
+                
+                // Special handling for the main name/title in sidebar-header-text
+                document.querySelectorAll('.sidebar-header-text h1[data-lang], .sidebar-header-text h2[data-lang]').forEach(el => {
+                    if (el.dataset.lang === lang) {
+                        el.style.display = 'block';
+                    } else {
+                        el.style.display = 'none';
+                    }
+                });
+
+
+                if (lang === 'de') {
+                    langDeBtn.classList.add('active-lang-btn');
+                    langEnBtn.classList.remove('active-lang-btn');
+                } else {
+                    langEnBtn.classList.add('active-lang-btn');
+                    langDeBtn.classList.remove('active-lang-btn');
+                }
+                localStorage.setItem('preferredLanguage', lang);
+            }
+
+            langDeBtn.addEventListener('click', () => setLanguage('de'));
+            langEnBtn.addEventListener('click', () => setLanguage('en'));
+
+            // Set initial language based on preference or default
+            setLanguage(defaultLang);
+        });
+
+        // Chatbot Logic
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatButton = document.getElementById('chat-button');
+            const chatWidget = document.getElementById('chat-widget');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatInput = document.getElementById('chat-input');
+            const chatSend = document.getElementById('chat-send');
+
+            chatButton.addEventListener('click', () => {
+                chatWidget.classList.toggle('open');
+            });
+
+            const knowledgeBase = [
+                // General
+                { keywords: ['hallo', 'hi', 'moin'], answer: 'Hallo! Ich bin Leons digitaler Assistent. Wie kann ich dir helfen?' },
+                { keywords: ['danke', 'dankeschön'], answer: 'Gern geschehen!'},
+                { keywords: ['wer bist du', 'bot'], answer: 'Ich bin ein einfacher, regelbasierter Chatbot, der darauf programmiert ist, Fragen zu Leons Werdegang zu beantworten.'},
+
+                // Education
+                { keywords: ['studiert', 'studium', 'uni', 'abschluss', 'bachelor'], answer: 'Leon hat Medienwissenschaften (B.A) an der Universität Siegen mit der Gesamtnote 1,86 abgeschlossen. Davor hat er ein duales Studium bei der Polizei NRW begonnen.' },
+
+                // General Experience
+                { keywords: ['arbeitet', 'job', 'beruf', 'aktuell'], answer: 'Aktuell ist Leon als Freelancer im Bereich Marketing & Kommunikation tätig und arbeitet als Werkstudent im Datenmanagement bei der Westnetz GmbH.' },
+                
+                // Specific Experience & Performance
+                { keywords: ['was', 'aufgaben', 'tätigkeiten', 'datenmanagement', 'westnetz datenmanagement'], answer: 'Bei Westnetz im Datenmanagement gehörten zu seinen Aufgaben: Analyse der Content-Performance, Management digitaler Plattformen, Podcast-Produktion und Projektmanagement.'},
+                { keywords: ['lange', 'zeitraum', 'dauer', 'westnetz datenmanagement'], answer: 'Im Datenmanagement bei Westnetz ist Leon seit August 2024.'},
+                { keywords: ['wie war', 'leistung', 'beurteilung', 'zeugnis', 'zufrieden', 'westnetz datenmanagement'], answer: 'Laut seinem Zeugnis war Westnetz mit seinen Leistungen "stets sehr zufrieden". Sein Arbeitsstil wird als "zügig, umsichtig, sorgfältig und genau" beschrieben.'},
+                
+                { keywords: ['was', 'aufgaben', 'busch media', 'redakteur'], answer: 'Bei der Busch Media Group war er für das Management von Kinovertriebsprozessen, die Koordination der Distribution und die Erstellung von Pressemitteilungen & Social-Media-Assets zuständig.'},
+                { keywords: ['lange', 'zeitraum', 'dauer', 'busch media', 'redakteur'], answer: 'Er war von Mai 2024 bis Juli 2024 bei der Busch Media Group.'},
+
+                { keywords: ['was', 'aufgaben', 'filmpresse meuser', 'praktikant', 'pressevorführungen'], answer: 'Bei Filmpresse Meuser verfasste er Pressemitteilungen, organisierte Pressevorführungen und unterstützte Promotion-Kampagnen. Er pflegte die Kontaktdatenbank und akquirierte Verlosungsaktionen.'},
+                { keywords: ['lange', 'zeitraum', 'dauer', 'filmpresse meuser', 'praktikant'], answer: 'Er war von Februar 2024 bis April 2025 als Praktikant bei Filmpresse Meuser.'},
+                { keywords: ['wie war', 'leistung', 'beurteilung', 'zeugnis', 'zufrieden', 'filmpresse meuser'], answer: 'Im Zeugnis von Filmpresse Meuser steht, dass er die ihm übertragenen Aufgaben "stets zur vollsten Zufriedenheit erledigt" hat und eine "wertvolle Bereicherung für das Team" war.'},
+
+                { keywords: ['was', 'aufgaben', 'westnetz', 'öffentlichkeitsarbeit'], answer: 'Bei Westnetz in der Öffentlichkeitsarbeit umfassten Leons Aufgaben: Koordination von Inhalten für interne Medien, Budgetverwaltung für Sponsoring-Projekte, Erstellung von Kommunikationsplänen und Pressemitteilungen.'},
+                { keywords: ['lange', 'zeitraum', 'dauer', 'westnetz', 'öffentlichkeitsarbeit'], answer: 'Bei Westnetz in der Öffentlichkeitsarbeit war er von April 2023 bis März 2024 tätig.'},
+                { keywords: ['wie war', 'leistung', 'beurteilung', 'zeugnis', 'zufrieden', 'westnetz', 'öffentlichkeitsarbeit'], answer: 'Die Beurteilung von Westnetz hebt hervor, dass Leon "stets sehr zufrieden"stellende Leistungen erbrachte. Sein Arbeitsstil wird als "zügig, umsichtig, sorgfältig und genau" beschrieben.'},
+
+
+                { keywords: ['was', 'aufgaben', 'hero', 'personal assistant'], answer: 'Als Personal Assistant bei WHAT THE HERO WANTS unterstützte er die Pressearbeit, bearbeitete Social-Media-Clips, prüfte Drehbücher und erstellte Filmplakate.'},
+                { keywords: ['lange', 'zeitraum', 'dauer', 'hero', 'personal assistant'], answer: 'Er war von Juli 2023 bis Oktober 2023 bei WHAT THE HERO WANTS.'},
+                { keywords: ['wie war', 'leistung', 'beurteilung', 'zeugnis', 'hero', 'personal assistant'], answer: 'WHAT THE HERO WANTS bescheinigt ihm, eine "großartige Bereicherung für das Team" gewesen zu sein, mit "hohem Maß an Initiative, Einsatz und Eifer".'},
+                
+                { keywords: ['was', 'aufgaben', 'berlinale', 'kinemathek'], answer: 'Bei der Berlinale unterstützte er die Programmkoordination der Retrospektive, organisierte Filmvorführungen und war im Gästemanagement tätig.'},
+                { keywords: ['lange', 'zeitraum', 'dauer', 'berlinale', 'kinemathek'], answer: 'Sein Praktikum bei der Berlinale war im Februar 2023.'},
+                { keywords: ['wie war', 'leistung', 'beurteilung', 'zeugnis', 'berlinale'], answer: 'Die Berlinale bescheinigt ihm, dass er seine Aufgaben "stets zuverlässig und mit großem Engagement" erledigte und eine "sehr gute Auffassungsgabe" bewies.'},
+
+                // Skills & Languages
+                { keywords: ['skills', 'kenntnisse', 'kann'], answer: 'Leon hat Skills in Adobe Creative-Cloud, Avid Media Composer, Da Vinci Resolve, Wordpress und mehr. Schau dir die "Skills" Sektion für mehr Details an!' },
+                { keywords: ['sprachen', 'spricht'], answer: 'Leon spricht Deutsch als Muttersprache, fließend Englisch und hat Grundkenntnisse in Russisch. Außerdem besitzt er das Wirtschaftsenglisch-Zertifikat der IHK und das Latinum.' }
+            ];
+
+            const defaultAnswer = 'Das habe ich leider nicht verstanden. Du kannst mich aber z.B. fragen: "Was hat Leon bei der Berlinale gemacht?" oder "Welche Skills hat er?".';
+
+            function getBotResponse(userInput) {
+                const lowerCaseInput = userInput.toLowerCase();
+                // Prioritize more specific questions by matching entries with more keywords
+                const sortedKnowledgeBase = [...knowledgeBase].sort((a, b) => b.keywords.length - a.keywords.length);
+
+                for (const entry of sortedKnowledgeBase) {
+                    const allKeywordsFound = entry.keywords.every(keyword => lowerCaseInput.includes(keyword));
+                    if (allKeywordsFound) {
+                        return entry.answer;
+                    }
+                }
+                return defaultAnswer;
+            }
+
+            function addMessage(text, sender) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('chat-message', sender + '-message');
+                messageElement.textContent = text;
+                chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function handleUserInput() {
+                const userInput = chatInput.value.trim();
+                if (userInput === '') return;
+
+                addMessage(userInput, 'user');
+                chatInput.value = '';
+
+                setTimeout(() => {
+                    const botResponse = getBotResponse(userInput);
+                    addMessage(botResponse, 'bot');
+                }, 500);
+            }
+
+            chatSend.addEventListener('click', handleUserInput);
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleUserInput();
+                }
+            });
+            
+            // Initial Bot Message
+             setTimeout(() => {
+                addMessage('Hallo! Ich bin Leon-Bot. Frag mich etwas über Leons Werdegang, seine Skills oder Projekte!', 'bot');
+            }, 1000);
+        });
+
     </script>
 </body>
 </html>
