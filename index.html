@@ -6,18 +6,21 @@
     <title>Leon Röttger | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Manrope:wght@700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root {
             --bg-color: #f4f7f5;
-            --sidebar-bg: #ffffff;
-            --text-color: #555;
+            --sidebar-bg: #f9f9f9; /* Slightly off-white for better structure */
+            --text-color: #444;
             --heading-color: #1a1a1a;
             --accent-color: #2a9d8f;
             --accent-color-light: #e9f5f4;
             --border-color: #e8e8e8;
             --shadow: 0 4px 20px rgba(0,0,0,0.06);
+            --font-body: 'Inter', sans-serif;
+            --font-heading: 'Manrope', sans-serif;
+            --font-mono: 'Space Mono', monospace;
         }
 
         html {
@@ -25,13 +28,13 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-body);
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.7;
-            font-weight: 300;
+            line-height: 1.6;
+            font-weight: 400;
         }
 
         .wrapper {
@@ -48,6 +51,7 @@
             padding: 5px 10px;
             cursor: pointer;
             font-weight: 600;
+            font-family: var(--font-heading);
             border-radius: 5px;
             transition: all 0.3s ease;
         }
@@ -74,11 +78,12 @@
             top: 0;
             left: 0;
             background-color: var(--sidebar-bg);
-            padding: 50px 40px;
+            padding: 40px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             border-right: 1px solid var(--border-color);
+            z-index: 100;
         }
 
         .sidebar-header {
@@ -100,17 +105,17 @@
         }
 
         .sidebar-header h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8em; 
-            font-weight: 700; 
+            font-family: var(--font-heading);
+            font-size: 1.6em; 
+            font-weight: 800; 
             color: var(--heading-color);
             margin: 0; 
             line-height: 1.2;
         }
 
         .sidebar-header h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1em; 
+            font-family: var(--font-body);
+            font-size: 0.9em; 
             font-weight: 400; 
             color: var(--accent-color);
             margin: 0; 
@@ -128,85 +133,85 @@
             margin: 20px 0;
         }
         .sidebar-nav li {
-            margin: 15px 0;
+            margin: 18px 0;
         }
         .sidebar-nav a {
             text-decoration: none;
             color: var(--text-color);
-            font-weight: 600;
-            font-size: 0.95em;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.0em; 
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-        }
-        .sidebar-nav a::before {
-            content: none; 
+            position: relative;
+            padding: 5px 10px;
         }
         .sidebar-nav a:hover,
         .sidebar-nav a.active {
             color: var(--accent-color);
         }
-        .sidebar-nav a.active {
-            position: relative;
-        }
         .sidebar-nav a.active::before {
             content: '';
             position: absolute;
-            left: -20px; 
+            left: -15px; 
             top: 50%;
             transform: translateY(-50%);
-            width: 5px; 
-            height: 100%; 
+            width: 4px; 
+            height: 1.2em; 
             background: var(--accent-color);
             border-radius: 2px;
         }
 
         .sidebar-section {
             margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
         }
         .sidebar-section h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9em;
+            font-family: var(--font-heading);
+            font-size: 0.8em;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #999;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
-        .sidebar-downloads a {
-            display: block;
-            margin: 10px 0;
-            padding: 10px 15px;
-            background-color: var(--accent-color-light);
-            color: var(--accent-color);
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: 600;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        .sidebar-downloads a:hover {
-            background-color: var(--accent-color);
-            color: var(--sidebar-bg);
+        .contact-footer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
         .social-links {
             list-style: none;
             padding: 0;
-            margin-top: 20px;
+            margin: 0;
+            display: flex;
+            gap: 12px;
+            align-items: center;
         }
         .social-links li {
             display: inline-block;
-            margin-right: 15px;
         }
         .social-links a {
-            font-size: 1.4em;
+            font-size: 1.2em;
             color: var(--text-color);
-            transition: color 0.3s;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            background-color: var(--accent-color-light);
+            color: var(--accent-color);
+            border-radius: 8px;
+            text-decoration: none;
         }
         .social-links a:hover {
-            color: var(--accent-color);
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
         }
         
 
@@ -219,33 +224,52 @@
         }
 
         .main-content section {
-            margin-bottom: 80px;
+            margin-bottom: 30px;
+            padding-bottom: 0;
+            scroll-margin-top: 100px;
+        }
+
+        #skills {
+            padding-bottom: 40px;
+        }
+
+        #languages {
+            padding-bottom: 120px;
+        }
+        
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
         
         /* Adjusted for new intro text */
         #about .about-intro-text {
             max-width: 700px;
-            font-size: 1.1em; /* Smaller */
-            font-weight: 300; /* Not bold */
-            line-height: 1.7;
-            color: var(--text-color); /* General text color */
+            font-size: 1.1em;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--text-color);
         }
 
 
         .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5em;
+            font-family: var(--font-heading);
+            font-size: 1.8em;
             color: var(--heading-color);
-            margin-bottom: 30px;
-            font-weight: 700;
+            margin-bottom: 12px;
+            font-weight: 800;
         }
 
         .subsection-title {
-            font-size: 1.2em;
-            font-weight: 600;
+            font-family: var(--font-heading);
+            font-size: 1.3em;
+            font-weight: 700;
             color: var(--heading-color);
-            margin-top: 40px;
-            margin-bottom: 20px;
+            margin-top: 20px;
+            margin-bottom: 8px;
         }
         
         /* --- Timeline --- */
@@ -255,18 +279,22 @@
         }
         .timeline-item {
             display: flex;
-            margin-bottom: 25px;
+            margin-bottom: 15px; /* Slightly more space between entries */
+            gap: 30px; /* Clear distance between date and text */
         }
         .timeline-date {
-            min-width: 150px;
-            font-size: 0.85em;
-            font-weight: 600;
+            min-width: 160px; /* Fixed width for alignment */
+            font-family: var(--font-mono);
+            font-size: 0.8em;
+            font-weight: 700;
             color: var(--accent-color);
+            flex-shrink: 0; /* Prevents the date column from squishing */
         }
         .timeline-content h3 {
+            font-family: var(--font-heading);
             font-size: 1.1em;
             margin: 0 0 2px;
-            font-weight: 600;
+            font-weight: 700;
         }
         .timeline-content p {
             margin: 0;
@@ -278,16 +306,21 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            align-items: start; /* Align videos at the top */
+            align-items: start;
         }
         .project-item {
             display: flex;
             flex-direction: column;
         }
         .project-item h4 {
-            min-height: 3em; /* Ensure enough space for 2 lines of text */
-            margin-bottom: 10px;
-            flex-shrink: 0; /* Prevent title from shrinking */
+            font-family: var(--font-heading);
+            height: 3.5em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            font-weight: 700;
         }
         .project-item iframe {
             width: 100%;
@@ -295,14 +328,14 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             box-shadow: var(--shadow);
-            margin-top: 0; /* Ensure videos align at the top */
+            margin-top: 0;
             margin-bottom: 10px; 
-            flex-shrink: 0; /* Prevent iframe from shrinking */
+            flex-shrink: 0;
         }
         .project-item p {
             font-size: 0.9em;
             margin-bottom: 0; 
-            flex-grow: 1; /* Allow description to grow and fill space */
+            flex-grow: 1;
         }
 
         .preview-card {
@@ -327,13 +360,16 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
         .preview-card h5 {
+            font-family: var(--font-heading);
             margin: 10px 0 5px 0;
             font-size: 1em;
             color: var(--accent-color);
+            font-weight: 700;
         }
         .preview-card p {
+            font-family: var(--font-mono);
             margin: 0;
-            font-size: 0.8em;
+            font-size: 0.75em;
             color: #777;
         }
         .preview-card i {
@@ -341,20 +377,15 @@
             color: var(--accent-color);
         }
         
-        .skills-list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
         .skill-item {
             background-color: var(--accent-color-light);
             color: var(--accent-color);
-            padding: 10px 18px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9em;
+            font-family: var(--font-mono);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 400;
+            font-size: 0.8em;
+            text-align: center;
         }
 
         /* --- Chatbot Styles --- */
@@ -399,12 +430,14 @@
             padding: 15px;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
-            font-weight: 600;
+            font-family: var(--font-heading);
+            font-weight: 700;
         }
         #chat-messages {
             flex-grow: 1;
             padding: 15px;
             overflow-y: auto;
+            font-size: 0.9em;
         }
         .chat-message {
             margin-bottom: 10px;
@@ -433,7 +466,7 @@
             border: 1px solid var(--border-color);
             border-radius: 20px;
             padding: 10px 15px;
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-body);
         }
         #chat-send {
             background: none;
@@ -453,58 +486,65 @@
                 position: relative;
                 border-right: none;
                 border-bottom: 1px solid var(--border-color);
-                padding-bottom: 20px;
+                padding: 30px 20px;
             }
             .main-content {
                 width: 100%;
                 margin-left: 0;
-                padding: 40px;
+                padding: 40px 20px;
             }
             .sidebar-nav {
                 display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+                margin: 20px 0;
             }
             .sidebar-nav li {
-                margin: 0;
+                width: 100%;
+                margin: 5px 0;
             }
             .sidebar-nav a {
-                padding: 5px 10px;
-                border: 1px solid var(--border-color);
-                border-radius: 5px;
-            }
-            .sidebar-nav a::before {
-                content: none;
+                padding: 10px 15px;
+                border-radius: 8px;
+                background-color: transparent;
+                width: 100%;
+                box-sizing: border-box;
             }
             .sidebar-nav a.active {
-                background-color: var(--accent-color);
-                color: white;
+                background-color: var(--accent-color-light);
+                color: var(--accent-color);
             }
             .sidebar-nav a.active::before {
-                content: none;
+                left: 0;
+                height: 100%;
+                width: 4px;
             }
             .sidebar-header {
-                text-align: center;
+                justify-content: center;
+                text-align: left;
             }
             .sidebar-section {
-                margin-top: 30px;
+                margin-top: 20px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
-            .sidebar-downloads {
-                width: 80%;
-                max-width: 300px;
-            }
-            .social-links {
+            .contact-footer {
                 justify-content: center;
+            }
+            .lang-switcher {
+                text-align: center;
+                margin-top: 10px;
+            }
+            .skills-list {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
             .main-content {
-                padding: 30px;
+                padding: 30px 20px;
             }
             .project-grid {
                 grid-template-columns: 1fr;
@@ -512,27 +552,11 @@
         }
         
         @media (max-width: 480px) {
-            .left-sidebar {
-                padding: 30px 20px;
-            }
-            .main-content {
-                padding: 30px 20px;
-            }
             .sidebar-header h1 {
-                font-size: 1.5em;
+                font-size: 1.4em;
             }
             .sidebar-header h2 {
-                font-size: 0.9em;
-            }
-            #about .about-intro-text {
-                font-size: 1em; /* Adjusted for new intro */
-            }
-            .section-title {
-                font-size: 1.3em;
-            }
-            .timeline-item {
-                flex-direction: column;
-                gap: 5px;
+                font-size: 0.8em;
             }
         }
     </style>
@@ -587,23 +611,15 @@
 
             <div class="sidebar-section">
                 <h3>
-                    <span data-lang="de">Herunterladen</span>
-                    <span data-lang="en">Downloads</span>
+                    <span data-lang="de">Kontakt</span>
+                    <span data-lang="en">Contact</span>
                 </h3>
-                <div class="sidebar-downloads">
-                    <a href="lebenslauf.pdf" target="_blank">
-                        <span data-lang="de">Lebenslauf</span>
-                        <span data-lang="en">Resume</span>
-                    </a>
-                    <a href="Referenzen & Zeugnisse.pdf" target="_blank">
-                        <span data-lang="de">Referenzen & Zeugnisse</span>
-                        <span data-lang="en">References & Certificates</span>
-                    </a>
+                <div class="contact-footer">
+                    <ul class="social-links">
+                        <li><a href="tel:+4917690778876" title="Anrufen"><i class="fa-solid fa-phone"></i></a></li>
+                        <li><a href="mailto:leon.roettger@gmx.net" title="E-Mail schreiben"><i class="fa-solid fa-envelope"></i></a></li>
+                    </ul>
                 </div>
-                <ul class="social-links">
-                    <li><a href="tel:+4917690778876" aria-label="Anrufen"><i class="fa-solid fa-phone"></i></a></li>
-                    <li><a href="mailto:leon.roettger@gmx.net" aria-label="E-Mail schreiben"><i class="fa-solid fa-envelope"></i></a></li>
-                </ul>
             </div>
         </aside>
 
@@ -617,6 +633,19 @@
                     <span data-lang="de">Im Zeitalter von KI und Social Media wird Kommunikation schneller, aber auch komplexer. Mein Ziel ist es, Ihre Botschaften in diesem Umfeld sichtbar zu machen. Ich verbinde strategische Planung (Redaktion, Budget, Events) direkt mit der kreativen Umsetzung. Ob geschriebenes Wort, visuelles Design oder audiovisuelle Formate wie Podcasts und Filme: Meine Leidenschaft liegt genau an dieser Schnittstelle zwischen Strategie und Produktion.</span>
                     <span data-lang="en">In the age of AI and social media, communication is becoming faster yet more complex. My goal is to make your messages visible in this environment. I directly combine strategic planning (editorial, budget, events) with creative execution. Whether written word, visual design, or audiovisual formats like podcasts and films: my passion lies precisely at this interface between strategy and production.</span>
                 </p>
+                
+                <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="lebenslauf.pdf" target="_blank" class="skill-item" style="text-decoration: none; display: flex; align-items: center; gap: 8px; background-color: var(--accent-color); color: white; font-family: var(--font-body);">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span data-lang="de">Lebenslauf (PDF)</span>
+                        <span data-lang="en">Resume (PDF)</span>
+                    </a>
+                    <a href="Referenzen & Zeugnisse.pdf" target="_blank" class="skill-item" style="text-decoration: none; display: flex; align-items: center; gap: 8px; border: 1px solid var(--accent-color); background-color: transparent; font-family: var(--font-body);">
+                        <i class="fa-solid fa-certificate"></i>
+                        <span data-lang="de">Zeugnisse & Referenzen (PDF)</span>
+                        <span data-lang="en">Certificates & References (PDF)</span>
+                    </a>
+                </div>
             </section>
 
             <section id="education">
@@ -639,7 +668,7 @@
                                 <span data-lang="de">Universität Siegen</span>
                                 <span data-lang="en">University of Siegen</span>
                             </p>
-                            <p style="font-size: 0.9em; color: #777;">
+                            <p style="font-size: 0.9em; color: #777; font-family: var(--font-mono);">
                                 <span data-lang="de">Note: 1,86</span>
                                 <span data-lang="en">Grade: 1.86 (German system)</span>
                             </p>
@@ -658,6 +687,21 @@
                             <p>
                                 <span data-lang="de">Polizei NRW</span>
                                 <span data-lang="en">Police Force NRW</span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-date">
+                            <span>2012 - 2020</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>
+                                <span data-lang="de">Mariengymnasium Arnsberg</span>
+                                <span data-lang="en">Mariengymnasium Arnsberg</span>
+                            </h3>
+                            <p>
+                                <span data-lang="de">Abitur</span>
+                                <span data-lang="en">Abitur (High School Diploma)</span>
                             </p>
                         </div>
                     </li>
@@ -698,10 +742,6 @@
                                 <span data-lang="de">Analyse der Content-Performance, Management digitaler Plattformen, Podcast-Produktion und Projektmanagement.</span>
                                 <span data-lang="en">Analysis of content performance, management of digital platforms, podcast production, and project management.</span>
                             </p>
-                            <p style="font-size: 0.9em; color: #777; font-style: italic;">
-                                <span data-lang="de">Beurteilung: "stets sehr zufrieden", Arbeitsstil "zügig, umsichtig, sorgfältig und genau".</span>
-                                <span data-lang="en">Evaluation: "always very satisfied", working style "swift, prudent, careful, and precise".</span>
-                            </p>
                         </div>
                     </li>
                     <li class="timeline-item">
@@ -715,6 +755,10 @@
                                 <span data-lang="en">Working Student Editor & Theatrical Sales Manager</span>
                             </h3>
                             <p><strong>Busch Media Group GmbH & Co. KG, Hagen</strong></p>
+                            <p style="font-size: 0.9em; color: #777;">
+                                <span data-lang="de">Verwaltung des Kinovertriebs und Verhandlung von Vorführungsbedingungen mit Kinopartnern zur Umsatzmaximierung. Koordination der logistischen Verhandlung von Filmmaterialien und Werbemitteln für bundesweite Kampagnen. Datengestützte Zielgruppenkommunikation durch Erstellung von Pressemitteilungen, Social-Media-Assets und digitalen Inhalten. Produktion und Schnitt von Werbeinhalten wie Filmemacher-Interviews zur Unterstützung von 360-Grad-Marketingstrategien. Strategische Auswahl und Aufbereitung von Medien-Assets für Filmreihen zur Sicherstellung der Markenkonsistenz. Fachübergreifende Zusammenarbeit mit Marketing- und PR-Teams zur Abstimmung der Vertriebsziele.</span>
+                                <span data-lang="en">Managed theatrical sales processes and negotiated screening conditions with cinema partners to maximize revenue and market presence for film releases. Coordinated the logistical distribution of film assets and marketing materials, ensuring seamless campaign execution across nationwide cinema networks. Executed data-driven audience communication by creating targeted press releases, social media assets, and digital content to boost campaign reach. Produced and edited high-impact promotional content, including filmmaker interviews and visual assets, to support 360-degree marketing strategies. Strategic selection and preparation of media assets for the promotion of full film series, ensuring brand consistency across all platforms. Collaborated cross-functionally with marketing and PR teams to align theatrical sales goals with overarching media campaign objectives.</span>
+                            </p>
                         </div>
                     </li>
                     <li class="timeline-item">
@@ -729,10 +773,10 @@
                             </h3>
                             <p><strong>Filmpresse Meuser Schaffrath Schütz GbR, Frankfurt am Main</strong></p>
                             <p style="font-size: 0.9em; color: #777;">
-                                <span data-lang="de">Verfassen von Pressemitteilungen, eigenständige Betreuung von Pressevorführungen, Pflege der Kontaktdatenbank und Akquise von Verlosungsaktionen.</span>
-                                <span data-lang="en">Writing press releases, independently managing press screenings, maintaining the contact database, and acquiring raffles.</span>
+                                <span data-lang="de">Verfassen von Pressemitteilungen, eigenständige Betreuung von Pressevorführungen, Pflege der Kontaktdatenbank, Akquise von Verlosungsaktionen sowie zielgruppenspezifische Pressearbeit zur Maximierung der Medienresonanz.</span>
+                                <span data-lang="en">Writing press releases, independently managing press screenings, maintaining the contact database, acquiring raffles, and target-group-specific press work to maximize media coverage.</span>
                             </p>
-                            <p style="font-size: 0.9em; color: #777; font-style: italic;">
+                            <p style="font-size: 0.9em; color: #777; font-style: italic; font-family: var(--font-mono); font-size: 0.8em;">
                                 <span data-lang="de">Beurteilung: "stets zur vollsten Zufriedenheit erledigt".</span>
                                 <span data-lang="en">Evaluation: "always completed to our fullest satisfaction".</span>
                             </p>
@@ -750,10 +794,10 @@
                             </h3>
                             <p><strong>Westnetz GmbH, Siegen</strong></p>
                             <p style="font-size: 0.9em; color: #777;">
-                                <span data-lang="de">Koordination von Inhalten für interne Medien, Budgetverwaltung für Sponsoring-Projekte, Erstellung von Kommunikationsplänen und Pressemitteilungen.</span>
-                                <span data-lang="en">Coordination of content for internal media, budget management for sponsorship projects, creation of communication plans and press releases.</span>
+                                <span data-lang="de">Koordination und Erstellung von Inhalten für interne und externe Medien, Budgetverwaltung für Sponsoring-Projekte, Erstellung von Kommunikationsplänen, Planung und Durchführung von öffentlichen Events wie der "Langen Nacht der Ausbildung" oder eines Sommerflohmarktes, Durchführung von Mitarbeitendenschulungen für eine wirksame mediale Repräsentation.</span>
+                                <span data-lang="en">Coordination and creation of content for internal and external media, budget management for sponsorship projects, creation of communication plans, planning and execution of public events such as the "Long Night of Apprenticeship" or a summer flea market, conducting employee training for effective media representation.</span>
                             </p>
-                            <p style="font-size: 0.9em; color: #777; font-style: italic;">
+                            <p style="font-size: 0.9em; color: #777; font-style: italic; font-family: var(--font-mono); font-size: 0.8em;">
                                 <span data-lang="de">Beurteilung: "stets sehr zufrieden", Arbeitsstil "zügig, umsichtig, sorgfältig und genau".</span>
                                 <span data-lang="en">Evaluation: "always very satisfied", working style "swift, prudent, careful, and precise".</span>
                             </p>
@@ -768,10 +812,10 @@
                             <h3>Personal Assistant</h3>
                             <p><strong>WHAT THE HERO WANTS, Remote</strong></p>
                             <p style="font-size: 0.9em; color: #777;">
-                                <span data-lang="de">Unterstützung bei der Pressearbeit, Bearbeitung von Social-Media-Clips, Lektorat von Drehbüchern und Erstellung von Filmplakaten.</span>
-                                <span data-lang="en">Support for press work, editing social media clips, proofreading scripts, and creating film posters.</span>
+                                <span data-lang="de">Unterstützung bei der Pressearbeit, Bearbeitung von Social-Media-Clips, Drehbuchakquise und Erstellung von Filmplakaten.</span>
+                                <span data-lang="en">Support for press work, editing social media clips, script acquisition, and creating film posters.</span>
                             </p>
-                            <p style="font-size: 0.9em; color: #777; font-style: italic;">
+                            <p style="font-size: 0.9em; color: #777; font-style: italic; font-family: var(--font-mono); font-size: 0.8em;">
                                 <span data-lang="de">Beurteilung: "großartige Bereicherung für das Team", "hohes Maß an Initiative, Einsatz und Eifer".</span>
                                 <span data-lang="en">Evaluation: "great asset to the team", "high level of initiative, commitment, and zeal".</span>
                             </p>
@@ -792,7 +836,7 @@
                                 <span data-lang="de">Unterstützung in der Programmkoordination der Retrospektive, Mitorganisation von Veranstaltungen und Gästemanagement.</span>
                                 <span data-lang="en">Support for program coordination of the retrospective, co-organization of events, and guest management.</span>
                             </p>
-                             <p style="font-size: 0.9em; color: #777; font-style: italic;">
+                             <p style="font-size: 0.9em; color: #777; font-style: italic; font-family: var(--font-mono); font-size: 0.8em;">
                                 <span data-lang="de">Beurteilung: "stets zuverlässig und mit großem Engagement", "sehr gute Auffassungsgabe".</span>
                                 <span data-lang="en">Evaluation: "always reliable and with great commitment", "very good comprehension".</span>
                             </p>
@@ -846,15 +890,15 @@
                 <h3 class="subsection-title">Instagram Posts</h3>
                 <div class="project-grid">
                     <a href="https://www.instagram.com/p/C7jwUakIW1x/" target="_blank" class="preview-card">
-                        <i class="fa-brands fa-instagram"></i><h5>Instagram Post</h5>
+                        <i class="fa-brands fa-instagram"></i><h5>Erstellte Instagram Posts für die Busch Media Group</h5>
                         <p>instagram.com</p>
                     </a>
                     <a href="https://www.instagram.com/p/C74B9NyolwZ/?img_index=1" target="_blank" class="preview-card">
-                        <i class="fa-brands fa-instagram"></i><h5>Instagram Post</h5>
+                        <i class="fa-brands fa-instagram"></i><h5>Erstellte Instagram Posts für die Busch Media Group</h5>
                         <p>instagram.com</p>
                     </a>
                     <a href="https://www.instagram.com/p/C76Hy-Qon_6/?img_index=1" target="_blank" class="preview-card">
-                        <i class="fa-brands fa-instagram"></i><h5>Instagram Post</h5>
+                        <i class="fa-brands fa-instagram"></i><h5>Erstellte Instagram Posts für die Busch Media Group</h5>
                         <p>instagram.com</p>
                     </a>
                 </div>
@@ -866,12 +910,12 @@
                 <div class="project-grid">
                      <a href="https://www.lokalplus.nrw/kirchhundem/waschbetonstation-in-buntes-gemaelde-in-kirchhundem-verwandelt-80305" target="_blank" class="preview-card">
                         <i class="fa-solid fa-newspaper"></i>
-                        <h5>Waschbetonstation in buntes Gemälde verwandelt</h5>
+                        <h5>Geschriebene Presseartikel für Westnetz</h5>
                         <p>lokalplus.nrw</p>
                     </a>
                     <a href="https://www.siegener-zeitung.de/lokales/siegerland/mausbach-hat-dank-westenergie-eine-waldschaukel-JU4XYGD4BZCFRPLQDNFOZARQ2M.html" target="_blank" class="preview-card">
                         <i class="fa-solid fa-newspaper"></i>
-                        <h5>Mausbach hat dank Westenergie eine Waldschaukel</h5>
+                        <h5>Geschriebene Presseartikel für Westnetz</h5>
                         <p>siegener-zeitung.de</p>
                     </a>
                 </div>
@@ -884,8 +928,8 @@
                     <li class="skill-item">Avid Media Composer</li>
                     <li class="skill-item">Da Vinci Resolve</li>
                     <li class="skill-item">Meta Business Suite</li>
+                    <li class="skill-item">MyConvento</li>
                     <li class="skill-item">Wordpress</li>
-                    <li class="skill-item">Fotografie</li>
                     <li class="skill-item">Videografie</li>
                 </ul>
             </section>
@@ -931,21 +975,56 @@
 
 
     <script>
-        // Scroll-Spy
+        // Highly Precise Scroll-Spy & Sidebar Highlight
         document.addEventListener('DOMContentLoaded', function () {
             const sections = document.querySelectorAll('.main-content section');
             const navLinks = document.querySelectorAll('.sidebar-nav a');
+            let isScrollingFromClick = false;
 
             function changeLinkState() {
-                let index = sections.length;
-                while(--index >= 0 && window.scrollY + 150 < sections[index].offsetTop) {} 
-                navLinks.forEach((link) => link.classList.remove('active'));
-                if(index >= 0 && navLinks[index]) {
-                    navLinks[index].classList.add('active');
+                if (isScrollingFromClick) return;
+
+                let currentId = sections[0].getAttribute('id');
+                const scrollPos = window.scrollY || window.pageYOffset;
+                
+                // We define a "Target Zone" (the upper 30% of the screen)
+                const targetZone = scrollPos + (window.innerHeight * 0.3);
+
+                // Search which section is currently in that zone
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop;
+                    if (targetZone >= sectionTop) {
+                        currentId = section.getAttribute('id');
+                    }
+                });
+
+                // Overrule: If we're at the very bottom, always select the last one
+                if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+                    currentId = sections[sections.length - 1].getAttribute('id');
                 }
+
+                // Apply Blue Highlight
+                navLinks.forEach((link) => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${currentId}`) {
+                        link.classList.add("active");
+                    }
+                });
             }
-            changeLinkState();
+
             window.addEventListener('scroll', changeLinkState);
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    isScrollingFromClick = true;
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    setTimeout(() => { isScrollingFromClick = false; changeLinkState(); }, 1000);
+                });
+            });
+
+            // Initial trigger
+            setTimeout(changeLinkState, 100);
         });
 
         // Language Switcher
@@ -998,7 +1077,7 @@
             setLanguage(defaultLang);
         });
 
-        // Chatbot Logic
+        // RAG Chatbot Logic with Gemini API
         document.addEventListener('DOMContentLoaded', function () {
             const chatButton = document.getElementById('chat-button');
             const chatWidget = document.getElementById('chat-widget');
@@ -1006,66 +1085,97 @@
             const chatInput = document.getElementById('chat-input');
             const chatSend = document.getElementById('chat-send');
 
+            // --- Configuration ---
+            let GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || ''; 
+            const MODEL_NAME = "gemini-1.5-flash";
+
             chatButton.addEventListener('click', () => {
                 chatWidget.classList.toggle('open');
+                if (!GEMINI_API_KEY && chatWidget.classList.contains('open')) {
+                    addMessage('Willkommen! Um die KI zu aktivieren, gib bitte deinen Gemini API-Key ein (beginnend mit AIza...). Er wird lokal in deinem Browser gespeichert.', 'bot');
+                }
             });
 
-            const knowledgeBase = [
-                // General
-                { keywords: ['hallo', 'hi', 'moin'], answer: 'Hallo! Ich bin Leons digitaler Assistent. Wie kann ich dir helfen?' },
-                { keywords: ['danke', 'dankeschön'], answer: 'Gern geschehen!'},
-                { keywords: ['wer bist du', 'bot'], answer: 'Ich bin ein einfacher, regelbasierter Chatbot, der darauf programmiert ist, Fragen zu Leons Werdegang zu beantworten.'},
-
-                // Education
-                { keywords: ['studiert', 'studium', 'uni', 'abschluss', 'bachelor'], answer: 'Leon hat Medienwissenschaften (B.A) an der Universität Siegen mit der Gesamtnote 1,86 abgeschlossen. Davor hat er ein duales Studium bei der Polizei NRW begonnen.' },
-
-                // General Experience
-                { keywords: ['arbeitet', 'job', 'beruf', 'aktuell'], answer: 'Aktuell ist Leon als Freelancer im Bereich Marketing & Kommunikation tätig und arbeitet als Werkstudent im Datenmanagement bei der Westnetz GmbH.' },
+            // 1. Retrieval: Extract all text content from the website sections
+            function getWebsiteContext() {
+                let context = "Hier sind Informationen über Leon Röttger aus seinem Portfolio:\n\n";
+                const sections = document.querySelectorAll('main section');
                 
-                // Specific Experience & Performance
-                { keywords: ['was', 'aufgaben', 'tätigkeiten', 'datenmanagement', 'westnetz datenmanagement'], answer: 'Bei Westnetz im Datenmanagement gehörten zu seinen Aufgaben: Analyse der Content-Performance, Management digitaler Plattformen, Podcast-Produktion und Projektmanagement.'},
-                { keywords: ['lange', 'zeitraum', 'dauer', 'westnetz datenmanagement'], answer: 'Im Datenmanagement bei Westnetz ist Leon seit August 2024.'},
-                { keywords: ['wie war', 'leistung', 'beurteilung', 'zeugnis', 'zufrieden', 'westnetz datenmanagement'], answer: 'Laut seinem Zeugnis war Westnetz mit seinen Leistungen "stets sehr zufrieden". Sein Arbeitsstil wird als "zügig, umsichtig, sorgfältig und genau" beschrieben.'},
+                sections.forEach(section => {
+                    const sectionId = section.id;
+                    const text = section.innerText.replace(/\s+/g, ' ').trim();
+                    context += `--- Sektion: ${sectionId} ---\n${text}\n\n`;
+                });
                 
-                { keywords: ['was', 'aufgaben', 'busch media', 'redakteur'], answer: 'Bei der Busch Media Group war er für das Management von Kinovertriebsprozessen, die Koordination der Distribution und die Erstellung von Pressemitteilungen & Social-Media-Assets zuständig.'},
-                { keywords: ['lange', 'zeitraum', 'dauer', 'busch media', 'redakteur'], answer: 'Er war von Mai 2024 bis Juli 2024 bei der Busch Media Group.'},
+                return context;
+            }
 
-                { keywords: ['was', 'aufgaben', 'filmpresse meuser', 'praktikant', 'pressevorführungen'], answer: 'Bei Filmpresse Meuser verfasste er Pressemitteilungen, organisierte Pressevorführungen und unterstützte Promotion-Kampagnen. Er pflegte die Kontaktdatenbank und akquirierte Verlosungsaktionen.'},
-                { keywords: ['lange', 'zeitraum', 'dauer', 'filmpresse meuser', 'praktikant'], answer: 'Er war von Februar 2024 bis April 2025 als Praktikant bei Filmpresse Meuser.'},
-                { keywords: ['wie war', 'leistung', 'beurteilung', 'zeugnis', 'zufrieden', 'filmpresse meuser'], answer: 'Im Zeugnis von Filmpresse Meuser steht, dass er die ihm übertragenen Aufgaben "stets zur vollsten Zufriedenheit erledigt" hat und eine "wertvolle Bereicherung für das Team" war.'},
-
-                { keywords: ['was', 'aufgaben', 'westnetz', 'öffentlichkeitsarbeit'], answer: 'Bei Westnetz in der Öffentlichkeitsarbeit umfassten Leons Aufgaben: Koordination von Inhalten für interne Medien, Budgetverwaltung für Sponsoring-Projekte, Erstellung von Kommunikationsplänen und Pressemitteilungen.'},
-                { keywords: ['lange', 'zeitraum', 'dauer', 'westnetz', 'öffentlichkeitsarbeit'], answer: 'Bei Westnetz in der Öffentlichkeitsarbeit war er von April 2023 bis März 2024 tätig.'},
-                { keywords: ['wie war', 'leistung', 'beurteilung', 'zeugnis', 'zufrieden', 'westnetz', 'öffentlichkeitsarbeit'], answer: 'Die Beurteilung von Westnetz hebt hervor, dass Leon "stets sehr zufrieden"stellende Leistungen erbrachte. Sein Arbeitsstil wird als "zügig, umsichtig, sorgfältig und genau" beschrieben.'},
-
-
-                { keywords: ['was', 'aufgaben', 'hero', 'personal assistant'], answer: 'Als Personal Assistant bei WHAT THE HERO WANTS unterstützte er die Pressearbeit, bearbeitete Social-Media-Clips, prüfte Drehbücher und erstellte Filmplakate.'},
-                { keywords: ['lange', 'zeitraum', 'dauer', 'hero', 'personal assistant'], answer: 'Er war von Juli 2023 bis Oktober 2023 bei WHAT THE HERO WANTS.'},
-                { keywords: ['wie war', 'leistung', 'beurteilung', 'zeugnis', 'hero', 'personal assistant'], answer: 'WHAT THE HERO WANTS bescheinigt ihm, eine "großartige Bereicherung für das Team" gewesen zu sein, mit "hohem Maß an Initiative, Einsatz und Eifer".'},
-                
-                { keywords: ['was', 'aufgaben', 'berlinale', 'kinemathek'], answer: 'Bei der Berlinale unterstützte er die Programmkoordination der Retrospektive, organisierte Filmvorführungen und war im Gästemanagement tätig.'},
-                { keywords: ['lange', 'zeitraum', 'dauer', 'berlinale', 'kinemathek'], answer: 'Sein Praktikum bei der Berlinale war im Februar 2023.'},
-                { keywords: ['wie war', 'leistung', 'beurteilung', 'zeugnis', 'berlinale'], answer: 'Die Berlinale bescheinigt ihm, dass er seine Aufgaben "stets zuverlässig und mit großem Engagement" erledigte und eine "sehr gute Auffassungsgabe" bewies.'},
-
-                // Skills & Languages
-                { keywords: ['skills', 'kenntnisse', 'kann'], answer: 'Leon hat Skills in Adobe Creative-Cloud, Avid Media Composer, Da Vinci Resolve, Wordpress und mehr. Schau dir die "Skills" Sektion für mehr Details an!' },
-                { keywords: ['sprachen', 'spricht'], answer: 'Leon spricht Deutsch als Muttersprache, fließend Englisch und hat Grundkenntnisse in Russisch. Außerdem besitzt er das Wirtschaftsenglisch-Zertifikat der IHK und das Latinum.' }
-            ];
-
-            const defaultAnswer = 'Das habe ich leider nicht verstanden. Du kannst mich aber z.B. fragen: "Was hat Leon bei der Berlinale gemacht?" oder "Welche Skills hat er?".';
-
-            function getBotResponse(userInput) {
-                const lowerCaseInput = userInput.toLowerCase();
-                // Prioritize more specific questions by matching entries with more keywords
-                const sortedKnowledgeBase = [...knowledgeBase].sort((a, b) => b.keywords.length - a.keywords.length);
-
-                for (const entry of sortedKnowledgeBase) {
-                    const allKeywordsFound = entry.keywords.every(keyword => lowerCaseInput.includes(keyword));
-                    if (allKeywordsFound) {
-                        return entry.answer;
-                    }
+            // 2. Generation: Call Gemini API
+            async function callGemini(userInput) {
+                if (userInput.trim().startsWith('AIza')) {
+                    GEMINI_API_KEY = userInput.trim();
+                    localStorage.setItem('gemini_api_key', GEMINI_API_KEY);
+                    return 'Hervorragend! Der API-Key wurde sicher in deinem Browser gespeichert. Die KI ist jetzt aktiv. Was möchtest du wissen?';
                 }
-                return defaultAnswer;
+
+                if (!GEMINI_API_KEY) {
+                    return 'Bitte gib zuerst deinen Gemini API-Key ein, um die KI zu nutzen.';
+                }
+
+                // --- Diagnostic Mode: List available models ---
+                if (userInput.trim() === '!list') {
+                    try {
+                        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`);
+                        const data = await res.json();
+                        if (data.models) {
+                            const names = data.models.map(m => m.name.replace('models/', '')).join(', ');
+                            return `Verfügbare Modelle für deinen Key: ${names}`;
+                        }
+                        return 'Konnte Modelle nicht auflisten: ' + JSON.stringify(data.error);
+                    } catch (e) { return 'Fehler beim Auflisten: ' + e.message; }
+                }
+
+                const context = getWebsiteContext();
+                const prompt = `
+                    Du bist der digitale Assistent von Leon Röttger. 
+                    Nutze AUSSCHLIESSLICH den folgenden Kontext der Website, um Fragen zu beantworten.
+                    Wenn die Antwort nicht im Kontext steht, sage höflich, dass du das nicht weißt.
+                    Antworte kurz, professionell und in der Sprache der Frage (Deutsch oder Englisch).
+
+                    KONTEXT:
+                    ${context}
+
+                    FRAGE:
+                    ${userInput}
+                `;
+
+                // Using the specific stable alias from your !list
+                const model = "gemini-flash-latest"; 
+                
+                try {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: prompt }] }]
+                        })
+                    });
+
+                    const data = await response.json();
+                    
+                    if (data.error) {
+                        return `KI-Fehler (${model}): ${data.error.message} (Tipp: Schreibe "!list" um verfügbare Modelle zu sehen)`;
+                    }
+                    
+                    if (data.candidates && data.candidates[0].content) {
+                        return data.candidates[0].content.parts[0].text;
+                    }
+                } catch (error) {
+                    console.error('Gemini Error:', error);
+                    return 'Entschuldigung, es gab ein technisches Problem bei der KI-Anfrage.';
+                }
+                
+                return "Keine Antwort von der KI erhalten.";
             }
 
             function addMessage(text, sender) {
@@ -1076,29 +1186,30 @@
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
 
-            function handleUserInput() {
+            async function handleUserInput() {
                 const userInput = chatInput.value.trim();
                 if (userInput === '') return;
 
                 addMessage(userInput, 'user');
                 chatInput.value = '';
 
-                setTimeout(() => {
-                    const botResponse = getBotResponse(userInput);
-                    addMessage(botResponse, 'bot');
-                }, 500);
+                // Show loading state
+                const loadingMsg = document.createElement('div');
+                loadingMsg.classList.add('chat-message', 'bot-message');
+                loadingMsg.textContent = 'Leons Bot überlegt...';
+                chatMessages.appendChild(loadingMsg);
+
+                const botResponse = await callGemini(userInput);
+                
+                chatMessages.removeChild(loadingMsg);
+                addMessage(botResponse, 'bot');
             }
 
             chatSend.addEventListener('click', handleUserInput);
-            chatInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    handleUserInput();
-                }
-            });
+            chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleUserInput(); });
             
-            // Initial Bot Message
-             setTimeout(() => {
-                addMessage('Hallo! Ich bin Leon-Bot. Frag mich etwas über Leons Werdegang, seine Skills oder Projekte!', 'bot');
+            setTimeout(() => {
+                addMessage('Hallo! Ich bin dein KI-gestützter Assistent. Ich kenne alle Details dieser Website. Frag mich etwas!', 'bot');
             }, 1000);
         });
 
