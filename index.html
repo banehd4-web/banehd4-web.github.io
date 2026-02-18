@@ -11,7 +11,7 @@
     <style>
         :root {
             --bg-color: #f4f7f5;
-            --sidebar-bg: #f9f9f9; /* Slightly off-white for better structure */
+            --sidebar-bg: #f9f9f9;
             --text-color: #444;
             --heading-color: #1a1a1a;
             --accent-color: #2a9d8f;
@@ -41,36 +41,7 @@
             display: flex;
         }
 
-        /* --- Language Switcher & Multilingual Content --- */
-        .lang-switcher {
-            margin-bottom: 20px;
-        }
-        .lang-switcher button {
-            background: none;
-            border: 1px solid var(--border-color);
-            padding: 5px 10px;
-            cursor: pointer;
-            font-weight: 600;
-            font-family: var(--font-heading);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .lang-switcher button.active-lang-btn {
-            background-color: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
-        }
-        [data-lang] {
-            display: none;
-        }
-        .lang-active {
-            display: initial;
-        }
-        .lang-active-block {
-            display: block;
-        }
-
-        /* --- Linke Sidebar --- */
+        /* --- Sidebar --- */
         .left-sidebar {
             width: 30%;
             height: 100vh;
@@ -98,10 +69,6 @@
             margin-right: 15px; 
             border: 2px solid var(--accent-color); 
             object-fit: cover; 
-            transition: transform 0.3s ease;
-        }
-        .sidebar-header a:hover img {
-            transform: scale(1.1);
         }
 
         .sidebar-header h1 {
@@ -121,11 +88,25 @@
             margin: 0; 
             line-height: 1.2;
         }
-        .sidebar-header-text { 
-            display: flex;
-            flex-direction: column;
-        }
 
+        .lang-switcher {
+            margin-bottom: 20px;
+        }
+        .lang-switcher button {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .lang-switcher button.active-lang-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
 
         .sidebar-nav {
             list-style: none;
@@ -189,33 +170,27 @@
             margin: 0;
             display: flex;
             gap: 12px;
-            align-items: center;
-        }
-        .social-links li {
-            display: inline-block;
         }
         .social-links a {
             font-size: 1.2em;
-            color: var(--text-color);
-            transition: all 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             width: 35px;
             height: 35px;
             background-color: var(--accent-color-light);
             color: var(--accent-color);
             border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-decoration: none;
+            transition: all 0.3s;
         }
         .social-links a:hover {
             background-color: var(--accent-color);
             color: white;
             transform: translateY(-3px);
         }
-        
 
-        /* --- Rechter Hauptinhalt --- */
+        /* --- Main Content --- */
         .main-content {
             width: 70%;
             margin-left: 30%;
@@ -224,36 +199,14 @@
         }
 
         .main-content section {
-            margin-bottom: 30px;
-            padding-bottom: 0;
+            margin-bottom: 20px;
+            padding-bottom: 60px;
             scroll-margin-top: 100px;
         }
 
-        #skills {
-            padding-bottom: 40px;
-        }
-
         #languages {
-            padding-bottom: 120px;
+            padding-bottom: 150px;
         }
-        
-        .skills-list {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        
-        /* Adjusted for new intro text */
-        #about .about-intro-text {
-            max-width: 700px;
-            font-size: 1.1em;
-            font-weight: 300;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-
 
         .section-title {
             font-family: var(--font-heading);
@@ -271,7 +224,7 @@
             margin-top: 20px;
             margin-bottom: 8px;
         }
-        
+
         /* --- Timeline --- */
         .timeline {
             list-style: none;
@@ -279,16 +232,16 @@
         }
         .timeline-item {
             display: flex;
-            margin-bottom: 15px; /* Slightly more space between entries */
-            gap: 30px; /* Clear distance between date and text */
+            margin-bottom: 15px;
+            gap: 30px;
         }
         .timeline-date {
-            min-width: 160px; /* Fixed width for alignment */
+            min-width: 160px;
             font-family: var(--font-mono);
             font-size: 0.8em;
             font-weight: 700;
             color: var(--accent-color);
-            flex-shrink: 0; /* Prevents the date column from squishing */
+            flex-shrink: 0;
         }
         .timeline-content h3 {
             font-family: var(--font-heading);
@@ -301,11 +254,11 @@
             font-size: 0.95em;
         }
 
-        /* --- Projekte Grid --- */
+        /* --- Grid --- */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 25px;
             align-items: start;
         }
         .project-item {
@@ -316,10 +269,9 @@
             font-family: var(--font-heading);
             height: 3.5em;
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            flex-shrink: 0;
             font-weight: 700;
         }
         .project-item iframe {
@@ -327,15 +279,25 @@
             aspect-ratio: 16/9;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            box-shadow: var(--shadow);
-            margin-top: 0;
-            margin-bottom: 10px; 
-            flex-shrink: 0;
+            margin-bottom: 10px;
         }
-        .project-item p {
-            font-size: 0.9em;
-            margin-bottom: 0; 
-            flex-grow: 1;
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .skill-item {
+            background-color: var(--accent-color-light);
+            color: var(--accent-color);
+            font-family: var(--font-mono);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            text-align: center;
+            text-decoration: none;
         }
 
         .preview-card {
@@ -349,8 +311,6 @@
             padding: 20px;
             text-decoration: none;
             color: var(--text-color); 
-            height: 100%;
-            box-sizing: border-box;
             text-align: center;
             transition: all 0.3s;
             box-shadow: var(--shadow);
@@ -372,23 +332,8 @@
             font-size: 0.75em;
             color: #777;
         }
-        .preview-card i {
-            font-size: 2.2em;
-            color: var(--accent-color);
-        }
-        
-        .skill-item {
-            background-color: var(--accent-color-light);
-            color: var(--accent-color);
-            font-family: var(--font-mono);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-weight: 400;
-            font-size: 0.8em;
-            text-align: center;
-        }
 
-        /* --- Chatbot Styles --- */
+        /* --- Chatbot --- */
         #chat-button {
             position: fixed;
             bottom: 30px;
@@ -477,143 +422,53 @@
             padding: 0 10px;
         }
 
+        [data-lang] { display: none; }
+        .lang-active { display: initial; }
+        .lang-active-block { display: block; }
 
-        /* Responsive Design */
         @media (max-width: 1024px) {
-            .left-sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-                padding: 30px 20px;
-            }
-            .main-content {
-                width: 100%;
-                margin-left: 0;
-                padding: 40px 20px;
-            }
-            .sidebar-nav {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-                margin: 20px 0;
-            }
-            .sidebar-nav li {
-                width: 100%;
-                margin: 5px 0;
-            }
-            .sidebar-nav a {
-                padding: 10px 15px;
-                border-radius: 8px;
-                background-color: transparent;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            .sidebar-nav a.active {
-                background-color: var(--accent-color-light);
-                color: var(--accent-color);
-            }
-            .sidebar-nav a.active::before {
-                left: 0;
-                height: 100%;
-                width: 4px;
-            }
-            .sidebar-header {
-                justify-content: center;
-                text-align: left;
-            }
-            .sidebar-section {
-                margin-top: 20px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .contact-footer {
-                justify-content: center;
-            }
-            .lang-switcher {
-                text-align: center;
-                margin-top: 10px;
-            }
-            .skills-list {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                padding: 30px 20px;
-            }
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .sidebar-header h1 {
-                font-size: 1.4em;
-            }
-            .sidebar-header h2 {
-                font-size: 0.8em;
-            }
+            .left-sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border-color); padding: 30px 20px; }
+            .main-content { width: 100%; margin-left: 0; padding: 40px 20px; }
+            .sidebar-nav { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; margin: 20px 0; }
+            .sidebar-nav li { width: 100%; margin: 5px 0; }
+            .sidebar-nav a { padding: 10px 15px; border-radius: 8px; width: 100%; box-sizing: border-box; }
+            .sidebar-nav a.active { background-color: var(--accent-color-light); }
+            .sidebar-nav a.active::before { left: 0; height: 100%; width: 4px; }
+            .skills-list { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="wrapper">
         <aside class="left-sidebar">
-            <div>
-                <div class="sidebar-header">
-                    <a href="Leon Röttger.jpg" target="_blank">
-                        <img src="Leon Röttger.jpg" alt="Profilbild von Leon Röttger">
-                    </a>
-                    <div class="sidebar-header-text">
-                        <h1 data-lang="de">Leon Röttger</h1>
-                        <h1 data-lang="en">Leon Röttger</h1>
-                        <h2 data-lang="de">Strategische Kommunikation & kreative Umsetzung</h2>
-                        <h2 data-lang="en">Strategic Communication & Creative Implementation</h2>
-                    </div>
+            <div class="sidebar-header">
+                <a href="Leon Röttger.jpg" target="_blank">
+                    <img src="Leon Röttger.jpg" alt="Profilbild von Leon Röttger">
+                </a>
+                <div class="sidebar-header-text">
+                    <h1 data-lang="de">Leon Röttger</h1>
+                    <h1 data-lang="en">Leon Röttger</h1>
+                    <h2 data-lang="de">Strategische Kommunikation & kreative Umsetzung</h2>
+                    <h2 data-lang="en">Strategic Communication & Creative Implementation</h2>
                 </div>
-
-                <div class="lang-switcher">
-                    <button id="lang-de-btn" class="active-lang-btn">DE</button>
-                    <button id="lang-en-btn">EN</button>
-                </div>
-
-                <ul class="sidebar-nav">
-                    <li><a href="#about">
-                        <span data-lang="de">Über mich</span>
-                        <span data-lang="en">About Me</span>
-                    </a></li>
-                    <li><a href="#education">
-                        <span data-lang="de">Akademischer Werdegang</span>
-                        <span data-lang="en">Education</span>
-                    </a></li>
-                    <li><a href="#experience">
-                        <span data-lang="de">Beruflicher Werdegang</span>
-                        <span data-lang="en">Professional Experience</span>
-                    </a></li>
-                    <li><a href="#projects">
-                        <span data-lang="de">Projekte</span>
-                        <span data-lang="en">Projects</span>
-                    </a></li>
-                    <li><a href="#skills">
-                        <span>Skills</span>
-                    </a></li>
-                    <li><a href="#languages">
-                        <span data-lang="de">Sprachkenntnisse</span>
-                        <span data-lang="en">Languages</span>
-                    </a></li>
-                </ul>
             </div>
 
+            <div class="lang-switcher">
+                <button id="lang-de-btn" class="active-lang-btn">DE</button>
+                <button id="lang-en-btn">EN</button>
+            </div>
+
+            <ul class="sidebar-nav">
+                <li><a href="#about"><span data-lang="de">Über mich</span><span data-lang="en">About Me</span></a></li>
+                <li><a href="#education"><span data-lang="de">Akademischer Werdegang</span><span data-lang="en">Education</span></a></li>
+                <li><a href="#experience"><span data-lang="de">Beruflicher Werdegang</span><span data-lang="en">Professional Experience</span></a></li>
+                <li><a href="#projects"><span data-lang="de">Projekte</span><span data-lang="en">Projects</span></a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#languages"><span data-lang="de">Sprachkenntnisse</span><span data-lang="en">Languages</span></a></li>
+            </ul>
+
             <div class="sidebar-section">
-                <h3>
-                    <span data-lang="de">Kontakt</span>
-                    <span data-lang="en">Contact</span>
-                </h3>
+                <h3><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></h3>
                 <div class="contact-footer">
                     <ul class="social-links">
                         <li><a href="tel:+4917690778876" title="Anrufen"><i class="fa-solid fa-phone"></i></a></li>
@@ -625,189 +480,110 @@
 
         <main class="main-content">
             <section id="about">
-                <h2 class="section-title">
-                    <span data-lang="de">Über mich</span>
-                    <span data-lang="en">About Me</span>
-                </h2>
+                <h2 class="section-title"><span data-lang="de">Über mich</span><span data-lang="en">About Me</span></h2>
                 <p class="about-intro-text">
                     <span data-lang="de">Im Zeitalter von KI und Social Media wird Kommunikation schneller, aber auch komplexer. Mein Ziel ist es, Ihre Botschaften in diesem Umfeld sichtbar zu machen. Ich verbinde strategische Planung (Redaktion, Budget, Events) direkt mit der kreativen Umsetzung. Ob geschriebenes Wort, visuelles Design oder audiovisuelle Formate wie Podcasts und Filme: Meine Leidenschaft liegt genau an dieser Schnittstelle zwischen Strategie und Produktion.</span>
                     <span data-lang="en">In the age of AI and social media, communication is becoming faster yet more complex. My goal is to make your messages visible in this environment. I directly combine strategic planning (editorial, budget, events) with creative execution. Whether written word, visual design, or audiovisual formats like podcasts and films: my passion lies precisely at this interface between strategy and production.</span>
                 </p>
-                
-                <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="lebenslauf.pdf" target="_blank" class="skill-item" style="text-decoration: none; display: flex; align-items: center; gap: 8px; background-color: var(--accent-color); color: white; font-family: var(--font-body);">
-                        <i class="fa-solid fa-file-pdf"></i>
-                        <span data-lang="de">Lebenslauf (PDF)</span>
-                        <span data-lang="en">Resume (PDF)</span>
+                <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="lebenslauf.pdf" target="_blank" class="skill-item" style="background-color: var(--accent-color); color: white; font-family: var(--font-body); padding: 10px 20px;">
+                        <i class="fa-solid fa-file-pdf"></i> <span data-lang="de">Lebenslauf (PDF)</span><span data-lang="en">Resume (PDF)</span>
                     </a>
-                    <a href="Referenzen & Zeugnisse.pdf" target="_blank" class="skill-item" style="text-decoration: none; display: flex; align-items: center; gap: 8px; border: 1px solid var(--accent-color); background-color: transparent; font-family: var(--font-body);">
-                        <i class="fa-solid fa-certificate"></i>
-                        <span data-lang="de">Zeugnisse & Referenzen (PDF)</span>
-                        <span data-lang="en">Certificates & References (PDF)</span>
+                    <a href="Referenzen & Zeugnisse.pdf" target="_blank" class="skill-item" style="border: 1px solid var(--accent-color); background-color: transparent; font-family: var(--font-body); padding: 10px 20px;">
+                        <i class="fa-solid fa-certificate"></i> <span data-lang="de">Zeugnisse & Referenzen (PDF)</span><span data-lang="en">Certificates & References (PDF)</span>
                     </a>
                 </div>
             </section>
 
             <section id="education">
-                <h2 class="section-title">
-                    <span data-lang="de">Akademischer Werdegang</span>
-                    <span data-lang="en">Education</span>
-                </h2>
+                <h2 class="section-title"><span data-lang="de">Akademischer Werdegang</span><span data-lang="en">Education</span></h2>
                 <ul class="timeline">
                     <li class="timeline-item">
-                        <div class="timeline-date">
-                            <span data-lang="de">Okt 2021 - Jan 2025</span>
-                            <span data-lang="en">Oct 2021 - Jan 2025</span>
-                        </div>
+                        <div class="timeline-date">Okt 2021 - Jan 2025</div>
                         <div class="timeline-content">
-                            <h3>
-                                <span data-lang="de">Studium Medienwissenschaften und Literatur, Kultur & Medien (B.A)</span>
-                                <span data-lang="en">Media Studies and Literature, Culture & Media (B.A)</span>
-                            </h3>
-                            <p>
-                                <span data-lang="de">Universität Siegen</span>
-                                <span data-lang="en">University of Siegen</span>
-                            </p>
-                            <p style="font-size: 0.9em; color: #777; font-family: var(--font-mono);">
-                                <span data-lang="de">Note: 1,86</span>
-                                <span data-lang="en">Grade: 1.86 (German system)</span>
-                            </p>
+                            <h3><span data-lang="de">Studium Medienwissenschaften und Literatur, Kultur & Medien (B.A)</span><span data-lang="en">Media Studies and Literature, Culture & Media (B.A)</span></h3>
+                            <p><span data-lang="de">Universität Siegen</span><span data-lang="en">University of Siegen</span></p>
+                            <p style="font-size: 0.85em; color: #777; font-family: var(--font-mono);">Note: 1,86</p>
                         </div>
                     </li>
                     <li class="timeline-item">
-                        <div class="timeline-date">
-                            <span data-lang="de">Sep 2020 - Apr 2021</span>
-                            <span data-lang="en">Sep 2020 - Apr 2021</span>
-                        </div>
+                        <div class="timeline-date">Sep 2020 - Apr 2021</div>
                         <div class="timeline-content">
-                            <h3>
-                                <span data-lang="de">Duales Studium</span>
-                                <span data-lang="en">Cooperative Study Program</span>
-                            </h3>
-                            <p>
-                                <span data-lang="de">Polizei NRW</span>
-                                <span data-lang="en">Police Force NRW</span>
-                            </p>
+                            <h3><span data-lang="de">Duales Studium</span><span data-lang="en">Cooperative Study Program</span></h3>
+                            <p><span data-lang="de">Polizei NRW</span><span data-lang="en">Police Force NRW</span></p>
                         </div>
                     </li>
                     <li class="timeline-item">
-                        <div class="timeline-date">
-                            <span>2012 - 2020</span>
-                        </div>
+                        <div class="timeline-date">2012 - 2020</div>
                         <div class="timeline-content">
-                            <h3>
-                                <span data-lang="de">Mariengymnasium Arnsberg</span>
-                                <span data-lang="en">Mariengymnasium Arnsberg</span>
-                            </h3>
-                            <p>
-                                <span data-lang="de">Abitur</span>
-                                <span data-lang="en">Abitur (High School Diploma)</span>
-                            </p>
+                            <h3>Mariengymnasium Arnsberg</h3>
+                            <p><span data-lang="de">Abitur</span><span data-lang="en">High School Diploma (Abitur)</span></p>
                         </div>
                     </li>
                 </ul>
             </section>
 
             <section id="experience">
-                <h2 class="section-title">
-                    <span data-lang="de">Beruflicher Werdegang</span>
-                    <span data-lang="en">Professional Experience</span>
-                </h2>
+                <h2 class="section-title"><span data-lang="de">Beruflicher Werdegang</span><span data-lang="en">Professional Experience</span></h2>
                 <ul class="timeline">
                     <li class="timeline-item">
-                        <div class="timeline-date">
-                            <span data-lang="de">Aug 2025 - heute</span>
-                            <span data-lang="en">Aug 2025 - Present</span>
-                        </div>
+                        <div class="timeline-date">Aug 2025 - heute</div>
                         <div class="timeline-content">
                             <h3>Freelancer</h3>
-                            <p><strong>
-                                <span data-lang="de">Marketing & Kommunikation</span>
-                                <span data-lang="en">Marketing & Communication</span>
-                            </strong></p>
+                            <p><strong><span data-lang="de">Marketing & Kommunikation</span><span data-lang="en">Marketing & Communication</span></strong></p>
                         </div>
                     </li>
                     <li class="timeline-item">
-                        <div class="timeline-date">
-                            <span data-lang="de">Aug 2024 - heute</span>
-                            <span data-lang="en">Aug 2024 - Present</span>
-                        </div>
+                        <div class="timeline-date">Aug 2024 - heute</div>
                         <div class="timeline-content">
-                            <h3>
-                                <span data-lang="de">Werkstudent Kommunikation im Datenmanagement</span>
-                                <span data-lang="en">Working Student Communication in Data Management</span>
-                            </h3>
+                            <h3><span data-lang="de">Werkstudent Kommunikation im Datenmanagement</span><span data-lang="en">Working Student Communication in Data Management</span></h3>
                             <p><strong>Westnetz GmbH, Dortmund</strong></p>
-                            <p style="font-size: 0.9em; color: #777;">
-                                <span data-lang="de">Analyse der Content-Performance, Management digitaler Plattformen, Podcast-Produktion und Projektmanagement.</span>
-                                <span data-lang="en">Analysis of content performance, management of digital platforms, podcast production, and project management.</span>
-                            </p>
+                            <p style="font-size: 0.9em; color: #777;"><span data-lang="de">Analyse der Content-Performance, Management digitaler Plattformen, Podcast-Produktion und Projektmanagement.</span><span data-lang="en">Analysis of content performance, management of digital platforms, podcast production, and project management.</span></p>
                         </div>
                     </li>
                     <li class="timeline-item">
-                        <div class="timeline-date">
-                            <span data-lang="de">Mai 2024 - Jul 2024</span>
-                            <span data-lang="en">May 2024 - Jul 2024</span>
-                        </div>
+                        <div class="timeline-date">Mai 2024 - Jul 2024</div>
                         <div class="timeline-content">
-                            <h3>
-                                <span data-lang="de">Werkstudent Redakteur & Theatrical Sales Manager</span>
-                                <span data-lang="en">Working Student Editor & Theatrical Sales Manager</span>
-                            </h3>
-                            <p><strong>Busch Media Group GmbH & Co. KG, Hagen</strong></p>
+                            <h3><span data-lang="de">Werkstudent Redakteur & Theatrical Sales Manager</span><span data-lang="en">Working Student Editor & Theatrical Sales Manager</span></h3>
+                            <p><strong>Busch Media Group, Hagen</strong></p>
                             <p style="font-size: 0.9em; color: #777;">
-                                <span data-lang="de">Verwaltung des Kinovertriebs und Verhandlung von Vorführungsbedingungen mit Kinopartnern zur Umsatzmaximierung. Koordination der logistischen Verhandlung von Filmmaterialien und Werbemitteln für bundesweite Kampagnen. Datengestützte Zielgruppenkommunikation durch Erstellung von Pressemitteilungen, Social-Media-Assets und digitalen Inhalten. Produktion und Schnitt von Werbeinhalten wie Filmemacher-Interviews zur Unterstützung von 360-Grad-Marketingstrategien. Strategische Auswahl und Aufbereitung von Medien-Assets für Filmreihen zur Sicherstellung der Markenkonsistenz. Fachübergreifende Zusammenarbeit mit Marketing- und PR-Teams zur Abstimmung der Vertriebsziele.</span>
+                                <span data-lang="de">Verwaltung des Kinovertriebs und Verhandlung von Vorführungsbedingungen mit Kinopartnern zur Umsatzmaximierung. Koordination der logistischen Verteilung von Filmmaterialien und Werbemitteln für bundesweite Kampagnen. Datengestützte Zielgruppenkommunikation durch Erstellung von Pressemitteilungen, Social-Media-Assets und digitalen Inhalten. Produktion und Schnitt von Werbeinhalten wie Filmemacher-Interviews zur Unterstützung von 360-Grad-Marketingstrategien. Strategische Auswahl und Aufbereitung von Medien-Assets für Filmreihen zur Sicherstellung der Markenkonsistenz. Fachübergreifende Zusammenarbeit mit Marketing- und PR-Teams zur Abstimmung der Vertriebsziele.</span>
                                 <span data-lang="en">Managed theatrical sales processes and negotiated screening conditions with cinema partners to maximize revenue and market presence for film releases. Coordinated the logistical distribution of film assets and marketing materials, ensuring seamless campaign execution across nationwide cinema networks. Executed data-driven audience communication by creating targeted press releases, social media assets, and digital content to boost campaign reach. Produced and edited high-impact promotional content, including filmmaker interviews and visual assets, to support 360-degree marketing strategies. Strategic selection and preparation of media assets for the promotion of full film series, ensuring brand consistency across all platforms. Collaborated cross-functionally with marketing and PR teams to align theatrical sales goals with overarching media campaign objectives.</span>
                             </p>
                         </div>
                     </li>
                     <li class="timeline-item">
-                        <div class="timeline-date">
-                            <span data-lang="de">Feb 2024 - Apr 2025</span>
-                            <span data-lang="en">Feb 2024 - Apr 2025</span>
-                        </div>
+                        <div class="timeline-date">Feb 2024 - Apr 2025</div>
                         <div class="timeline-content">
-                            <h3>
-                                <span data-lang="de">Praktikant</span>
-                                <span data-lang="en">Intern</span>
-                            </h3>
+                            <h3><span data-lang="de">Praktikant</span><span data-lang="en">Intern</span></h3>
                             <p><strong>Filmpresse Meuser Schaffrath Schütz GbR, Frankfurt am Main</strong></p>
                             <p style="font-size: 0.9em; color: #777;">
                                 <span data-lang="de">Verfassen von Pressemitteilungen, eigenständige Betreuung von Pressevorführungen, Pflege der Kontaktdatenbank, Akquise von Verlosungsaktionen sowie zielgruppenspezifische Pressearbeit zur Maximierung der Medienresonanz.</span>
                                 <span data-lang="en">Writing press releases, independently managing press screenings, maintaining the contact database, acquiring raffles, and target-group-specific press work to maximize media coverage.</span>
                             </p>
-                            <p style="font-size: 0.9em; color: #777; font-style: italic; font-family: var(--font-mono); font-size: 0.8em;">
+                            <p style="font-size: 0.8em; font-family: var(--font-mono); color: #777; font-style: italic;">
                                 <span data-lang="de">Beurteilung: "stets zur vollsten Zufriedenheit erledigt".</span>
                                 <span data-lang="en">Evaluation: "always completed to our fullest satisfaction".</span>
                             </p>
                         </div>
                     </li>
                     <li class="timeline-item">
-                        <div class="timeline-date">
-                            <span data-lang="de">Apr 2023 - Mär 2024</span>
-                            <span data-lang="en">Apr 2023 - Mar 2024</span>
-                        </div>
+                        <div class="timeline-date">Apr 2023 - Mär 2024</div>
                         <div class="timeline-content">
-                            <h3>
-                                <span data-lang="de">Werkstudent Öffentlichkeitsarbeit</span>
-                                <span data-lang="en">Working Student Public Relations</span>
-                            </h3>
+                            <h3><span data-lang="de">Werkstudent Öffentlichkeitsarbeit</span><span data-lang="en">Working Student Public Relations</span></h3>
                             <p><strong>Westnetz GmbH, Siegen</strong></p>
                             <p style="font-size: 0.9em; color: #777;">
                                 <span data-lang="de">Koordination und Erstellung von Inhalten für interne und externe Medien, Budgetverwaltung für Sponsoring-Projekte, Erstellung von Kommunikationsplänen, Planung und Durchführung von öffentlichen Events wie der "Langen Nacht der Ausbildung" oder eines Sommerflohmarktes, Durchführung von Mitarbeitendenschulungen für eine wirksame mediale Repräsentation.</span>
                                 <span data-lang="en">Coordination and creation of content for internal and external media, budget management for sponsorship projects, creation of communication plans, planning and execution of public events such as the "Long Night of Apprenticeship" or a summer flea market, conducting employee training for effective media representation.</span>
                             </p>
-                            <p style="font-size: 0.9em; color: #777; font-style: italic; font-family: var(--font-mono); font-size: 0.8em;">
+                            <p style="font-size: 0.8em; font-family: var(--font-mono); color: #777; font-style: italic;">
                                 <span data-lang="de">Beurteilung: "stets sehr zufrieden", Arbeitsstil "zügig, umsichtig, sorgfältig und genau".</span>
                                 <span data-lang="en">Evaluation: "always very satisfied", working style "swift, prudent, careful, and precise".</span>
                             </p>
                         </div>
                     </li>
                     <li class="timeline-item">
-                        <div class="timeline-date">
-                            <span data-lang="de">Jul 2023 - Okt 2023</span>
-                            <span data-lang="en">Jul 2023 - Oct 2023</span>
-                        </div>
+                        <div class="timeline-date">Jul 2023 - Okt 2023</div>
                         <div class="timeline-content">
                             <h3>Personal Assistant</h3>
                             <p><strong>WHAT THE HERO WANTS, Remote</strong></p>
@@ -815,28 +591,22 @@
                                 <span data-lang="de">Unterstützung bei der Pressearbeit, Bearbeitung von Social-Media-Clips, Drehbuchakquise und Erstellung von Filmplakaten.</span>
                                 <span data-lang="en">Support for press work, editing social media clips, script acquisition, and creating film posters.</span>
                             </p>
-                            <p style="font-size: 0.9em; color: #777; font-style: italic; font-family: var(--font-mono); font-size: 0.8em;">
+                            <p style="font-size: 0.8em; font-family: var(--font-mono); color: #777; font-style: italic;">
                                 <span data-lang="de">Beurteilung: "großartige Bereicherung für das Team", "hohes Maß an Initiative, Einsatz und Eifer".</span>
                                 <span data-lang="en">Evaluation: "great asset to the team", "high level of initiative, commitment, and zeal".</span>
                             </p>
                         </div>
                     </li>
-                     <li class="timeline-item">
-                        <div class="timeline-date">
-                            <span data-lang="de">Feb 2023</span>
-                            <span data-lang="en">Feb 2023</span>
-                        </div>
+                    <li class="timeline-item">
+                        <div class="timeline-date">Feb 2023</div>
                         <div class="timeline-content">
-                            <h3>
-                                <span data-lang="de">Praktikant in der deutschen Kinemathek</span>
-                                <span data-lang="en">Intern at the German Cinematheque</span>
-                            </h3>
+                            <h3><span data-lang="de">Praktikant in der deutschen Kinemathek</span><span data-lang="en">Intern at the German Cinematheque</span></h3>
                             <p><strong>Internationale Filmfestspiele Berlin, Berlin</strong></p>
-                             <p style="font-size: 0.9em; color: #777;">
+                            <p style="font-size: 0.9em; color: #777;">
                                 <span data-lang="de">Unterstützung in der Programmkoordination der Retrospektive, Mitorganisation von Veranstaltungen und Gästemanagement.</span>
                                 <span data-lang="en">Support for program coordination of the retrospective, co-organization of events, and guest management.</span>
                             </p>
-                             <p style="font-size: 0.9em; color: #777; font-style: italic; font-family: var(--font-mono); font-size: 0.8em;">
+                            <p style="font-size: 0.8em; font-family: var(--font-mono); color: #777; font-style: italic;">
                                 <span data-lang="de">Beurteilung: "stets zuverlässig und mit großem Engagement", "sehr gute Auffassungsgabe".</span>
                                 <span data-lang="en">Evaluation: "always reliable and with great commitment", "very good comprehension".</span>
                             </p>
@@ -844,7 +614,7 @@
                     </li>
                 </ul>
             </section>
-            
+
             <section id="projects">
                 <h2 class="section-title">
                     <span data-lang="de">Projekte</span>
@@ -855,34 +625,30 @@
                 <div class="project-grid">
                     <div class="project-item">
                         <h4>Screening: "SINNERS" mit Ryan Coogler</h4>
-                        <iframe src="https://www.youtube.com/embed/5rFYhMA1tV8" title="YouTube video player" allowfullscreen></iframe>
-                        <p style="font-size: 0.9em; color: #777;">
+                        <iframe src="https://www.youtube.com/embed/5rFYhMA1tV8" allowfullscreen></iframe>
+                        <p style="font-size: 0.85em; color: #777;">
                             <span data-lang="de">Event-Support: Werkstattgespräch "SINNERS"</span>
                             <span data-lang="en">Event Support: Workshop "SINNERS"</span><br>
-                            <span data-lang="de">Aufgabe: Sicherstellung eines reibungslosen Ablaufs für die Deutsche Filmakademie</span>
-                            <span data-lang="en">Task: Ensuring smooth operations for the German Film Academy</span><br>
-                            <span data-lang="de">Tätigkeit: Akkreditierung der geladenen Gäste, Saal-Vorbereitung und Betreuung des abschließenden Get-Togethers.</span>
+                            <span data-lang="de">Tätigkeit: Akkreditierung der geladenen Gäste, Saal-Vorbereitung und Betreuung des Get-Togethers.</span>
                             <span data-lang="en">Activities: Accreditation of invited guests, hall preparation, and supervision of the concluding get-together.</span>
                         </p>
                     </div>
                     <div class="project-item">
                         <h4>Screening: "DUNE: PART TWO" mit Denis Villeneuve</h4>
-                        <iframe src="https://www.youtube.com/embed/IVu9Nz6fG8Q" title="YouTube video player" allowfullscreen></iframe>
-                        <p style="font-size: 0.9em; color: #777;">
+                        <iframe src="https://www.youtube.com/embed/IVu9Nz6fG8Q" allowfullscreen></iframe>
+                        <p style="font-size: 0.85em; color: #777;">
                             <span data-lang="de">Event-Support: Werkstattgespräch zu "DUNE: PART TWO"</span>
                             <span data-lang="en">Event Support: Workshop on "DUNE: PART TWO"</span><br>
-                            <span data-lang="de">Aufgabe: Sicherstellung eines reibungslosen Ablaufs für die Deutsche Filmakademie.</span>
-                            <span data-lang="en">Task: Ensuring smooth operations for the German Film Academy.</span><br>
                             <span data-lang="de">Tätigkeit: Gästemanagement (Einlass) sowie technischer Support und Floormanagement des Q&A-Panels.</span>
                             <span data-lang="en">Activities: Guest management (admission) as well as technical support and floor management of the Q&A panel.</span>
                         </p>
                     </div>
                     <div class="project-item">
-                        <h4>Maurice Morgenstern - Kein Stern strahlt ohne Dunkelheit</h4>
-                        <iframe src="https://www.youtube.com/embed/3qIVPFQiXoA" title="YouTube video player" allowfullscreen></iframe>
-                        <p style="font-size: 0.9em; color: #777;">
-                            <span data-lang="de">Diesen Kurzfilm habe ich in einer Projektarbeit während meines Studiums an der Universität Siegen gedreht. Wir sollten eine Person und ihre Geschichte verfilmen und sie dabei in dem Umfeld zeigen, das ihre Person am besten widerspiegelt. Der Film wurde mit dem Avid Media Composer geschnitten.</span>
-                            <span data-lang="en">I directed this short film as part of a project during my studies at the University of Siegen. We were tasked with filming a person and their story, portraying them in an environment that best reflects their personality. The film was edited using Avid Media Composer.</span>
+                        <h4>Maurice Morgenstern - Kurzfilm</h4>
+                        <iframe src="https://www.youtube.com/embed/3qIVPFQiXoA" allowfullscreen></iframe>
+                        <p style="font-size: 0.85em; color: #777;">
+                            <span data-lang="de">Projektarbeit während meines Studiums an der Universität Siegen. Der Film wurde mit dem Avid Media Composer geschnitten.</span>
+                            <span data-lang="en">Project during my studies at the University of Siegen. The film was edited using Avid Media Composer.</span>
                         </p>
                     </div>
                 </div>
@@ -920,7 +686,7 @@
                     </a>
                 </div>
             </section>
-            
+
             <section id="skills">
                 <h2 class="section-title">Skills</h2>
                 <ul class="skills-list">
@@ -935,290 +701,134 @@
             </section>
 
             <section id="languages">
-                <h2 class="section-title">
-                    <span data-lang="de">Sprachkenntnisse</span>
-                    <span data-lang="en">Languages</span>
-                </h2>
+                <h2 class="section-title"><span data-lang="de">Sprachkenntnisse</span><span data-lang="en">Languages</span></h2>
                 <ul class="skills-list">
-                    <li class="skill-item">
-                        <span data-lang="de">Deutsch (Muttersprache)</span>
-                        <span data-lang="en">German (Native)</span>
-                    </li>
-                    <li class="skill-item">
-                        <span data-lang="de">Englisch (Fließend)</span>
-                        <span data-lang="en">English (Fluent)</span>
-                    </li>
-                    <li class="skill-item">
-                        <span data-lang="de">Russisch (Grundkenntnisse)</span>
-                        <span data-lang="en">Russian (Basic)</span>
-                    </li>
-                    <li class="skill-item">
-                        <span data-lang="de">Wirtschaftsenglisch (Zusatzqualifikation IHK)</span>
-                        <span data-lang="en">Business English (IHK Certificate)</span>
-                    </li>
-                    <li class="skill-item">Latinum</li>
+                    <li class="skill-item"><span data-lang="de">Deutsch (Muttersprache)</span><span data-lang="en">German (Native)</span></li>
+                    <li class="skill-item"><span data-lang="de">Englisch (Fließend)</span><span data-lang="en">English (Fluent)</span></li>
+                    <li class="skill-item"><span data-lang="de">Russisch (Grundkenntnisse)</span><span data-lang="en">Russian (Basic)</span></li>
+                    <li class="skill-item"><span data-lang="de">Wirtschaftsenglisch (IHK)</span><span data-lang="en">Business English (IHK)</span></li>
                 </ul>
             </section>
         </main>
     </div>
-    
-    <!-- Chatbot UI -->
+
     <button id="chat-button"><i class="fa-solid fa-comment-dots"></i></button>
     <div id="chat-widget">
         <div id="chat-header">Chat mit Leon-Bot</div>
         <div id="chat-messages"></div>
         <div id="chat-input-container">
-            <input type="text" id="chat-input" placeholder="Stelle eine Frage...">
+            <input type="text" id="chat-input" placeholder="Frag mich etwas...">
             <button id="chat-send"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
     </div>
 
-
     <script>
-        // Highly Precise Scroll-Spy & Sidebar Highlight
         document.addEventListener('DOMContentLoaded', function () {
+            // Language Switcher
+            const langDeBtn = document.getElementById('lang-de-btn');
+            const langEnBtn = document.getElementById('lang-en-btn');
+            function setLanguage(lang) {
+                document.querySelectorAll('[data-lang]').forEach(el => {
+                    el.style.display = (el.dataset.lang === lang) ? (['P', 'H1', 'H2', 'H3', 'DIV', 'LI', 'SECTION'].includes(el.tagName) ? 'block' : 'inline') : 'none';
+                    el.classList.toggle('lang-active', el.dataset.lang === lang);
+                });
+                langDeBtn.classList.toggle('active-lang-btn', lang === 'de');
+                langEnBtn.classList.toggle('active-lang-btn', lang === 'en');
+            }
+            langDeBtn.addEventListener('click', () => setLanguage('de'));
+            langEnBtn.addEventListener('click', () => setLanguage('en'));
+            setLanguage('de');
+
+            // High-Precision Scroll-Spy
             const sections = document.querySelectorAll('.main-content section');
             const navLinks = document.querySelectorAll('.sidebar-nav a');
             let isScrollingFromClick = false;
 
-            function changeLinkState() {
+            function updateActiveLink() {
                 if (isScrollingFromClick) return;
 
-                let currentId = sections[0].getAttribute('id');
-                const scrollPos = window.scrollY || window.pageYOffset;
-                
-                // We define a "Target Zone" (the upper 30% of the screen)
-                const targetZone = scrollPos + (window.innerHeight * 0.3);
+                let currentId = sections[0].id;
+                let minDistance = Infinity;
 
-                // Search which section is currently in that zone
-                sections.forEach((section) => {
-                    const sectionTop = section.offsetTop;
-                    if (targetZone >= sectionTop) {
-                        currentId = section.getAttribute('id');
+                sections.forEach(s => {
+                    const rect = s.getBoundingClientRect();
+                    // We check which section heading is closest to the 25% mark of the viewport
+                    const distance = Math.abs(rect.top - (window.innerHeight * 0.25));
+                    if (rect.top <= (window.innerHeight * 0.4) && distance < minDistance) {
+                        minDistance = distance;
+                        currentId = s.id;
                     }
                 });
 
-                // Overrule: If we're at the very bottom, always select the last one
-                if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
-                    currentId = sections[sections.length - 1].getAttribute('id');
+                // Override: Very bottom of the page always selects Languages
+                if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 30) {
+                    currentId = sections[sections.length - 1].id;
                 }
 
-                // Apply Blue Highlight
-                navLinks.forEach((link) => {
-                    link.classList.remove("active");
-                    if (link.getAttribute("href") === `#${currentId}`) {
-                        link.classList.add("active");
-                    }
+                navLinks.forEach(l => {
+                    l.classList.toggle('active', l.getAttribute('href') === `#${currentId}`);
                 });
             }
 
-            window.addEventListener('scroll', changeLinkState);
-            
+            window.addEventListener('scroll', updateActiveLink);
+
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     isScrollingFromClick = true;
                     navLinks.forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
-                    setTimeout(() => { isScrollingFromClick = false; changeLinkState(); }, 1000);
+                    setTimeout(() => { isScrollingFromClick = false; updateActiveLink(); }, 1000);
                 });
             });
 
-            // Initial trigger
-            setTimeout(changeLinkState, 100);
-        });
+            setTimeout(updateActiveLink, 100);
 
-        // Language Switcher
-        document.addEventListener('DOMContentLoaded', function() {
-            const langDeBtn = document.getElementById('lang-de-btn');
-            const langEnBtn = document.getElementById('lang-en-btn');
-            const defaultLang = localStorage.getItem('preferredLanguage') || 'de';
-
-            function setLanguage(lang) {
-                document.documentElement.lang = lang;
-                document.querySelectorAll('[data-lang]').forEach(el => {
-                    if (el.dataset.lang === lang) {
-                        // Apply specific display styles based on the element's original display
-                        if (['P', 'H1', 'H2', 'H3', 'DIV', 'LI', 'UL', 'SECTION', 'ARTICLE', 'ASIDE', 'HEADER', 'FOOTER', 'MAIN', 'NAV', 'STRONG'].includes(el.tagName)) { // Added STRONG for bold text
-                             el.style.display = 'block'; 
-                        } else {
-                            el.style.display = 'inline'; 
-                        }
-                        el.classList.add('lang-active');
-                    } else {
-                        el.style.display = 'none';
-                        el.classList.remove('lang-active');
-                    }
-                });
-                
-                // Special handling for the main name/title in sidebar-header-text
-                document.querySelectorAll('.sidebar-header-text h1[data-lang], .sidebar-header-text h2[data-lang]').forEach(el => {
-                    if (el.dataset.lang === lang) {
-                        el.style.display = 'block';
-                    } else {
-                        el.style.display = 'none';
-                    }
-                });
-
-
-                if (lang === 'de') {
-                    langDeBtn.classList.add('active-lang-btn');
-                    langEnBtn.classList.remove('active-lang-btn');
-                } else {
-                    langEnBtn.classList.add('active-lang-btn');
-                    langDeBtn.classList.remove('active-lang-btn');
-                }
-                localStorage.setItem('preferredLanguage', lang);
-            }
-
-            langDeBtn.addEventListener('click', () => setLanguage('de'));
-            langEnBtn.addEventListener('click', () => setLanguage('en'));
-
-            // Set initial language based on preference or default
-            setLanguage(defaultLang);
-        });
-
-        // RAG Chatbot Logic with Gemini API
-        document.addEventListener('DOMContentLoaded', function () {
+            // Gemini Chatbot
             const chatButton = document.getElementById('chat-button');
             const chatWidget = document.getElementById('chat-widget');
             const chatMessages = document.getElementById('chat-messages');
             const chatInput = document.getElementById('chat-input');
             const chatSend = document.getElementById('chat-send');
+            const API_KEY = 'AIzaSyApi0wSz7t3sTJ8oAkbuQ7YCoB5sLJ0l4s';
 
-            // --- Configuration (Public Deployment) ---
-            const GEMINI_API_KEY = 'AIzaSyApi0wSz7t3sTJ8oAkbuQ7YCoB5sLJ0l4s'; 
-            const MODEL_NAME = "gemini-flash-latest";
+            chatButton.addEventListener('click', () => chatWidget.classList.toggle('open'));
 
-            chatButton.addEventListener('click', () => {
-                chatWidget.classList.toggle('open');
-            });
-
-            // 1. Retrieval: Extract all text content from the website sections
-            function getWebsiteContext() {
-                let context = "Hier sind Informationen über Leon Röttger aus seinem Portfolio:\n\n";
-                const sections = document.querySelectorAll('main section');
-                
-                sections.forEach(section => {
-                    const sectionId = section.id;
-                    const text = section.innerText.replace(/\s+/g, ' ').trim();
-                    context += `--- Sektion: ${sectionId} ---\n${text}\n\n`;
-                });
-                
-                return context;
-            }
-
-            // 2. Generation: Call Gemini API
-            async function callGemini(userInput) {
-                const context = getWebsiteContext();
-                const prompt = `
-                    Du bist der digitale Assistent von Leon Röttger. 
-                    Nutze AUSSCHLIESSLICH den folgenden Kontext der Website, um Fragen zu beantworten.
-                    Wenn die Antwort nicht im Kontext steht, sage höflich, dass du das nicht weißt.
-                    Antworte kurz, professionell und in der Sprache der Frage (Deutsch oder Englisch).
-
-                    KONTEXT:
-                    ${context}
-
-                    FRAGE:
-                    ${userInput}
-                `;
-
+            async function callGemini(text) {
+                let context = "Hier sind Infos über Leon Röttger:\n";
+                document.querySelectorAll('main section').forEach(s => context += s.innerText + "\n");
+                const prompt = `Du bist Leons Assistent. Antworte basierend auf diesem Kontext:\n${context}\n\nFrage: ${text}`;
                 try {
-                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${GEMINI_API_KEY}`, {
+                    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY}`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{ parts: [{ text: prompt }] }]
-                        })
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
                     });
+                    const data = await res.json();
+                    return data.candidates[0].content.parts[0].text;
+                } catch (e) { return "Fehler bei der Anfrage."; }
+            }
 
-                    const data = await response.json();
-                    
-                    if (data.error) {
-                        return `Entschuldigung, der Bot ist gerade nicht erreichbar.`;
-                    }
-                    
-                    if (data.candidates && data.candidates[0].content) {
-                        return data.candidates[0].content.parts[0].text;
-                    }
-                } catch (error) {
-                    console.error('Gemini Error:', error);
-                    return 'Entschuldigung, es gab ein technisches Problem.';
-                }
-                
-                return "Keine Antwort erhalten.";
+            async function handleChat() {
+                const msg = chatInput.value.trim();
+                if (!msg) return;
+                chatInput.value = '';
+                addMessage(msg, 'user');
+                const botRes = await callGemini(msg);
+                addMessage(botRes, 'bot');
             }
 
             function addMessage(text, sender) {
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('chat-message', sender + '-message');
-                messageElement.textContent = text;
-                chatMessages.appendChild(messageElement);
+                const el = document.createElement('div');
+                el.className = `chat-message ${sender}-message`;
+                el.textContent = text;
+                chatMessages.appendChild(el);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
 
-            async function handleUserInput() {
-                const userInput = chatInput.value.trim();
-                if (userInput === '') return;
-
-                addMessage(userInput, 'user');
-                chatInput.value = '';
-
-                // Show loading state
-                const loadingMsg = document.createElement('div');
-                loadingMsg.classList.add('chat-message', 'bot-message');
-                loadingMsg.textContent = 'Leons Bot überlegt...';
-                chatMessages.appendChild(loadingMsg);
-
-                const botResponse = await callGemini(userInput);
-                
-                chatMessages.removeChild(loadingMsg);
-                addMessage(botResponse, 'bot');
-            }
-
-            chatSend.addEventListener('click', handleUserInput);
-            chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleUserInput(); });
-            
-            setTimeout(() => {
-                addMessage('Hallo! Ich bin dein KI-gestützter Assistent. Ich kenne alle Details dieser Website. Frag mich etwas!', 'bot');
-            }, 1000);
+            chatSend.addEventListener('click', handleChat);
+            chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') handleChat(); });
+            addMessage('Hallo! Ich bin Leon-Bot. Frag mich etwas!', 'bot');
         });
-
-            function addMessage(text, sender) {
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('chat-message', sender + '-message');
-                messageElement.textContent = text;
-                chatMessages.appendChild(messageElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            async function handleUserInput() {
-                const userInput = chatInput.value.trim();
-                if (userInput === '') return;
-
-                addMessage(userInput, 'user');
-                chatInput.value = '';
-
-                // Show loading state
-                const loadingMsg = document.createElement('div');
-                loadingMsg.classList.add('chat-message', 'bot-message');
-                loadingMsg.textContent = 'Leons Bot überlegt...';
-                chatMessages.appendChild(loadingMsg);
-
-                const botResponse = await callGemini(userInput);
-                
-                chatMessages.removeChild(loadingMsg);
-                addMessage(botResponse, 'bot');
-            }
-
-            chatSend.addEventListener('click', handleUserInput);
-            chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleUserInput(); });
-            
-            setTimeout(() => {
-                addMessage('Hallo! Ich bin dein KI-gestützter Assistent. Ich kenne alle Details dieser Website. Frag mich etwas!', 'bot');
-            }, 1000);
-        });
-
     </script>
 </body>
 </html>
