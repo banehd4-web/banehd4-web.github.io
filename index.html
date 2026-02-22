@@ -276,6 +276,7 @@
         }
         .project-item iframe {
             width: 100%;
+            max-width: 100%;
             aspect-ratio: 16/9;
             border: 1px solid var(--border-color);
             border-radius: 8px;
@@ -333,6 +334,69 @@
             color: #777;
         }
 
+
+        /* --- Mobile Header (visible when sidebar hidden) --- */
+        .mobile-header {
+            display: none;
+            background-color: var(--sidebar-bg);
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .mobile-header img {
+            width: 70px; height: 70px; border-radius: 50%;
+            border: 2px solid var(--accent-color); object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .mobile-header h1 {
+            font-family: var(--font-heading); font-size: 1.4em;
+            font-weight: 800; color: var(--heading-color); margin: 0 0 4px;
+        }
+        .mobile-header h2 {
+            font-family: var(--font-body); font-size: 0.85em;
+            font-weight: 400; color: var(--accent-color); margin: 0 0 12px;
+        }
+        .mobile-header .lang-switcher { margin-bottom: 0; }
+
+        /* --- CTA Button --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1em;
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(42,157,143,0.3);
+            margin-top: 24px;
+        }
+        .cta-button:hover {
+            background-color: #238b7e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(42,157,143,0.4);
+        }
+        .cta-button i { margin-right: 8px; }
+
+        /* --- Footer --- */
+        .site-footer {
+            background-color: var(--sidebar-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 30px 40px;
+            font-size: 0.8em;
+            color: #999;
+            text-align: center;
+        }
+        .site-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .site-footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 8px; }
+        .footer-links a { margin: 0 12px; }
+
         [data-lang] { display: none; }
         .lang-active { display: initial; }
         .lang-active-block { display: block; }
@@ -350,6 +414,7 @@
 
         @media (max-width: 768px) {
             .left-sidebar { display: none; }
+            .mobile-header { display: block; }
             .wrapper { display: block; }
             .main-content {
                 width: 100%;
@@ -407,6 +472,16 @@
     </style>
 </head>
 <body>
+    <header class="mobile-header">
+        <img src="Leon Röttger.jpg" alt="Leon Röttger">
+        <h1>Leon Röttger</h1>
+        <h2 data-lang="de">Strategische Kommunikation & kreative Umsetzung</h2>
+        <h2 data-lang="en">Strategic Communication & Creative Implementation</h2>
+        <div class="lang-switcher">
+            <button class="mobile-lang-de active-lang-btn" onclick="document.getElementById('lang-de-btn').click()">DE</button>
+            <button class="mobile-lang-en" onclick="document.getElementById('lang-en-btn').click()">EN</button>
+        </div>
+    </header>
     <div class="wrapper">
         <aside class="left-sidebar">
             <div class="sidebar-header">
@@ -469,6 +544,11 @@
                     </a>
                     <a href="Referenzen & Zeugnisse.pdf" target="_blank" class="skill-item" style="border: 1px solid var(--accent-color); background-color: transparent; font-family: var(--font-body); padding: 10px 20px;">
                         <i class="fa-solid fa-certificate"></i> <span data-lang="de">Zeugnisse & Referenzen (PDF)</span><span data-lang="en">Certificates & References (PDF)</span>
+                    </a>
+                </div>
+                <div style="margin-top: 10px;">
+                    <a href="mailto:leon.roettger@gmx.net" class="cta-button">
+                        <i class="fa-solid fa-envelope"></i> <span data-lang="de">Kontakt aufnehmen</span><span data-lang="en">Get in Touch</span>
                     </a>
                 </div>
             </section>
@@ -714,6 +794,15 @@
             langEnBtn.addEventListener('click', () => setLanguage('en'));
             setLanguage('de');
 
+            // Sync mobile lang buttons
+            const mobDe = document.querySelector('.mobile-lang-de');
+            const mobEn = document.querySelector('.mobile-lang-en');
+            if (mobDe && mobEn) {
+                langDeBtn.addEventListener('click', () => { mobDe.classList.add('active-lang-btn'); mobEn.classList.remove('active-lang-btn'); });
+                langEnBtn.addEventListener('click', () => { mobEn.classList.add('active-lang-btn'); mobDe.classList.remove('active-lang-btn'); });
+            }
+
+
             // High-Precision Scroll-Spy
             const sections = document.querySelectorAll('.main-content section');
             const navLinks = document.querySelectorAll('.sidebar-nav a');
@@ -759,5 +848,39 @@
             setTimeout(updateActiveLink, 100);
         });
     </script>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="#impressum" onclick="document.getElementById('impressum-modal').style.display='flex'; return false;">Impressum</a>
+            <a href="#datenschutz" onclick="document.getElementById('datenschutz-modal').style.display='flex'; return false;">Datenschutz</a>
+        </div>
+        <p>&copy; 2025 Leon Röttger. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div id="impressum-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;" onclick="if(event.target===this)this.style.display='none'">
+        <div style="background:#fff; border-radius:12px; padding:30px; max-width:500px; width:90%; max-height:80vh; overflow-y:auto; position:relative;">
+            <button onclick="this.parentElement.parentElement.style.display='none'" style="position:absolute; top:10px; right:15px; background:none; border:none; font-size:1.5em; cursor:pointer; color:#999;">&times;</button>
+            <h2 style="font-family:var(--font-heading); margin-top:0;">Impressum</h2>
+            <p><strong>Leon Röttger</strong><br>
+            Freelancer – Marketing & Kommunikation<br><br>
+            E-Mail: <a href="mailto:leon.roettger@gmx.net" style="color:var(--accent-color);">leon.roettger@gmx.net</a><br>
+            Telefon: <a href="tel:+4917690778876" style="color:var(--accent-color);">+49 176 90778876</a></p>
+            <p style="font-size:0.85em; color:#999;">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Leon Röttger (Anschrift wie oben).</p>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div id="datenschutz-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;" onclick="if(event.target===this)this.style.display='none'">
+        <div style="background:#fff; border-radius:12px; padding:30px; max-width:500px; width:90%; max-height:80vh; overflow-y:auto; position:relative;">
+            <button onclick="this.parentElement.parentElement.style.display='none'" style="position:absolute; top:10px; right:15px; background:none; border:none; font-size:1.5em; cursor:pointer; color:#999;">&times;</button>
+            <h2 style="font-family:var(--font-heading); margin-top:0;">Datenschutzerklärung</h2>
+            <p><strong>1. Verantwortlicher</strong><br>Leon Röttger (siehe Impressum).</p>
+            <p><strong>2. Hosting</strong><br>Diese Website wird über GitHub Pages (GitHub Inc., USA) gehostet. GitHub kann Server-Logdaten (IP-Adresse, Zeitstempel, aufgerufene Seite) erheben. Details: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" style="color:var(--accent-color);">GitHub Privacy Statement</a>.</p>
+            <p><strong>3. Externe Inhalte</strong><br>Die Seite bindet YouTube-Videos (Google Ireland Ltd.) und Google Fonts ein. Beim Aufruf können Daten an Google übermittelt werden. Mehr Infos: <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--accent-color);">Google Datenschutz</a>.</p>
+            <p><strong>4. Ihre Rechte</strong><br>Auskunft, Berichtigung, Löschung, Einschränkung und Widerspruch gemäß DSGVO. Kontakt: leon.roettger@gmx.net.</p>
+            <p style="font-size:0.85em; color:#999;">Stand: Februar 2026</p>
+        </div>
+    </div>
 </body>
 </html>
