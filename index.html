@@ -347,6 +347,11 @@
             .sidebar-nav a.active::before { left: 0; height: 100%; width: 4px; }
             .skills-list { grid-template-columns: 1fr; }
         }
+
+        @media (max-width: 768px) {
+            .left-sidebar { display: none; }
+            .main-content { width: 100%; margin-left: 0; padding: 24px 16px; }
+        }
     </style>
 </head>
 <body>
